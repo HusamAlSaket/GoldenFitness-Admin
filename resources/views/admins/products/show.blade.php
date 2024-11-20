@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Product Details</h1>
+@extends('components.layout2')
 
-<p>Name: {{ $product->name }}</p>
-<p>Description: {{ $product->description }}</p>
-<p>Price: ${{ $product->price }}</p>
-<p>Stock: {{ $product->stock }}</p>
-<p>Category: {{ $product->category->name ?? 'Uncategorized' }}</p>
+<!-- Main Content Wrapper (with Sidebar Offset) -->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <!-- Sidebar (if applicable) -->
+        <div class="col-md-3">
+            <!-- Sidebar content, like navigation, etc. -->
+        </div>
 
-<a href="{{ route('products.index') }}" class="btn btn-primary">Back to Products</a>
+        <!-- Product Details Section (Main Content) -->
+        <div class="col-md-9">
+            <h1 class="text-center">Product Details</h1>
 
-</body>
-</html>
+            <div class="product-details">
+                <p><strong>Name:</strong> {{ $product->name }}</p>
+                <p><strong>Description:</strong> {{ $product->description }}</p>
+                <p><strong>Price:</strong> ${{ $product->price }}</p>
+                <p><strong>Stock:</strong> {{ $product->stock }}</p>
+                <p><strong>Category:</strong> {{ $product->category->category_name ?? 'Uncategorized' }}</p>
+
+                <!-- Back Button -->
+                <div class="text-center mt-3">
+                    <a href="{{ route('products.index') }}" class="btn btn-primary">Back to Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

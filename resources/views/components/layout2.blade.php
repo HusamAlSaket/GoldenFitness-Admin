@@ -131,7 +131,10 @@
         }
     </style>
 </head>
+<script>
+    import Swal from 'sweetalert2';
 
+</script>
 <body>
     <div class="container-fluid">
         <!-- Sidebar -->
@@ -193,6 +196,9 @@
                 });
             });
         </script>
+        <!-- Include SweetAlert CDN in the head section of your layout file -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,22 @@
             margin: 20px;
             line-height: 1.5;
         }
+
         form {
             max-width: 400px;
         }
+
         label {
             font-weight: bold;
         }
-        select, input {
+
+        select,
+        input {
             width: 100%;
             padding: 8px;
             margin-bottom: 15px;
         }
+
         button {
             padding: 10px 15px;
             background-color: #007BFF;
@@ -29,11 +35,13 @@
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <h1>Create New Product</h1>
     <form action="{{ route('admins.products.store') }}" method="POST">
@@ -53,10 +61,12 @@
 
         <!-- Category Dropdown -->
         <label for="category_id">Category</label>
-        <select name="category_id" id="category_id">
+        <select class="form-control" name="category_id">
             <option value="">Select Category</option>
             @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                    {{ $category->category_name }}
+                </option>
             @endforeach
         </select>
 
@@ -68,4 +78,5 @@
         <button type="submit">Save Product</button>
     </form>
 </body>
+
 </html>

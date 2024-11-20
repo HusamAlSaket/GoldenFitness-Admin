@@ -39,6 +39,8 @@ Route::prefix('admins')->group(function () {
 
     // potential duplicates 
     // Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/admins/products', [ProductController::class, 'index'])->name('products.index');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
 });
 

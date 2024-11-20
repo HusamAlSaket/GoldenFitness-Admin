@@ -104,19 +104,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>import Chart from 'chart.js/auto'; </script>
         
         <!-- Calendar -->
-        {{-- <div class="col-md-4">
+        <div class="col-md-4">
             <div class="chart-container">
                 <h5 class="mb-4">Calendar</h5>
                 <div id="calendar"></div>
             </div>
         </div>
-    </div> --}}
+    </div> 
 
     <!-- Products Section -->
     <div class="row mt-4">

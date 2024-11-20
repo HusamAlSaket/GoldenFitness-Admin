@@ -11,9 +11,12 @@ class ProductController extends Controller
     // Display all products
     public function index()
     {
-        $products = Product::with('category')->get(); // Eager load categories
-        return view('admins.products.index', compact('products'));
+        $products = Product::with('category')->get(); // Assuming 'category' is a relation in your Product model
+        $categories = Category::all();
+    
+        return view('admins.products.index', compact('products', 'categories'));
     }
+    
 
     // Show form to create a new product
     public function create()
@@ -35,7 +38,7 @@ class ProductController extends Controller
 
         Product::create($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Product added successfully!');
     }
 
     // Display a specific product
@@ -64,7 +67,8 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        // Redirect with a success message
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 
     // Delete a product
@@ -72,6 +76,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
 }
