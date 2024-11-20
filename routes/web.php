@@ -44,5 +44,7 @@ Route::prefix('admins')->group(function () {
     
     // Delete Product
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::post('/products', [ProductController::class, 'store'])->name('admins.products.store');
+
 });
 require __DIR__.'/auth.php';

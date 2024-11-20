@@ -17,27 +17,38 @@ class ProductController extends Controller
     // Show form to create a new product
     public function create()
     {
-        $categories = Category::all(); // Fetch all categories for the select dropdown
-        return view('admins.products.create', compact('categories'));
+        $categories = Category::all(); // Fetch all categories from the database
+        return view('admins.products.create', compact('categories')); // Pass categories to the view
     }
+    
 
     // Store a newly created product
     public function store(Request $request)
     {
+        // Validate incoming request
         $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string|max:1000',
-        'price' => 'nullable', // Removed 'numeric' validation rule
-        'stock' => 'required|integer|min:0',
-        'category_id' => 'required|exists:categories,id', // Assuming category is required
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'stock' => 'nullable|string|max:1000',
+            'price' => 'required|numeric|min:0',
+            'category_id' => 'nullable|exists:categories,id',
+
+
         ]);
-
-        // Create product
-        Product::create($request->all());
-
-        // Redirect to the products index with success message
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+    
+        // Create the product and save it to the database
+        Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'stock' => $request->stock,
+            'price' => $request->price,
+            'category_id' => $request->category_id,
+        ]);
+    
+        // Redirect back with a success message
+        return redirect()->route('admins.products')->with('success', 'Product created successfully.');
     }
+    
 
     // Display a specific product
     public function show(Product $product)
