@@ -32,7 +32,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'stock' => 'nullable|integer|min:0',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
@@ -60,14 +60,13 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
-            'price' => 'nullable|numeric|min:0',
+            'price' => 'nullable|integer|min:0',
             'stock' => 'nullable|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
         $product->update($request->all());
 
-        // Redirect with a success message
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 
@@ -76,6 +75,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
+    return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
 }

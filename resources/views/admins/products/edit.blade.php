@@ -53,49 +53,10 @@
         <!-- Product Stats Grid and Table Code -->
     
         <!-- Add SweetAlert Script -->
-        @if(session('success'))
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: '{{ session('success') }}',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            </script>
-        @endif
+
     </main>
     
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $('#editProductForm').submit(function(e) {
-            e.preventDefault();
-        
-            $.ajax({
-                type: 'POST',
-                url: '{{ route("products.update", ":id") }}'.replace(':id', {{ $product->id }}),
-                data: $(this).serialize(),
-                success: function(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Product Updated!',
-                        text: 'The product has been updated successfully.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(function() {
-                        location.reload(); // Reload the page after success
-                    });
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong. Please try again.',
-                    });
-                }
-            });
-        });
-        </script>
+
         
         <!-- Product Form -->
         <form id="editProductForm" method="POST">
