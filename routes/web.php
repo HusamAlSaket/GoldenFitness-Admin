@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SubscriptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,25 +23,26 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admins/dashboard', [AdminDashboardController::class, 'index'])->name('admins.dashboard');
 Route::get('/admins/users', [UserController::class, 'index'])->name('admins.users');
-Route::prefix('admins')->group(function () {
-    // List products
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    // Create Product
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    // Show Product
-    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-    // Edit Product
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    // Update Product
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-    // Delete Product
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-    Route::post('/products', [ProductController::class, 'store'])->name('admins.products.store');
 
-    // potential duplicates 
-    // Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/admins/products', [ProductController::class, 'index'])->name('products.index');
+Route::prefix('admins')->group(function () {
+    // Product routes
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    // Subscription routes
+    Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+    Route::get('/subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+    Route::post('/subscriptions', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+    Route::get('/subscriptions/{subscription}', [SubscriptionController::class, 'show'])->name('subscriptions.show');
+    Route::get('/subscriptions/{subscription}/edit', [SubscriptionController::class, 'edit'])->name('subscriptions.edit');
+    Route::put('/subscriptions/{subscription}', [SubscriptionController::class, 'update'])->name('subscriptions.update');
+    Route::delete('/subscriptions/{subscription}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
+    Route::put('/subscriptions/{subscription}', [SubscriptionController::class, 'update'])->name('subscriptions.update');
 
 });
 

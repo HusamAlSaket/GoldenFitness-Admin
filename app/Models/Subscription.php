@@ -9,6 +9,14 @@ class Subscription extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'subscription_type',
+        'start_date',
+        'end_date',
+        'status',
+    ];
+
     // Subscription belongs to a user
     public function user()
     {

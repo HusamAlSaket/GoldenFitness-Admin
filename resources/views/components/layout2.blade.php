@@ -155,13 +155,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="products.html">
+                    <a class="nav-link active" href="{{route('products.index')}}">
                         <i class="bi bi-box"></i> <span>Products</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="categories.html">
-                        <i class="bi bi-list-ul"></i> <span>Categories</span>
+                    <a class="nav-link" href="{{route('subscriptions.index')}}">
+                        <i class="bi bi-list-ul"></i> <span>Subscriptions</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -198,7 +198,24 @@
         </script>
         <!-- Include SweetAlert CDN in the head section of your layout file -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script>document.addEventListener('DOMContentLoaded', function() {
+    // Get all the nav-link elements
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Get the current URL path
+    const currentPath = window.location.pathname;
+    
+    // Loop through all nav-links and add 'active' class to the matching one
+    navLinks.forEach(link => {
+        // If the link's href matches the current path, add the 'active' class
+        if (link.href.includes(currentPath)) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+</script>
 </body>
 
 </html>

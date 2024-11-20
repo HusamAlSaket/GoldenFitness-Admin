@@ -115,18 +115,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('products.index')}}">
                         <i class="bi bi-box"></i> <span>Products</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-list-ul"></i> <span>Categories</span>
+                    <a class="nav-link" href="{{route('subscriptions.index')}}">
+                        <i class="bi bi-list-ul"></i> <span>Subscriptions</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="bi bi-chat-left"></i> <span>Messages</span>
+                        <i class="bi bi-list-ul"></i> <span>messages</span>
                     </a>
                 </li>
             </ul>
@@ -138,6 +138,25 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.css" rel="stylesheet">
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get all the nav-link elements
+    const navLinks = document.querySelectorAll('.nav-link');
     
+    // Get the current URL path
+    const currentPath = window.location.pathname;
+    
+    // Loop through all nav-links and add 'active' class to the matching one
+    navLinks.forEach(link => {
+        // If the link's href matches the current path, add the 'active' class
+        if (link.href.includes(currentPath)) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+
+    </script>
     </body>
     </html>
