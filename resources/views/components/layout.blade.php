@@ -138,48 +138,6 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.css" rel="stylesheet">
     
-        <script>
-            // Sidebar Toggle
-            document.getElementById('toggleSidebar').addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                const mainContent = document.getElementById('mainContent');
-                
-                sidebar.classList.toggle('collapsed');
-                mainContent.classList.toggle('collapsed');
-            });
     
-            // Sales Chart
-            const ctx = document.getElementById('salesChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [{
-                        label: 'Monthly Sales',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderColor: 'rgb(255, 76, 76)',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-    
-            // Calendar
-            document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    height: 'auto'
-                });
-                calendar.render();
-            });
-        </script>
     </body>
     </html>
