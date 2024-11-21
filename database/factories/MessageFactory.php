@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +16,11 @@ class MessageFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'message' => $this->faker->sentence(),
         ];
     }
 }

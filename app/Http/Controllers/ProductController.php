@@ -64,11 +64,17 @@ class ProductController extends Controller
             'stock' => 'nullable|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
         ]);
-
-        $product->update($request->all());
-
+    
+        // Update the product's attributes
+        $product->name = $request->name;
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->save();
+    
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
+    
 
     // Delete a product
     public function destroy(Product $product)

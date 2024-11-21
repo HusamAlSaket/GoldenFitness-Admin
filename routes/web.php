@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\MessageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,6 +45,11 @@ Route::prefix('admins')->group(function () {
     Route::delete('/subscriptions/{subscription}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
     Route::put('/subscriptions/{subscription}', [SubscriptionController::class, 'update'])->name('subscriptions.update');
 
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+    Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 });
+
+
 
 require __DIR__ . '/auth.php';

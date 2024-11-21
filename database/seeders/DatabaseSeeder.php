@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Coupon;
 use App\Models\Subscription;
 use Illuminate\Database\Seeder;
+use App\Models\Message;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
 
         // Generate 3 fake coupons
         Coupon::factory(3)->create();
+        Message::factory()->count(10)->create();
+
 
         // Generate 3 fake subscriptions
         Subscription::factory(3)->create();

@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "chart.js": "^4.4.6",
+        "datatables.net-dt": "^2.1.8",
         "sweetalert2": "^11.14.5"
     }
 }

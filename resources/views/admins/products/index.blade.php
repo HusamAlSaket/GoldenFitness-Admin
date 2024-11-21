@@ -94,74 +94,50 @@
                         </td>
 
                     </tr>
-                    <style>
-                        .action-buttons .btn {
-                            width: 36px;
-                            /* Ensure uniform width */
-                            height: 36px;
-                            /* Consistent height */
-                            padding: 8px;
-                            /* Adjust padding for better alignment */
-                            font-size: 18px;
-                            /* Same font size for all icons */
-                            line-height: 1.2;
-                            /* Ensure consistent line height */
-                            display: flex;
-                            /* Align the content inside buttons */
-                            justify-content: center;
-                            align-items: center;
-                        }
 
-                        .action-buttons .btn i {
-                            font-size: 16px;
-                            /* Uniform icon size */
-                        }
-                    </style>
 
                     <!-- Edit Product Modal -->
-                    <div class="modal fade" id="editProductModal-{{ $product->id }}" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Edit Product</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('products.update', $product->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label class="form-label">Product Name</label>
-                                            <input type="text" name="name" class="form-control"
-                                                value="{{ $product->name }}" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Category</label>
-                                            <select name="category_id" class="form-select" required>
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}"
-                                                        {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                                        {{ $category->category_name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Price</label>
-                                            <input type="number" name="price" class="form-control"
-                                                value="{{ $product->price }}" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Stock Quantity</label>
-                                            <input type="number" name="stock" class="form-control"
-                                                value="{{ $product->stock }}" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                 <!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal-{{ $product->id }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('products.update', $product->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label class="form-label">Product Name</label>
+                        <input type="text" name="name" class="form-control" value="{{ $product->name }}" required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select name="category_id" class="form-select" required>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                    {{ $category->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" name="price" class="form-control" value="{{ $product->price }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock Quantity</label>
+                        <input type="number" name="stock" class="form-control" value="{{ $product->stock }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
                 @endforeach
             </tbody>
         </table>

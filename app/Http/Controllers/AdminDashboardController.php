@@ -51,11 +51,12 @@ class AdminDashboardController extends Controller
         // dd($subscriptionData);
 
         return view('admins.dashboard', compact(
-            'totalUsers', 'totalOrders', 'totalProducts', 'totalCoupons','Subscriptions',
+            'totalUsers', 'totalOrders', 'totalProducts', 'totalCoupons', 'Subscriptions'
         ))->with([
             'salesDataJson' => json_encode($salesData),
             'subscriptionDataJson' => json_encode($subscriptionData),
         ]);
+        
 
     }
 }

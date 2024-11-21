@@ -5,95 +5,8 @@
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-red: #FF4C4C;
-            --secondary-red: #FF6B6B;
-            --light-bg: #f4f4f4;
-            --white: #ffffff;
-            --dark-text: #333;
-        }
-        body {
-            background-color: var(--light-bg);
-            font-family: 'Arial', sans-serif;
-        }
-        .sidebar {
-            background: linear-gradient(to bottom, var(--primary-red), var(--secondary-red));
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            transition: all 0.3s;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
-            width: 250px;
-        }
-        .sidebar.collapsed {
-            width: 80px;
-        }
-        .sidebar.collapsed .nav-link span {
-            display: none;
-        }
-        .main-content {
-            transition: all 0.3s;
-            margin-left: 250px;
-            padding: 20px;
-        }
-        .main-content.collapsed {
-            margin-left: 80px;
-        }
-        .sidebar-logo {
-            background-color: rgba(255,255,255,0.1);
-            padding: 15px;
-            text-align: center;
-            color: white;
-        }
-        .nav-link {
-            color: rgba(255,255,255,0.7);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(255,255,255,0.2);
-            color: white;
-        }
-        .nav-link i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        .toggle-sidebar {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: white;
-            cursor: pointer;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .stat-card i {
-            font-size: 2.5rem;
-            margin-right: 15px;
-            color: var(--primary-red);
-        }
-        .chart-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
+    
 </head>
 <body>
     <div class="container-fluid">
@@ -125,13 +38,38 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('messages.index')}}">
                         <i class="bi bi-list-ul"></i> <span>messages</span>
                     </a>
                 </li>
             </ul>
         </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Sidebar toggle functionality
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
 
+    toggleSidebarBtn.addEventListener('click', function () {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('collapsed');
+    });
+
+    // Highlight active nav-link based on the current path
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname;
+
+    navLinks.forEach(link => {
+        if (link.href.includes(currentPath)) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+
+</script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
