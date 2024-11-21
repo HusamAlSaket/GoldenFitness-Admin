@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
+use App\Models\Review;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/admins/dashboard', [AdminDashboardController::class, 'index'])->name('admins.dashboard');
-Route::get('/admins/users', [UserController::class, 'index'])->name('admins.users');
+// Route::get('/admins/users', [UserController::class, 'index'])->name('admins.users');
 
 Route::prefix('admins')->group(function () {
     // Product routes
@@ -48,6 +50,24 @@ Route::prefix('admins')->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+    
+    // Users Routes
+
+
+// User routes
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+// review routes
+
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/reviews/{review}', [UserController::class, 'show'])->name('reviews.show');
+Route::post('reviews/{review}/change-status', [ReviewController::class, 'changeStatus'])->name('reviews.changeStatus');
 });
 
 

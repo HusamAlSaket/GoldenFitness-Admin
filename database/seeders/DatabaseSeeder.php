@@ -9,6 +9,7 @@ use App\Models\Coupon;
 use App\Models\Subscription;
 use Illuminate\Database\Seeder;
 use App\Models\Message;
+use App\Models\Review;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         // Generate 5 fake products
         Product::factory(5)->create();
+
+        // Generate fake reviews 
+        Review::factory(25)->create();
 
         // Generate 3 fake coupons
         Coupon::factory(3)->create();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -11,7 +12,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        return view('admins.reviews.index', compact('reviews'));
     }
 
     /**
@@ -33,23 +35,24 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $review = Review::findOrFail($id);
+        return view('admins.reviews.show', compact('review'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Review $review)
     {
-        //
+        return view('admins.reviews.edit', compact('review'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -57,8 +60,24 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Change the status of the specified review.
+     */
+    public function changeStatus(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'status' => 'required|string|in:pending,approved,declined',
+        ]);
+
+        $review = Review::findOrFail($id);
+        $review->status = $request->status;
+        $review->save();
+
+        return redirect()->route('reviews.index')->with('success', 'Review status updated successfully!');
     }
 }

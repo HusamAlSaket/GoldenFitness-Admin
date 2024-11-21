@@ -7,12 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
-</head>
-<script>
-    import Swal from 'sweetalert2';
 
-</script>
+</head>
+
 <body>
     <div class="container-fluid">
         <!-- Sidebar -->
@@ -28,23 +25,28 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admins.users') }}">
+                    <a class="nav-link" href="{{ route('users.index') }}">
                         <i class="bi bi-people"></i> <span>Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('products.index')}}">
+                    <a class="nav-link active" href="{{ route('products.index') }}">
                         <i class="bi bi-box"></i> <span>Products</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('subscriptions.index')}}">
+                    <a class="nav-link" href="{{ route('subscriptions.index') }}">
                         <i class="bi bi-list-ul"></i> <span>Subscriptions</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('messages.index')}}">
+                    <a class="nav-link" href="{{ route('messages.index') }}">
                         <i class="bi bi-chat-left"></i> <span>Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('reviews.index') }}">
+                        <i class="bi bi-list-ul"></i> <span>Reviews</span>
                     </a>
                 </li>
             </ul>
@@ -75,25 +77,30 @@
             });
         </script>
         <!-- Include SweetAlert CDN in the head section of your layout file -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>document.addEventListener('DOMContentLoaded', function() {
-    // Get all the nav-link elements
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Get the current URL path
-    const currentPath = window.location.pathname;
-    
-    // Loop through all nav-links and add 'active' class to the matching one
-    navLinks.forEach(link => {
-        // If the link's href matches the current path, add the 'active' class
-        if (link.href.includes(currentPath)) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-});
-</script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get all the nav-link elements
+                const navLinks = document.querySelectorAll('.nav-link');
+
+                // Get the current URL path
+                const currentPath = window.location.pathname;
+
+                // Loop through all nav-links and add 'active' class to the matching one
+                navLinks.forEach(link => {
+                    // If the link's href matches the current path, add the 'active' class
+                    if (link.href.includes(currentPath)) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            });
+        </script>
+        <script>
+            import Swal from 'sweetalert2';
+        </script>
+
 </body>
 
 </html>
