@@ -21,12 +21,12 @@
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admins.dashboard') }}">
-                        <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
+                        <i class="bi bi-house-door"></i> <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">
-                        <i class="bi bi-people"></i> <span>Users</span>
+                        <i class="bi bi-person-circle"></i> <span>Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('subscriptions.index') }}">
-                        <i class="bi bi-list-ul"></i> <span>Subscriptions</span>
+                        <i class="bi bi-credit-card"></i> <span>Subscriptions</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -46,17 +46,22 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('reviews.index') }}">
-                        <i class="bi bi-list-ul"></i> <span>Reviews</span>
+                        <i class="bi bi-star"></i> <span>Reviews</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('categories.index') }}">
-                        <i class="bi bi-list-ul"></i> <span>Categories</span>
+                        <i class="bi bi-tags"></i> <span>Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('videos.index') }}">
+                        <i class="bi bi-film"></i> <span>Videos</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GymVideo extends Model
 {
     use HasFactory;
+    protected $fillable = ['title', 'description','video_url','coach_id'];
 
     // GymVideo belongs to a coach (user)
     public function coach()

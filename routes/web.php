@@ -9,6 +9,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GymVideoController;
 use App\Models\Review;
 
 Route::get('/', function () {
@@ -81,6 +82,15 @@ Route::post('reviews/{review}/change-status', [ReviewController::class, 'changeS
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 
+// GymVideos routes 
+
+Route::get('/videos', [GymVideoController::class, 'index'])->name('videos.index');
+Route::get('/videos/create', [GymVideoController::class, 'create'])->name('videos.create');
+Route::post('/videos', [GymVideoController::class, 'store'])->name('videos.store');
+Route::get('/videos/{video}', [GymVideoController::class, 'show'])->name('videos.show');
+Route::get('/videos/{video}/edit', [GymVideoController::class, 'edit'])->name('videos.edit');
+Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
+Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
 
 });
 

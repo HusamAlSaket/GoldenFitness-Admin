@@ -1,64 +1,78 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+use App\Models\GymVideo;
 use Illuminate\Http\Request;
 
 class GymVideoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Show the form to create a new video
     public function create()
     {
-        //
+        return view('admins.videos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store a new video
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'video_url' => 'required|url',
+        ]);
+
+        // Store the video
+        GymVideo::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'video_url' => $request->video_url,
+            // 'coach_id' => auth()->id(), // Assuming you are using authenticated coaches
+        ]);
+
+        return redirect()->route('videos.index')->with('success', 'Video created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Show the form to edit an existing video
+    public function edit($id)
     {
-        //
+        $video = GymVideo::findOrFail($id);
+        return view('admins.videos.edit', compact('video'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Update an existing video
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'video_url' => 'required|url',
+        ]);
+
+        $video = GymVideo::findOrFail($id);
+        $video->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'video_url' => $request->video_url,
+        ]);
+
+        return redirect()->route('videos.index')->with('success', 'Video updated successfully!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Delete a video
+    public function destroy($id)
     {
-        //
+        $video = GymVideo::findOrFail($id);
+        $video->delete();
+
+        return redirect()->route('videos.index')->with('success', 'Video deleted successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // Display all videos
+    public function index()
     {
-        //
+        $videos = GymVideo::all(); // You might want to restrict to videos created by the logged-in coach
+        return view('admins.videos.index', compact('videos'));
     }
 }
