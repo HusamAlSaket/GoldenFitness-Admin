@@ -40,7 +40,7 @@
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('reviews.index') }}" class="search-form">
                     <input type="text" name="search" placeholder="Search reviews..." value="{{ request()->get('search') }}">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-danger">Search</button>
                 </form>
             </div>
         </div>

@@ -1,5 +1,6 @@
 
 @extends('components.layout2')
+@section('content')
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
             <!-- Product Stats Grid -->
@@ -40,7 +41,7 @@
                     <h4>Product List</h4>
                     <div class="d-flex align-items-center">
                         <input type="text" class="form-control me-2" placeholder="Search products..." style="width: 200px;">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addProductModal">
                             <i class="bi bi-plus me-1"></i>Add Product
                         </button>
                     </div>
@@ -114,10 +115,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save Product</button>
+                    <button type="button" class="btn btn-danger">Save Product</button>
                 </div>
             </div>
         </div>
     </div>
 
-  
+    @endsection

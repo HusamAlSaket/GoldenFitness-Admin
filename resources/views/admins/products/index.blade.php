@@ -27,7 +27,7 @@
             <h4>Product List</h4>
             <div class="d-flex align-items-center">
                 <input type="text" class="form-control me-2" placeholder="Search products..." style="width: 200px;">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#addProductModal">
                     <i class="bi bi-plus me-1"></i>Add Product
                 </button>
             </div>
@@ -120,7 +120,7 @@
                         <label class="form-label">Stock Quantity</label>
                         <input type="number" name="stock" class="form-control" value="{{ old('stock', $product->stock) }}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-danger">Save Changes</button>
                 </form>
                 
             </div>
@@ -170,7 +170,7 @@
                         <label class="form-label">Stock Quantity</label>
                         <input type="number" name="stock" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Product</button>
+                    <button type="submit" class="btn btn-danger">Save Product</button>
                 </form>
             </div>
         </div>

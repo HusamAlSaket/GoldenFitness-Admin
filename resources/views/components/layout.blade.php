@@ -51,6 +51,11 @@
                         <i class="bi bi-list-ul"></i> <span>Reviews</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('categories.index') }}">
+                        <i class="bi bi-list-ul"></i> <span>Categories</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <script>

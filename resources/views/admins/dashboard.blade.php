@@ -1,162 +1,192 @@
 @extends('components.layout')
 
 <!-- Main Content -->
-<main class="main-content" id="mainContent">
+<main class="main-content px-4 py-5" id="mainContent"> 
     <!-- Stats Grid -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <i class="bi bi-people"></i>
+    <div class="stats-grid d-flex flex-wrap gap-4 justify-content-center mb-4">
+        <div class="stat-card rounded shadow-sm p-3 d-flex align-items-center gap-3 bg-light"
+            style="min-width: 300px; height: 100px;">
+            <i class="bi bi-people fs-2 text-danger"></i>
             <div>
-                <h5 class="mb-0"> {{ $totalUsers }}</h5>
+                <h5 class="mb-1">{{ $totalUsers }}</h5> 
                 <small class="text-muted">Total Users</small>
             </div>
         </div>
-        <div class="stat-card">
-            <i class="bi bi-box"></i>
+        <div class="stat-card rounded shadow-sm p-3 d-flex align-items-center gap-3 bg-light"
+            style="min-width: 300px; height: 100px;">
+            <i class="bi bi-box fs-2 text-danger"></i>
             <div>
-                <h5 class="mb-0">{{ $totalProducts }}</h5>
+                <h5 class="mb-1">{{ $totalProducts }}</h5>
                 <small class="text-muted">Products</small>
             </div>
         </div>
-        <div class="stat-card">
-            <i class="bi bi-cart"></i>
+        <div class="stat-card rounded shadow-sm p-3 d-flex align-items-center gap-3 bg-light"
+            style="min-width: 300px; height: 100px;">
+            <i class="bi bi-cart fs-2 text-danger"></i>
             <div>
-                <h5 class="mb-0"> {{ $totalOrders }}</h5>
+                <h5 class="mb-1">{{ $totalOrders }}</h5>
                 <small class="text-muted">Orders</small>
             </div>
         </div>
-        <div class="stat-card">
-            <i class="bi bi-cash-coin"></i>
+        <div class="stat-card rounded shadow-sm p-3 d-flex align-items-center gap-3 bg-light"
+            style="min-width: 300px; height: 100px;">
+            <i class="bi bi-cash-coin fs-2 text-danger"></i>
             <div>
-                <h5 class="mb-0">{{ $Subscriptions }}</h5>
+                <h5 class="mb-1">{{ $Subscriptions }}</h5>
                 <small class="text-muted">Subscriptions</small>
             </div>
         </div>
     </div>
 
-    
-    <!-- Charts and Calendar Row -->
-    <div class="row">
+    <!-- Charts Row (Updated to display next to each other) -->
+    <div class="row gx-4 gy-4 mb-4">
         <!-- Sales Chart -->
-        <div class="col-md-8">
-            <div class="chart-container">
-                <h5 class="mb-4">Monthly Sales</h5>
-                <canvas id="salesChart"></canvas>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h5 class="mb-0">Monthly Sales</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="salesChart" style="height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscriptions Chart -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h5 class="mb-0">Active Subscriptions</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="subscriptionsChart" style="height: 300px;"></canvas>
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
-    let salesChartInstance = null;  // Declare a variable to hold the chart instance
-    
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get data from the server (passed as JSON)
-        const salesData = @json($salesDataJson);  // Sales data for all 12 months
-        const subscriptionData = @json($subscriptionDataJson);  // Subscription data for all 12 months
-    
-        // Prepare labels for all 12 months
-        const labels = Array.from({ length: 12 }, (_, i) => {
-            const date = new Date(2024, i); // Adjust year dynamically if needed
-            return date.toLocaleString('default', { month: 'long' });
-        });
-    
-        // Map sales data for each month (fill missing months with 0)
-        const data = labels.map((_, i) => salesData[i + 1] || 0); // i + 1 because months are 1-based
-    
-        // If a chart instance already exists, destroy it before creating a new one
-        if (salesChartInstance) {
-            salesChartInstance.destroy();
-        }
-    
-        // Create the chart
-        const ctx = document.getElementById('salesChart').getContext('2d');
-        salesChartInstance = new Chart(ctx, {
-            type: 'line',  // You can choose 'line', 'bar', etc.
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Monthly Sales ($)',
-                    data: data,
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderWidth: 2,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) {
-                                return '$' + value.toLocaleString();
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    });
-    </script>
-    
-        
-
-        
-        <!-- Calendar -->
-        <div class="col-md-4">
-            <div class="chart-container">
-                <h5 class="mb-4">Calendar</h5>
+    <!-- Calendar -->
+    <div class="row align-items-stretch mb-4">
+        <!-- Calendar Section -->
+        <div class="col-lg-6 mb-4 d-flex h-100">
+            <div class="calendar-container flex-fill"
+                style="min-height: 400px; background-color: #ffffff; border: 2px solid #dc3545; border-radius: 8px; padding: 10px; margin-top: 30px;">
                 <div id="calendar"></div>
-            </div>
-        </div>
-    </div> 
-
-    <!-- Products Section -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Recent Products</h5>
-                    <button class="btn btn-primary btn-sm">
-                        <i class="bi bi-plus me-2"></i>Add Product
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <div class="card">
-                                <img src="/api/placeholder/300/200" class="card-img-top" alt="Product">
-                                <div class="card-body">
-                                    <h6 class="card-title">Product Name</h6>
-                                    <p class="card-text">$99.99</p>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="card">
-                                <img src="/api/placeholder/300/200" class="card-img-top" alt="Product">
-                                <div class="card-body">
-                                    <h6 class="card-title">Product Name</h6>
-                                    <p class="card-text">$79.99</p>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                        <!-- Add more product cards as needed -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </main>
-</div>
 
+<!-- Footer -->
+<footer class="bg-danger text-white text-center py-4">
+    <h5 class="mb-0">© 2024 GoldenFitness</h5> <br>
+    <h6> All
+        rights reserved.</h6>
+
+</footer>
+
+<!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>import Chart from 'chart.js/auto'; </script>
+
+<!-- Include FullCalendar CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+
+<!-- FullCalendar and Chart JS -->
+<script>
+    // Initialize FullCalendar with red and white theme
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            eventColor: '#dc3545', // Red event color
+            eventTextColor: 'white', // White text on events
+            events: [
+                // Example Events, replace with actual data if needed
+                {
+                    title: 'Product Launch',
+                    start: '2024-11-25T10:00:00',
+                    end: '2024-11-25T12:00:00',
+                    description: 'Launch of new furniture line.'
+                },
+                {
+                    title: 'Fitness Workshop',
+                    start: '2024-11-28T14:00:00',
+                    end: '2024-11-28T16:00:00',
+                    description: 'Fitness workshop for users.'
+                }
+            ],
+            eventClick: function(info) {
+                alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps
+                    .description);
+            },
+            // Customizing the calendar's style to match the red and white theme
+            themeSystem: 'bootstrap5', // Optional for a cleaner, bootstrap-like design
+            dayHeaderClassNames: ['bg-danger', 'text-white'], // Red header with white text
+            buttonText: {
+                today: 'Today',
+                month: 'Month',
+                week: 'Week',
+                day: 'Day'
+            },
+            // Customizing the active date
+            dayCellClassNames: ['text-danger'], // Add red color for the day text
+            headerClassNames: ['bg-danger', 'text-white'], // Red header with white text
+            footerClassNames: ['bg-danger', 'text-white'], // Red footer with white text
+        });
+
+        calendar.render();
+    });
+
+    // Parse JSON data passed from the controller
+    const salesData = JSON.parse(@json($salesDataJson));
+    const subscriptionData = JSON.parse(@json($subscriptionDataJson));
+
+    // Labels for the months
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    // Sales Chart (Line Chart)
+    new Chart(document.getElementById('salesChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Monthly Sales',
+                data: Object.values(salesData),
+                borderColor: '#dc3545',
+                backgroundColor: 'rgba(220, 53, 69, 0.2)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Subscriptions Chart (Bar Chart)
+    new Chart(document.getElementById('subscriptionsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Active Subscriptions',
+                data: Object.values(subscriptionData),
+                backgroundColor: '#dc3545',
+                borderColor: '#dc3545',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>

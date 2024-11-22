@@ -44,7 +44,7 @@
                     <button type="submit">Search</button>
                 </form>
     
-                <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#adduserModal">
+                <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#adduserModal">
                     <i class="bi bi-plus me-1"></i>Add Users
                 </button>
             </div>
@@ -106,6 +106,7 @@
     </div>
 </main>
 
+
 <!-- Add User Modal -->
 <div class="modal fade" id="adduserModal" tabindex="-1">
     <div class="modal-dialog">
@@ -138,7 +139,7 @@
                             <option value="coach">Coach</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save User</button>
+                    <button type="submit" class="btn btn-danger">Save User</button>
                 </form>
             </div>
         </div>
@@ -214,7 +215,7 @@
                                 <option value="coach" {{ $user->role == 'coach' ? 'selected' : '' }}>Coach</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn btn-danger">Save Changes</button>
                     </form>
                 </div>
             </div>

@@ -144,13 +144,13 @@ body {
 .search-form input[type="text"]:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    border-color: #007bff;
+    border-color: #fe5e5e;
 }
 
 .search-form button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #007bff;
+    background-color: #dc3545;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -160,7 +160,7 @@ body {
 }
 
 .search-form button:hover {
-    background-color: #0056b3;
+    background-color: red;
 }
 
 .subscriptions-header .btn-primary {
@@ -188,4 +188,107 @@ body {
 .action-buttons .btn i {
     font-size: 16px;
     /* Uniform icon size */
+}
+
+
+
+/* table */
+
+
+/* Global Table Styles */
+.table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border: 2px solid #e63946; /* Red border around the entire table */
+}
+
+/* Table Header */
+.table thead {
+    background-color: #e63946; /* Red color */
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #b32d2f; /* Red line under the header */
+}
+
+/* Table Rows */
+.table tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Light grey for even rows */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #fff; /* White for odd rows */
+}
+
+/* Table Hover Effect */
+.table tbody tr:hover {
+    background-color: #f0a1a1; /* Light red hover effect */
+}
+
+/* Table Cells */
+.table td,
+.table th {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #e63946; /* Red border between columns and rows */
+}
+
+/* Table Header Cells */
+.table th {
+    border-top: 1px solid #b32d2f; /* Top border for header */
+    border-left: 1px solid #b32d2f; /* Left border for header */
+}
+
+/* Buttons */
+.table .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.table .btn-info {
+    background-color: #00bcd4;
+    color: white;
+}
+
+.table .btn-info:hover {
+    background-color: #008c9e;
+}
+
+.table .btn-warning {
+    background-color: #ff9800;
+    color: white;
+}
+
+.table .btn-warning:hover {
+    background-color: #f57c00;
+}
+
+.table .btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.table .btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+/* Modal and Form Styles */
+.modal-dialog {
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .table {
+        font-size: 12px; /* Reduce font size for small screens */
+    }
+
+    .table td, .table th {
+        padding: 8px 10px;
+    }
 }

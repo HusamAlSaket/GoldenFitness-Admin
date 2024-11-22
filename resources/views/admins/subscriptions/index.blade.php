@@ -33,7 +33,55 @@
             </div>
         </div>
     </div>
+<style>
+    /* Action Buttons Styles */
+.table td .btn {
+    padding: 6px 10px; /* Slightly reduced padding */
+    font-size: 16px; /* Larger icon size for better visibility */
+    margin: 0 5px; /* Reduced margin for better spacing */
+    text-align: center;
+}
 
+/* Action Buttons Color */
+.table td .btn-info {
+    background-color: #00bcd4;
+    color: white;
+}
+
+.table td .btn-info:hover {
+    background-color: #008c9e;
+}
+
+.table td .btn-warning {
+    background-color: #ff9800;
+    color: white;
+}
+
+.table td .btn-warning:hover {
+    background-color: #f57c00;
+}
+
+.table td .btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.table td .btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+/* Action Buttons Container */
+.table td {
+    white-space: nowrap; /* Prevent text wrapping */
+    padding: 8px 10px; /* Adjust cell padding for better alignment */
+}
+
+/* Table Hover Effect */
+.table tbody tr:hover {
+    background-color: #f0a1a1; /* Light red hover effect */
+}
+
+</style>
     <!-- Subscriptions Table Container -->
     <div class="subscriptions-table-container">
         <div class="subscriptions-header d-flex justify-content-between  align-items-center mb-4">
@@ -44,7 +92,7 @@
                     <button type="submit">Search</button>
                 </form>
     
-                <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#addSubscriptionModal">
+                <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#addSubscriptionModal">
                     <i class="bi bi-plus me-1"></i>Add Subscription
                 </button>
             </div>
@@ -140,7 +188,7 @@
                             <option value="expired">Expired</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Subscription</button>
+                    <button type="submit" class="btn btn-danger">Save Subscription</button>
                 </form>
             </div>
         </div>
@@ -238,7 +286,7 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn btn-danger">Save Changes</button>
                     </form>
                 </div>
             </div>
