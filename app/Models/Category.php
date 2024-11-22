@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    protected $fillable = ['category_name','description','image_url' ];
+
+    
     use HasFactory;
 
     // Category has many products

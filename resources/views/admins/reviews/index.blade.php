@@ -40,7 +40,7 @@
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('reviews.index') }}" class="search-form">
                     <input type="text" name="search" placeholder="Search reviews..." value="{{ request()->get('search') }}">
-                    <button type="submit">Search</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </form>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                     @foreach ($reviews as $review)
-                        <tr>
+                        <tr id="review-{{ $review->id }}">
                             <td>{{ $review->id }}</td>
                             <td>{{ $review->user_id }}</td>
                             <td>{{ $review->product_id }}</td>
@@ -73,21 +73,21 @@
                                 </span>
                             </td>
                             <td class="action-buttons">
-                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" style="display:inline;" onsubmit="return confirmStatusChange(event, 'approved');">
+                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" class="status-form" data-status="approved" onsubmit="return confirmStatusChange(event, 'approved');">
                                     @csrf
                                     <input type="hidden" name="status" value="approved">
                                     <button type="submit" class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve">
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
                                 </form>
-                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" style="display:inline;" onsubmit="return confirmStatusChange(event, 'declined');">
+                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" class="status-form" data-status="declined" onsubmit="return confirmStatusChange(event, 'declined');">
                                     @csrf
                                     <input type="hidden" name="status" value="declined">
                                     <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Decline">
                                         <i class="bi bi-x-circle-fill"></i>
                                     </button>
                                 </form>
-                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" style="display:inline;" onsubmit="return confirmStatusChange(event, 'pending');">
+                                <form action="{{ route('reviews.changeStatus', $review->id) }}" method="POST" class="status-form" data-status="pending" onsubmit="return confirmStatusChange(event, 'pending');">
                                     @csrf
                                     <input type="hidden" name="status" value="pending">
                                     <button type="submit" class="btn btn-secondary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as Pending">
@@ -95,7 +95,6 @@
                                     </button>
                                 </form>
                             </td>
-                            
                         </tr>
                     @endforeach
                 </tbody>
@@ -105,6 +104,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function confirmStatusChange(event, status) {
     event.preventDefault();
@@ -118,12 +118,49 @@ function confirmStatusChange(event, status) {
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
-            form.submit();
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                data: $(form).serialize(),
+                success: function(response) {
+                    // Update the status badge
+                    const reviewRow = $('#review-' + response.id);
+                    const statusBadge = reviewRow.find('.badge');
+                    statusBadge.removeClass('bg-success bg-danger bg-secondary');
+                    if (response.status === 'approved') {
+                        statusBadge.addClass('bg-success').text('Approved');
+                    } else if (response.status === 'declined') {
+                        statusBadge.addClass('bg-danger').text('Declined');
+                    } else {
+                        statusBadge.addClass('bg-secondary').text('Pending');
+                    }
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Review status updated successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        // Optionally refresh the page if a full update is needed
+                        location.reload();
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'An error occurred while updating the status. Please try again.',
+                    });
+                }
+            });
         }
     });
 }
-</script>
-<script>
+
+$(document).ready(function() {
+    // Enable tooltips
+    $('[data-bs-toggle="tooltip"]').tooltip();
+
     // Search functionality
     const searchInput = document.querySelector('input[placeholder="Search reviews..."]');
     searchInput.addEventListener('keyup', function() {
@@ -135,4 +172,5 @@ function confirmStatusChange(event, status) {
             row.style.display = text.includes(filter) ? '' : 'none';
         });
     });
+});
 </script>

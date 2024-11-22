@@ -158,11 +158,22 @@
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('delete-form-' + subscriptionId).submit();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Subscription Has Been Deleted successfully!',
+                    showConfirmButton: false,
+                    timer: 1000 // Duration for displaying success message
+                }).then(() => {
+                    // Submit the form after displaying the SweetAlert success message
+                    document.getElementById('delete-form-' + subscriptionId).submit();
+                });
             }
         });
     }
 </script>
+
+
 
 @if (session('success'))
     <script>
@@ -194,9 +205,14 @@
 
                         <div class="mb-3">
                             <label class="form-label">Subscription Type</label>
-                            <input type="text" name="subscription_type" class="form-control"
-                                value="{{ old('subscription_type', $subscription->subscription_type) }}" required>
+                            <select name="subscription_type" class="form-select" required>
+                                <option value="Monthly" {{ old('subscription_type', $subscription->subscription_type) == 'Monthly' ? 'selected' : '' }}>Monthly</option>
+                                <option value="Yearly" {{ old('subscription_type', $subscription->subscription_type) == 'Yearly' ? 'selected' : '' }}>Yearly</option>
+                                <option value="Weekly" {{ old('subscription_type', $subscription->subscription_type) == 'Weekly' ? 'selected' : '' }}>Weekly</option>
+                            </select>
                         </div>
+                        
+        
 
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>

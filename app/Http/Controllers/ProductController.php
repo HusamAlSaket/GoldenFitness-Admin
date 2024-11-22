@@ -28,15 +28,19 @@ class ProductController extends Controller
     // Store a newly created product
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
+            'price' => 'required|numeric|min:0', // Validate as numeric
             'stock' => 'nullable|integer|min:0',
-            'price' => 'required|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        Product::create($request->all());
+        // Convert price to integer cents
+        $validated['price'] = intval($validated['price']);
+
+        // Create the new product with the validated data
+        Product::create($validated);
 
         return redirect()->route('products.index')->with('success', 'Product added successfully!');
     }
@@ -57,30 +61,31 @@ class ProductController extends Controller
     // Update a product
     public function update(Request $request, Product $product)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
-            'price' => 'nullable|integer|min:0',
+            'price' => 'nullable|numeric|min:0', // Validate as numeric
             'stock' => 'nullable|integer|min:0',
             'category_id' => 'nullable|exists:categories,id',
         ]);
     
-        // Update the product's attributes
-        $product->name = $request->name;
-        $product->category_id = $request->category_id;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
+        // Update the product's attributes, converting price to integer cents
+        $product->name = $validated['name'];
+        $product->description = $validated['description'] ?? $product->description;
+        $product->category_id = $validated['category_id'] ?? $product->category_id;
+        $product->price = isset($validated['price']) ? intval($validated['price']) : $product->price; // Convert to integer cents
+        $product->stock = $validated['stock'] ?? $product->stock;
+    
         $product->save();
     
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
-    
 
     // Delete a product
     public function destroy(Product $product)
     {
         $product->delete();
 
-    return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
 }
