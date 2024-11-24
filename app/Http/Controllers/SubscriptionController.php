@@ -26,6 +26,7 @@ class SubscriptionController extends Controller
     // Store a newly created subscription
     public function store(Request $request)
     {
+    
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'subscription_type' => 'required|in:Monthly,Yearly,Weekly',
@@ -33,6 +34,7 @@ class SubscriptionController extends Controller
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'status' => 'required|in:active,inactive,expired',
         ]);
+        
 
         Subscription::create($request->all());
 

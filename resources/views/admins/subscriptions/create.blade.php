@@ -1,4 +1,4 @@
-@extends('components.layout2')
+{{-- @extends('components.layout2')
 
 @section('content')
 <h1>Create Subscription</h1>
@@ -29,4 +29,4 @@
 
     <button type="submit">Create Subscription</button>
 </form>
-@endsection
+@endsection --}}

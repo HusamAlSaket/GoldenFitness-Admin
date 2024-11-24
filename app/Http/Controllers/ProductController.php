@@ -28,23 +28,29 @@ class ProductController extends Controller
     // Store a newly created product
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
-            'price' => 'required|numeric|min:0', // Validate as numeric
-            'stock' => 'nullable|integer|min:0',
-            'category_id' => 'nullable|exists:categories,id',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            // 'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        // Convert price to integer cents
-        $validated['price'] = intval($validated['price']);
-
-        // Create the new product with the validated data
-        Product::create($validated);
-
-        return redirect()->route('products.index')->with('success', 'Product added successfully!');
+    
+        $product = new Product($validatedData);
+        
+        // if ($request->hasFile('image_url')) {
+        //     $path = $request->file('image_url')->store('products', 'public');
+        //     $product->image_url = $path;
+        // }
+    
+        $product->save();
+    
+        return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
-
+    
+    
+    
     // Display a specific product
     public function show(Product $product)
     {

@@ -108,6 +108,7 @@
 
 
 <!-- Add User Modal -->
+<!-- Add User Modal -->
 <div class="modal fade" id="adduserModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -131,6 +132,11 @@
                         <input type="password" name="password" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="password_confirmation" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
                         <label class="form-label">Role</label>
                         <select name="role" class="form-select" required>
                             <option value="user">User</option>
@@ -145,6 +151,7 @@
         </div>
     </div>
 </div>
+
 
 
 <script>
@@ -224,19 +231,19 @@
 @endforeach
 
 {{-- extra code --}}
-<script>
+{{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+        const form = document.querySelector('form');
 
-    if (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-            // Add your form submission logic here (e.g., AJAX request)
-        });
-    }
-});
-
-</script>
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                // Remove preventDefault() to allow form submission
+                // event.preventDefault();
+                // Add your AJAX request here if needed
+            });
+        }
+    });
+</script> --}}
 
 <script>
     // Search functionality

@@ -48,8 +48,9 @@
                 @foreach ($products as $product)
                     <tr id="product-{{ $product->id }}">
                         <td>
-                            <img src="{{ $product->image_url ?? '/placeholder.jpg' }}" alt="{{ $product->name }}"
-                                class="product-image" style="width: 50px; height: 50px;">
+                            <img src="{{  $product->image_url ? asset('storage/products' . $product->image_url) : '/placeholder.jpg' }}" 
+    alt="{{ $product->name }}" class="product-image" style="width: 50px; height: 50px;">
+
                         </td>
                         <td>{{ $product->name }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($product->description, 50) }}</td>
@@ -170,6 +171,11 @@
                         <label class="form-label">Stock Quantity</label>
                         <input type="number" name="stock" class="form-control" required>
                     </div>
+                    {{-- <div class="mb-3">
+                        <label class="form-label">image</label>
+                        <input type="file" name="image_url" class="form-control" required>
+                    </div> --}}
+
                     <button type="submit" class="btn btn-danger">Save Product</button>
                 </form>
             </div>

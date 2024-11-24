@@ -1,6 +1,5 @@
 
 @extends('components.layout2')
-@section('content')
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
             <!-- Product Stats Grid -->
@@ -121,4 +120,3 @@
         </div>
     </div>
 
-    @endsection

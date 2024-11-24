@@ -26,8 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Admin and Superadmin Routes (admin has restricted access to users)
-Route::prefix('admins')->middleware(['auth', 'admin'])->group(function () {
+Route::prefix('admins')->middleware(['admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admins.dashboard');
     
     // Product Routes
@@ -136,5 +135,6 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
     Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
 });
+
 
 require __DIR__.'/auth.php';
