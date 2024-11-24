@@ -40,17 +40,18 @@
             <h4>user List</h4>
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('users.index') }}" class="search-form">
-                    <input type="text" name="search" placeholder="Search products..." value="{{ request()->get('search') }}">
+                    <input type="text" name="search" placeholder="Search products..."
+                        value="{{ request()->get('search') }}">
                     <button type="submit">Search</button>
                 </form>
-    
+
                 <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#adduserModal">
                     <i class="bi bi-plus me-1"></i>Add Users
                 </button>
             </div>
-        </div>  
-    
-      
+        </div>
+
+
 
         <!-- List users -->
         <table class="table">
@@ -71,9 +72,9 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{$user->role}}</td>
-                        <td>{{ $user->created_at}}</td>
-                        <td>{{ $user->updated_at}}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->updated_at }}</td>
 
                         <td>
                             <!-- View Action -->
@@ -83,9 +84,9 @@
 
                             <!-- Edit Action -->
                             <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#editUserModal-{{ $user->id }}">
-                            <i class="bi bi-pencil"></i> Edit
-                        </a>
+                                data-bs-target="#editUserModal-{{ $user->id }}">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
 
                             <!-- Delete Action -->
                             <form id="delete-form-{{ $user->id }}"
@@ -135,7 +136,7 @@
                         <label class="form-label">Confirm Password</label>
                         <input type="password" name="password_confirmation" class="form-control" required>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label class="form-label">Role</label>
                         <select name="role" class="form-select" required>
@@ -199,11 +200,13 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+                            <input type="text" name="name" class="form-control"
+                                value="{{ old('name', $user->name) }}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+                            <input type="email" name="email" class="form-control"
+                                value="{{ old('email', $user->email) }}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
@@ -218,7 +221,8 @@
                             <select name="role" class="form-select" required>
                                 <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="superadmin" {{ $user->role == 'superadmin' ? 'selected' : '' }}>Superadmin</option>
+                                <option value="superadmin" {{ $user->role == 'superadmin' ? 'selected' : '' }}>
+                                    Superadmin</option>
                                 <option value="coach" {{ $user->role == 'coach' ? 'selected' : '' }}>Coach</option>
                             </select>
                         </div>
@@ -258,4 +262,3 @@
         });
     });
 </script>
-

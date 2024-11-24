@@ -51,6 +51,7 @@ class ProductController extends Controller
     
     
     
+    
     // Display a specific product
     public function show(Product $product)
     {
