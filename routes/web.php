@@ -10,6 +10,10 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GymVideoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserProductController;
+use App\Http\Controllers\UserSubscriptionController;
+use App\Http\Controllers\UserHomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admins')->middleware(['admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admins.dashboard');
-    
+
     // Product Routes
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -51,7 +55,7 @@ Route::prefix('admins')->middleware(['admin'])->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
-    
+
     // Review Routes
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
     Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
@@ -111,7 +115,7 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
-    
+
     // Review Routes
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
     Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
@@ -134,7 +138,43 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     Route::get('/videos/{video}/edit', [GymVideoController::class, 'edit'])->name('videos.edit');
     Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
     Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
+
+    // orders routes 
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+});
+
+// Users Front End Routes Products
+
+    Route::prefix('users')->group(function () {
+        Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
+        Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
+        
+        Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
+
+    Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('users.subscriptions.index');
+    Route::get('/subscriptions/{subscription}', [UserSubscriptionController::class, 'show'])->name('users.subscriptions.show');
 });
 
 
-require __DIR__.'/auth.php';
+// Route::prefix('admins')->middleware(['auth', 'coach'])->group(function () {
+//     Route::get('/videos', [GymVideoController::class, 'index'])->name('videos.index');
+//     Route::get('/videos/create', [GymVideoController::class, 'create'])->name('videos.create');
+//     Route::post('/videos', [GymVideoController::class, 'store'])->name('videos.store');
+//     Route::get('/videos/{video}', [GymVideoController::class, 'show'])->name('videos.show');
+//     Route::get('/videos/{video}/edit', [GymVideoController::class, 'edit'])->name('videos.edit');
+//     Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
+//     Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
+
+//     // Messages Routes
+//     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+//     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+//     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+
+//     // Review Routes
+//     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+//     Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
+//     Route::post('reviews/{review}/change-status', [ReviewController::class, 'changeStatus'])->name('reviews.changeStatus');
+// });
+
+require __DIR__ . '/auth.php';

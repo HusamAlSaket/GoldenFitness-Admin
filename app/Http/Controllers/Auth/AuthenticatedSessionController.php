@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
             case 'admin':
                 return redirect('admins/dashboard');
             case 'coach':
-                return redirect('admins/dashboard');
+                return redirect('admins/videos');
             default:
                 return redirect()->intended(route('dashboard', absolute: false));
         }

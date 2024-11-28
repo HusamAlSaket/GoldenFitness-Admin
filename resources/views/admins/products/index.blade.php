@@ -48,9 +48,13 @@
                 @foreach ($products as $product)
                     <tr id="product-{{ $product->id }}">
                         <td>
-                            <img src="{{ $product->image_url ? asset('storage/' . $product->image_url) : '/placeholder.jpg' }}" alt="{{ $product->name }}" class="product-image" style="width: 50px; height: 50px;">
-
-
+                            <!-- Check if there are images associated with the product -->
+                            @if($product->images->isNotEmpty())
+                                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="{{ $product->name }}" class="product-image" style="width: 50px; height: 50px;">
+                            @else
+                                <!-- Fallback image if no images are found -->
+                                <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}" class="product-image" style="width: 50px; height: 50px;">
+                            @endif
                         </td>
                         <td>{{ $product->name }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($product->description, 50) }}</td>
@@ -80,55 +84,83 @@
                                 </button>
                             </form>
                         </td>
-                    </tr>
+                        </tr>
+                       
 
                     <!-- Edit Product Modal -->
                  <!-- Edit Product Modal -->
-<div class="modal fade" id="editProductModal-{{ $product->id }}" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('products.update', $product->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="mb-3">
-                        <label class="form-label">Product Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $product->name) }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea name="description" class="form-control" rows="3">{{ old('description', $product->description) }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <select name="category_id" class="form-select" required>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $category->id == old('category_id', $product->category_id) ? 'selected' : '' }}>
-                                    {{ $category->category_name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Price</label>
-                        <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $product->price / 100) }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Stock Quantity</label>
-                        <input type="number" name="stock" class="form-control" value="{{ old('stock', $product->stock) }}" required>
-                    </div>
-                    <button type="submit" class="btn btn-danger">Save Changes</button>
-                </form>
+                 <div class="modal fade" id="editProductModal-{{ $product->id }}" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Product</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                 
-            </div>
-        </div>
-    </div>
-</div>
-
+                                    <!-- Product Name -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ old('name', $product->name) }}" required>
+                                    </div>
+                
+                                    <!-- Description -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" class="form-control" rows="3">{{ old('description', $product->description) }}</textarea>
+                                    </div>
+                
+                                    <!-- Category -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Category</label>
+                                        <select name="category_id" class="form-select" required>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" {{ $category->id == old('category_id', $product->category_id) ? 'selected' : '' }}>
+                                                    {{ $category->category_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                
+                                    <!-- Price -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Price</label>
+                                        <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $product->price) }}" required>
+                                    </div>
+                
+                                    <!-- Stock -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Stock Quantity</label>
+                                        <input type="number" name="stock" class="form-control" value="{{ old('stock', $product->stock) }}" required>
+                                    </div>
+                
+                                    <!-- Current Image Preview -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Current Image</label>
+                                        @if ($product->images->isNotEmpty())
+                                            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="{{ $product->name }}" class="img-thumbnail" style="width: 100px; height: 100px;">
+                                        @else
+                                            <p>No image available</p>
+                                        @endif
+                                    </div>
+                
+                                    <!-- Upload New Image -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Upload New Image</label>
+                                        <input type="file" name="image" class="form-control">
+                                    </div>
+                
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="btn btn-danger">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 @endforeach
             </tbody>
         </table>
@@ -145,7 +177,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('products.store') }}" method="POST">
+                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Product Name</label>
@@ -171,13 +203,14 @@
                         <label class="form-label">Stock Quantity</label>
                         <input type="number" name="stock" class="form-control" required>
                     </div>
-                    {{-- <div class="mb-3">
-                        <label class="form-label">image</label>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
                         <input type="file" name="image_url" class="form-control" required>
-                    </div> --}}
-
+                    </div>
+                
                     <button type="submit" class="btn btn-danger">Save Product</button>
                 </form>
+                
             </div>
         </div>
     </div>

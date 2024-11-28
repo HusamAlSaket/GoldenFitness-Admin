@@ -33,10 +33,12 @@ class Product extends Model
     }
 
     // Product has many images
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
+// In Product Model
+public function images()
+{
+    return $this->hasMany(ProductImage::class, 'product_id');
+}
+
 
     // Product can be in many wishlists
     public function wishlists()
