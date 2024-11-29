@@ -1,5 +1,6 @@
 @include('components.layout3')
 <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 <!--==============================
@@ -66,11 +67,14 @@
                         <p class="price">
                             ${{ number_format($product->price, 2) }}
                         </p>
+                        <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit" class="btn style2">Add to Cart</button>
+                        </form>
+                        
                         <div class="actions">
-                            <a href="#" class="btn style2">
-                                Add to Cart
-                            </a>
-                            <button type="button" class="btn style2" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}">
+                            <button type="button" class="btn style2 m-1" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}">
                                 View Details
                             </button>
                         </div>
@@ -99,7 +103,7 @@
                                 <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger " data-bs-dismiss="modal">Close</button>
                                 <a href="#" class="btn style2">Add to Cart</a>
                             </div>
                         </div>

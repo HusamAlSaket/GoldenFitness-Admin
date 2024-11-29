@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         // Redirect based on role
         switch ($request->user()->role) {
             case 'superadmin':
-                return redirect('admins/dashboard');
+                return redirect('admins/users');
             case 'admin':
                 return redirect('admins/dashboard');
             case 'coach':

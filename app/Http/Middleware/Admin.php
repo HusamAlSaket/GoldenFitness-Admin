@@ -12,8 +12,8 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         // dd('middleware');
-        if (!in_array(Auth::user()->role, ['admin', 'superadmin'])) {
-            return redirect('admins/messages'); // Or redirect to a different accessible page
+        if (!in_array(Auth::user()->role, ['admin'])) {
+            return redirect('admins/404'); // Or redirect to a different accessible page
         }
 
         return $next($request);

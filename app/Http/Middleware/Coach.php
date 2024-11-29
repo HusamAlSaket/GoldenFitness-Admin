@@ -11,8 +11,9 @@ class Coach
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role !== 'coach') {
-            return redirect('404'); // Or redirect to a different accessible page
+        // dd('middleware');
+        if (!in_array(Auth::user()->role, ['coach'])) {
+            return redirect('admins/404'); // Or redirect to a different accessible page
         }
 
         return $next($request);
