@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id', // Allow mass assignment for user_id
+        'total_price',
+        'status',
+        // Include any other fields you want to mass assign
+    ];
 
     // Order belongs to a user
     public function user()

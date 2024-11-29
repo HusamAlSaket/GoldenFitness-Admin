@@ -22,6 +22,8 @@ class User extends Authenticatable
         'dob',
         'gender',
         'goal',
+        'phone', // Add phone to the fillable array
+        'address', // Add address to the fillable array
     ];
     /**
      * The attributes that should be hidden for serialization.

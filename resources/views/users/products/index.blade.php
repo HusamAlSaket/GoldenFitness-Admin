@@ -25,10 +25,12 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label class="form-label">Category</label>
-                <select name="category" class="form-select" onchange="this.form.submit()"> <!-- Automatically submit on change -->
+                <select name="category" class="form-select" onchange="this.form.submit()">
+                    <!-- Automatically submit on change -->
                     <option value="">All Categories</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}"
+                            {{ request('category') == $category->id ? 'selected' : '' }}>
                             {{ $category->category_name }}
                         </option>
                     @endforeach
@@ -72,9 +74,10 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <button type="submit" class="btn style2">Add to Cart</button>
                         </form>
-                        
+
                         <div class="actions">
-                            <button type="button" class="btn style2 m-1" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}">
+                            <button type="button" class="btn style2 m-1" data-bs-toggle="modal"
+                                data-bs-target="#productModal{{ $product->id }}">
                                 View Details
                             </button>
                         </div>
@@ -82,29 +85,30 @@
                 </div>
 
                 <!-- Product Details Modal -->
-                <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
+                <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
+                    aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 @if ($product->images->isNotEmpty())
                                     <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                        alt="{{ $product->name }}" class="img-fluid mb-3"
-                                        style="border-radius: 10px;">
+                                        alt="{{ $product->name }}" class="img-fluid mb-3" style="border-radius: 10px;">
                                 @else
                                     <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                        class="img-fluid mb-3"
-                                        style="border-radius: 10px;">
+                                        class="img-fluid mb-3" style="border-radius: 10px;">
                                 @endif
                                 <p><strong>Description:</strong> {{ $product->description }}</p>
                                 <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger " data-bs-dismiss="modal">Close</button>
-                                <a href="#" class="btn style2">Add to Cart</a>
+                                {{-- <a href="#" class="btn style2">Add to Cart</a> --}}
                             </div>
                         </div>
                     </div>

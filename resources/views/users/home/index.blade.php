@@ -7,9 +7,9 @@
     <div class="global-carousel" id="heroSlider1" data-fade="true" data-slide-show="1" data-lg-slide-show="1"
         data-md-slide-show="1" data-sm-slide-show="1" data-xs-slide-show="1" data-arrows="true" data-xl-arrows="true"
         data-ml-arrows="true">
-        <div class="hero-slider" data-bg-src="{{asset('assets/img/hero/hero_bg_1_1.png')}}">
+        <div class="hero-slider" data-bg-src="{{ asset('assets/img/hero/hero_bg_1_1.png') }}">
             <div class="hero-shape1 shape-mockup movingX" data-bottom="165px" data-right="0">
-                <img src="{{asset('assets/img/hero/hero_shape_1.png')}}" alt="img">
+                <img src="{{ asset('assets/img/hero/hero_shape_1.png') }}" alt="img">
             </div>
             <div class="container">
                 <div class="row">
@@ -29,9 +29,9 @@
                 </div>
             </div>
         </div>
-        <div class="hero-slider" data-bg-src="{{asset('assets/img/hero/hero_bg_1_2.png')}}">
+        <div class="hero-slider" data-bg-src="{{ asset('assets/img/hero/hero_bg_1_2.png') }}">
             <div class="hero-shape1 shape-mockup movingX" data-bottom="165px" data-right="0">
-                <img src="{{asset('assets/img/hero/hero_shape_1.png')}}" alt="img">
+                <img src="{{ asset('assets/img/hero/hero_shape_1.png') }}" alt="img">
             </div>
             <div class="container">
                 <div class="row">
@@ -69,10 +69,10 @@
                 <div class="col-lg-4">
                     <div class="feature-card">
                         <div class="feature-card_bg">
-                            <img src="{{asset('assets/img/bg/feature-card_bg1.png')}}" alt="img">
+                            <img src="{{ asset('assets/img/bg/feature-card_bg1.png') }}" alt="img">
                         </div>
                         <div class="feature-card_icon">
-                            <img src="{{asset('assets/img/icon/feature-icon1-1.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/feature-icon1-1.svg') }}" alt="img">
                         </div>
                         <h6 class="feature-card_subtitle">Healthier Life</h6>
                         <h4 class="feature-card_title"><a href="service-detail.html">Achieve Your Goals</a></h4>
@@ -84,10 +84,10 @@
                 <div class="col-lg-4">
                     <div class="feature-card feature-card-active">
                         <div class="feature-card_bg">
-                            <img src="{{asset('assets/img/bg/feature-card_bg1.png')}}" alt="img">
+                            <img src="{{ asset('assets/img/bg/feature-card_bg1.png') }}" alt="img">
                         </div>
                         <div class="feature-card_icon">
-                            <img src="{{asset('assets/img/icon/feature-icon1-2.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/feature-icon1-2.svg') }}" alt="img">
                         </div>
                         <h6 class="feature-card_subtitle">Healthier Life</h6>
                         <h4 class="feature-card_title"><a href="service-detail.html">Best Institute Certificate</a></h4>
@@ -99,10 +99,10 @@
                 <div class="col-lg-4">
                     <div class="feature-card">
                         <div class="feature-card_bg">
-                            <img src="{{asset('assets/img/bg/feature-card_bg1.png')}}" alt="img">
+                            <img src="{{ asset('assets/img/bg/feature-card_bg1.png') }}" alt="img">
                         </div>
                         <div class="feature-card_icon">
-                            <img src="{{asset('assets/img/icon/feature-icon1-3.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/feature-icon1-3.svg') }}" alt="img">
                         </div>
                         <h6 class="feature-card_subtitle">Healthier Life</h6>
                         <h4 class="feature-card_title"><a href="service-detail.html">Train Day and Night</a></h4>
@@ -124,8 +124,9 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-thumb mb-5 mb-lg-0">
-                    <img class="about-img-1" src="{{asset('assets/img/normal/about_1-1.png')}}" alt="img">
-                    <img class="about-img-2 jump" src="{{asset('assets/img/normal/about_1-2.png')}}" alt="img">
+                    <img class="about-img-1" src="{{ asset('assets/img/normal/about_1-1.png') }}" alt="img">
+                    <img class="about-img-2 jump" src="{{ asset('assets/img/normal/about_1-2.png') }}"
+                        alt="img">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -147,7 +148,7 @@
                             <div class="filter-active-cat1">
                                 <div class="filter-item cat1">
                                     <div class="about-tab-icon">
-                                        <img src="{{asset('assets/img/icon/about-icon.svg')}}" alt="img">
+                                        <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
                                     <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
                                         lifestyle. They provide a supportive and motivating environment for individuals
@@ -155,7 +156,7 @@
                                 </div>
                                 <div class="filter-item cat2">
                                     <div class="about-tab-icon">
-                                        <img src="{{asset('assets/img/icon/about-icon.svg')}}" alt="img">
+                                        <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
                                     <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
                                         lifestyle. They provide a supportive and motivating environment for individuals
@@ -163,7 +164,7 @@
                                 </div>
                                 <div class="filter-item cat3">
                                     <div class="about-tab-icon">
-                                        <img src="{{asset('assets/img/icon/about-icon.svg')}}" alt="img">
+                                        <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
                                     <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
                                         lifestyle. They provide a supportive and motivating environment for individuals
@@ -191,9 +192,9 @@
 <!--==============================
     Service Area
     ==============================-->
-<div class="service-bg-area" data-bg-src="{{asset('assets/img/bg/service-bg.png')}}">
+<div class="service-bg-area" data-bg-src="{{ asset('assets/img/bg/service-bg.png') }}">
     <div class="sec-shape-top">
-        <img src="{{asset('assets/img/bg/sec-shape-top.png')}}" alt="img">
+        <img src="{{ asset('assets/img/bg/sec-shape-top.png') }}" alt="img">
     </div>
     <!--==============================
         Service Area 01
@@ -212,7 +213,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-1.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
@@ -228,7 +229,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-2.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-2.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Rows of Cardio</a></h4>
@@ -243,7 +244,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-3.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
@@ -258,7 +259,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-4.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
@@ -274,7 +275,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-1.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
@@ -290,7 +291,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-2.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-2.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Rows of Cardio</a></h4>
@@ -305,7 +306,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-3.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
@@ -320,7 +321,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-card_icon">
-                            <img src="{{asset('assets/img/icon/service-icon_1-4.svg')}}" alt="img">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
                         </div>
                         <div class="service-card_content">
                             <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
@@ -345,13 +346,13 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="wcu-thumb">
-                        <img class="img-1" src="{{asset('assets/img/normal/wcu_1-2.png')}}" alt="img">
+                        <img class="img-1" src="{{ asset('assets/img/normal/wcu_1-2.png') }}" alt="img">
                         <div class="img-2 jump">
-                            <img src="{{asset('assets/img/normal/wcu_1-1.png')}}" alt="img">
+                            <img src="{{ asset('assets/img/normal/wcu_1-1.png') }}" alt="img">
                         </div>
                         <div class="wcu-grid jump2">
                             <div class="icon">
-                                <img src="{{asset('assets/img/icon/wcu-icon_1-1.svg')}}" alt="img">
+                                <img src="{{ asset('assets/img/icon/wcu-icon_1-1.svg') }}" alt="img">
                             </div>
                             <div class="details">
                                 <h3 class="wcu-grid_year"><span class="counter-number">25</span>+</h3>
@@ -429,7 +430,7 @@
     </div>
 
     <div class="sec-shape-bottom">
-        <img src="{{asset('assets/img/bg/sec-shape-bottom.png')}}" alt="img">
+        <img src="{{ asset('assets/img/bg/sec-shape-bottom.png') }}" alt="img">
     </div>
 </div>
 
@@ -450,7 +451,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-1.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
@@ -465,7 +466,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-2.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
@@ -480,7 +481,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-3.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
@@ -495,7 +496,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-1.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
@@ -510,7 +511,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-2.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
@@ -525,7 +526,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-card style2">
                     <div class="service-card_icon">
-                        <img src="{{asset('assets/img/icon/service-icon_2-3.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
                     </div>
                     <div class="service-card_content">
                         <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
@@ -546,7 +547,7 @@
     ==============================-->
 <div class="counter-area-1" data-bg-src="assets/img/bg/counter-bg1.png">
     <div class="counter-sec-shape-top">
-        <img src="{{asset('assets/img/bg/sec-shape-top.png')}}" alt="img">
+        <img src="{{ asset('assets/img/bg/sec-shape-top.png') }}" alt="img">
     </div>
     <div class="counter-wrap1 space">
         <div class="container">
@@ -554,7 +555,7 @@
                 <div class="col-sm-6 col-xl-auto">
                     <div class="counter-card">
                         <div class="counter-card_icon">
-                            <img src="{{asset('assets/img/icon/counter-icon_1-1.svg')}}" alt="icon">
+                            <img src="{{ asset('assets/img/icon/counter-icon_1-1.svg') }}" alt="icon">
                         </div>
                         <div class="media-body">
                             <h2 class="counter-card_number"><span class="counter-number">4.8</span>K</h2>
@@ -565,7 +566,7 @@
                 <div class="col-sm-6 col-xl-auto">
                     <div class="counter-card">
                         <div class="counter-card_icon">
-                            <img src="{{asset('assets/img/icon/counter-icon_1-2.svg')}}" alt="icon">
+                            <img src="{{ asset('assets/img/icon/counter-icon_1-2.svg') }}" alt="icon">
                         </div>
                         <div class="media-body">
                             <h2 class="counter-card_number"><span class="counter-number">325</span></h2>
@@ -576,7 +577,7 @@
                 <div class="col-sm-6 col-xl-auto">
                     <div class="counter-card">
                         <div class="counter-card_icon">
-                            <img src="{{asset('assets/img/icon/counter-icon_1-3.svg')}}" alt="icon">
+                            <img src="{{ asset('assets/img/icon/counter-icon_1-3.svg') }}" alt="icon">
                         </div>
                         <div class="media-body">
                             <h2 class="counter-card_number"><span class="counter-number">598</span></h2>
@@ -587,7 +588,7 @@
                 <div class="col-sm-6 col-xl-auto">
                     <div class="counter-card">
                         <div class="counter-card_icon">
-                            <img src="{{asset('assets/img/icon/counter-icon_1-4.svg')}}" alt="icon">
+                            <img src="{{ asset('assets/img/icon/counter-icon_1-4.svg') }}" alt="icon">
                         </div>
                         <div class="media-body">
                             <h2 class="counter-card_number"><span class="counter-number">36</span>K</h2>
@@ -600,7 +601,7 @@
     </div>
 
     <div class="counter-sec-shape-bottom">
-        <img src="{{asset('assets/img/bg/sec-shape-bottom.png')}}" alt="img">
+        <img src="{{ asset('assets/img/bg/sec-shape-bottom.png') }}" alt="img">
     </div>
 </div>
 
@@ -619,7 +620,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-1.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-1.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">George Thomas</a>
@@ -636,7 +637,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-2.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-2.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Mike Johnson</a>
@@ -653,7 +654,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-3.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-3.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Amelia Harper</a>
@@ -670,7 +671,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-4.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-4.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Oliver Samuel</a>
@@ -687,7 +688,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-1.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-1.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">George Thomas</a>
@@ -704,7 +705,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-2.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-2.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Mike Johnson</a>
@@ -721,7 +722,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-3.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-3.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Amelia Harper</a>
@@ -738,7 +739,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
-                        <img src="{{asset('assets/img/team/team-4.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/team/team-4.png') }}" alt="img">
                     </div>
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Oliver Samuel</a>
@@ -762,14 +763,15 @@
 <div class="testimonial-area-1 overflow-hidden">
     <div class="testimonial-bg-thumb1">
         <div class="thumb">
-            <img src="{{asset('assets/img/testimonial/testi_bg1.png')}}" alt="img">
+            <img src="{{ asset('assets/img/testimonial/testi_bg1.png') }}" alt="img">
         </div>
     </div>
     <div class="space">
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-xl-8 col-lg-9">
-                    <div class="testi-box-wrap1 text-center" data-bg-src="{{asset('assets/img/testimonial/testi_box-bg.png')}}">
+                    <div class="testi-box-wrap1 text-center"
+                        data-bg-src="{{ asset('assets/img/testimonial/testi_box-bg.png') }}">
                         <div class="title-area">
                             <span class="sub-title">Feedbacks</span>
                             <h2 class="sec-title text-white">Trusted Testimonials</h2>
@@ -778,7 +780,8 @@
                             <div class="col-lg-6">
                                 <div class="testi-box">
                                     <div class="testi-box_thumb">
-                                        <img src="{{asset('assets/img/testimonial/testi_1_1.png')}}" alt="img">
+                                        <img src="{{ asset('assets/img/testimonial/testi_1_1.png') }}"
+                                            alt="img">
                                         <div class="block-quote">
                                             <i class="fas fa-quote-right"></i>
                                         </div>
@@ -800,7 +803,8 @@
                             <div class="col-lg-6">
                                 <div class="testi-box">
                                     <div class="testi-box_thumb">
-                                        <img src="{{asset('assets/img/testimonial/testi_1_2.png')}}" alt="img">
+                                        <img src="{{ asset('assets/img/testimonial/testi_1_2.png') }}"
+                                            alt="img">
                                         <div class="block-quote">
                                             <i class="fas fa-quote-right"></i>
                                         </div>
@@ -822,7 +826,8 @@
                             <div class="col-lg-6">
                                 <div class="testi-box">
                                     <div class="testi-box_thumb">
-                                        <img src="{{asset('assets/img/testimonial/testi_1_3.png')}}" alt="img">
+                                        <img src="{{ asset('assets/img/testimonial/testi_1_3.png') }}"
+                                            alt="img">
                                         <div class="block-quote">
                                             <i class="fas fa-quote-right"></i>
                                         </div>
@@ -882,10 +887,10 @@
             <div class="col-lg-4 col-md-6">
                 <div class="pricing-card">
                     <div class="pricing-card_bg">
-                        <img src="{{asset('assets/img/bg/pricing-card1-bg.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/bg/pricing-card1-bg.png') }}" alt="img">
                     </div>
                     <div class="pricing-card_icon">
-                        <img src="{{asset('assets/img/icon/picing-icon_1-1.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/picing-icon_1-1.svg') }}" alt="img">
                     </div>
                     <h3 class="pricing-card_title">Basic Membership</h3>
                     <h4 class="pricing-card_price"><span class="currency">$</span>19<span
@@ -907,10 +912,10 @@
             <div class="col-lg-4 col-md-6">
                 <div class="pricing-card pricing-card_active">
                     <div class="pricing-card_bg">
-                        <img src="{{asset('assets/img/bg/pricing-card1-bg.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/bg/pricing-card1-bg.png') }}" alt="img">
                     </div>
                     <div class="pricing-card_icon">
-                        <img src="{{asset('assets/img/icon/picing-icon_1-2.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/picing-icon_1-2.svg') }}" alt="img">
                     </div>
                     <h3 class="pricing-card_title">Standard Membeship</h3>
                     <h4 class="pricing-card_price"><span class="currency">$</span>39<span
@@ -932,10 +937,10 @@
             <div class="col-lg-4 col-md-6">
                 <div class="pricing-card">
                     <div class="pricing-card_bg">
-                        <img src="{{asset('assets/img/bg/pricing-card1-bg.png')}}" alt="img">
+                        <img src="{{ asset('assets/img/bg/pricing-card1-bg.png') }}" alt="img">
                     </div>
                     <div class="pricing-card_icon">
-                        <img src="{{asset('assets/img/icon/picing-icon_1-3.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/picing-icon_1-3.svg') }}" alt="img">
                     </div>
                     <h3 class="pricing-card_title">Ultimate Membership</h3>
                     <h4 class="pricing-card_price"><span class="currency">$</span>69<span
@@ -966,7 +971,7 @@
         <div class="row">
             <div class="col-lg-6 order-lg-2 text-lg-end">
                 <div class="goal-thumb-1 mb-40 mb-lg-0">
-                    <img src="{{asset('assets/img/normal/goal_1-1.png')}}" alt="img">
+                    <img src="{{ asset('assets/img/normal/goal_1-1.png') }}" alt="img">
                     <div class="goal-badge-wrap">
                         <div class="goal-badge">We Have Train More Than <span class="counter-number">1580</span>+
                             Students</div>
@@ -983,7 +988,7 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-grid_icon">
-                        <img src="{{asset('assets/img/icon/goal-icon_1-1.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/goal-icon_1-1.svg') }}" alt="img">
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Free Fitness Training</h4>
@@ -993,7 +998,7 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-grid_icon">
-                        <img src="{{asset('assets/img/icon/goal-icon_1-2.svg')}}" alt="img">
+                        <img src="{{ asset('assets/img/icon/goal-icon_1-2.svg') }}" alt="img">
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Cardio and Strength</h4>
@@ -1023,9 +1028,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_1.png')}}" alt="blog image">
+                        <img src="{{ asset('assets/img/blog/blog_1_1.png') }}" alt="blog image">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1041,9 +1046,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_2.png" alt="blog image')}}">
+                        <img src="{{ asset('assets/img/blog/blog_1_2.png" alt="blog image') }}">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1059,9 +1064,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_3.png')}}" alt="blog image">
+                        <img src="{{ asset('assets/img/blog/blog_1_3.png') }}" alt="blog image">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1077,9 +1082,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_1.png')}}" alt="blog image">
+                        <img src="{{ asset('assets/img/blog/blog_1_1.png') }}" alt="blog image">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1095,9 +1100,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_2.png')}}" alt="blog image">
+                        <img src="{{ asset('assets/img/blog/blog_1_2.png') }}" alt="blog image">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1113,9 +1118,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="{{asset('assets/img/blog/blog_1_3.png')}}" alt="blog image">
+                        <img src="{{ asset('assets/img/blog/blog_1_3.png') }}" alt="blog image">
                     </div>
-                    <div class="blog-content" data-bg-src="{{asset('assets/img/blog/blog_card1_bg.png')}}">
+                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
                         <div class="blog-meta">
                             <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
                             <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
@@ -1130,4 +1135,6 @@
         </div>
     </div>
 </section>
+<!-- Bootstrap JS (for modal functionality) -->
+
 @include('components.layout4')

@@ -15,6 +15,8 @@ use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\UserSubscriptionController;
 use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -148,22 +150,31 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
 // Users Front End Routes Products
 
-    Route::prefix('users')->group(function () {
-        Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
-        Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
-        
-        // home controller 
-        Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
+        Route::prefix('users')->group(function () {
+            Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
+            Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
+            
+            // home controller 
+            Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
 
-        // cart controller
-        Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-        Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+            // cart controller
+            Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+            Route::patch('/cart/update/{productId}/{action}', [CartController::class, 'update'])->name('cart.update');
+            Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+
+            // Checkout Controller 
+            Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+            Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+            Route::get('/thankyou/{orderId}', [CheckoutController::class, 'thankyou'])->name('thankyou');
+
+        
 
 
         // subscription controller 
 
     Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('users.subscriptions.index');
     Route::get('/subscriptions/{subscription}', [UserSubscriptionController::class, 'show'])->name('users.subscriptions.show');
+
 });
 
 
