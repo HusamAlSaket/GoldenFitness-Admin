@@ -5,6 +5,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReplyToMessageMail;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -40,5 +41,20 @@ class MessageController extends Controller
         $message->is_replied=true;
         $message->save();
         return redirect()->route('messages.index')->with('success', 'Reply sent successfully.');
+    }
+    public function store(Request $request){
+        $request->validate([
+            // 'name' => 'required|string|max:225',
+            // 'email' => 'required|email|max:225',
+            'message' => 'required|string|max:225',
+
+        ]);
+        Message::create([
+            // 'name' =>$request->input('name') ,  
+            // 'email'=>$request->input('email') ,
+            'user_id' => Auth::id(),
+            'message'=>$request->input('message') ,
+        ]);
+        return redirect()->route('contact.index')->with('success','Message Sent Successfully');
     }
 }

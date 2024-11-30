@@ -86,3 +86,88 @@
         </div>
     </nav>
 @endif
+<style>
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination-info {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination .page-item {
+    margin: 0 8px;
+}
+
+.pagination .page-link {
+    display: inline-block;
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #e0e0e0; /* Grey for inactive pages */
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #ff6f61; /* Hover color for links */
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #1e90ff; /* Blue for active page */
+    color: white;
+    font-weight: bold;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #ccc; /* Grey for disabled pages */
+    color: #888;
+    cursor: not-allowed;
+}
+
+.pagination .page-item a {
+    display: inline-block;
+    font-weight: normal;
+}
+
+.pagination .page-item:first-child .page-link {
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+.pagination .page-item:last-child .page-link {
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+.pagination .page-item .page-link[aria-label="Previous"],
+.pagination .page-item .page-link[aria-label="Next"] {
+    background-color: #ff6f61; /* Red for previous/next buttons */
+    color: white;
+    border-radius: 50%;
+    padding: 12px 16px;
+}
+
+.pagination .page-item .page-link[aria-label="Previous"]:hover,
+.pagination .page-item .page-link[aria-label="Next"]:hover {
+    background-color: #d04f42; /* Darker red on hover */
+}
+
+</style>

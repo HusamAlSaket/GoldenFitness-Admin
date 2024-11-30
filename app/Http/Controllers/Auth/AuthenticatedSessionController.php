@@ -24,10 +24,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Save the current cart data
+        $cart = session()->get('cart', []);
+    
         $request->authenticate();
-
+    
+        // Regenerate the session (required for security)
         $request->session()->regenerate();
-
+    
+        // Restore the cart data
+        session()->put('cart', $cart);
+    
         // Redirect based on role
         switch ($request->user()->role) {
             case 'superadmin':
@@ -37,10 +44,11 @@ class AuthenticatedSessionController extends Controller
             case 'coach':
                 return redirect('admins/videos');
             default:
-                return redirect()->intended(route('dashboard', absolute: false));
+                // Redirect to the intended URL or fallback to the products page
+                return redirect()->intended(route('products.index'));
         }
-        
     }
+    
 
     /**
      * Destroy an authenticated session.

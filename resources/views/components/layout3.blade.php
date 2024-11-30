@@ -121,7 +121,7 @@
                         <a href="#">Blog <i class="fa fa-blog"></i></a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact <i class="fa fa-phone-alt"></i></a>
+                        <a href="{{ route('contact.index') }}">Contact <i class="fa fa-phone-alt"></i></a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +172,8 @@
                                         <a href="{{ route('home.index') }}"><i class="fa fa-blog"></i> Blog</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html"><i class="fa fa-phone-alt"></i> Contact</a>
+                                        <a href="{{ route('contact.index') }}"><i class="fa fa-phone-alt"></i>
+                                            Contact</a>
                                     </li>
                                 </ul>
 
@@ -409,12 +410,43 @@
                         <h5>Total Price: $<?php echo isset($totalPrice) && $totalPrice > 0 ? number_format($totalPrice, 2) : '0.00'; ?></h5>
 
                         <!-- Checkout button on the right -->
-                        <form action="{{ route('checkout.index') }}" method="GET">
-                            <button type="submit" class="btn btn-danger">Checkout</button>
-                        </form>
-                        
+
+                        <button type="button" id="checkoutButton" class="btn btn-danger">Checkout</button>
+
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                        <script>
+                            document.getElementById('checkoutButton').addEventListener('click', function() {
+                                fetch("{{ route('checkout.index') }}", {
+                                        method: "GET",
+                                        headers: {
+                                            "X-Requested-With": "XMLHttpRequest", // Ensure Laravel knows it's an AJAX request
+                                        },
+                                    })
+                                    .then(response => {
+                                        if (response.status === 403) {
+                                            return response.json().then(data => {
+                                                Swal.fire({
+                                                    icon: "warning",
+                                                    title: "Not Logged In",
+                                                    text: data.message,
+                                                    confirmButtonText: "Login Now",
+                                                }).then(() => {
+                                                    window.location.href = data.redirect;
+                                                });
+                                            });
+                                        } else if (response.ok) {
+                                            window.location.href = "{{ route('checkout.index') }}";
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error("Error:", error);
+                                    });
+                            });
+                        </script>
+
+
                     </div>
-            </div>
+                </div>
 
             </div>
         </div>

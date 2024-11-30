@@ -10,15 +10,22 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        if (!Auth::check()) {
+            return response()->json([
+                'message' => 'You need to be logged in first.',
+                'redirect' => route('login'),
+            ], 403); // Send a response for SweetAlert handling
+        }
+    
         $user = Auth::user();
         $cartItems = session()->get('cart', []); // Assuming you use session-based cart
         $totalPrice = array_reduce($cartItems, function ($carry, $item) {
             return $carry + $item['price'] * $item['quantity'];
         }, 0);
-
+    
         return view('users.checkout.index', compact('user', 'cartItems', 'totalPrice'));
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([

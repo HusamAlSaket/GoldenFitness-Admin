@@ -16,7 +16,7 @@ use App\Http\Controllers\UserSubscriptionController;
 use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -167,10 +167,13 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
             Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
             Route::get('/thankyou/{orderId}', [CheckoutController::class, 'thankyou'])->name('thankyou');
 
-        
+            // contact us controller 
 
+            Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
 
-        // subscription controller 
+            // Messages Controller
+            Route::post('/messages',[MessageController::class,'store'])->name('messages');
+            // subscription controller 
 
     Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('users.subscriptions.index');
     Route::get('/subscriptions/{subscription}', [UserSubscriptionController::class, 'show'])->name('users.subscriptions.show');
@@ -178,24 +181,24 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 });
 
 
-Route::prefix('admins')->middleware(['auth', 'coach'])->group(function () {
-    Route::get('/videos', [GymVideoController::class, 'index'])->name('videos.index');
-    Route::get('/videos/create', [GymVideoController::class, 'create'])->name('videos.create');
-    Route::post('/videos', [GymVideoController::class, 'store'])->name('videos.store');
-    Route::get('/videos/{video}', [GymVideoController::class, 'show'])->name('videos.show');
-    Route::get('/videos/{video}/edit', [GymVideoController::class, 'edit'])->name('videos.edit');
-    Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
-    Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
+// Route::prefix('admins')->middleware(['auth', 'coach'])->group(function () {
+//     Route::get('/videos', [GymVideoController::class, 'index'])->name('videos.index');
+//     Route::get('/videos/create', [GymVideoController::class, 'create'])->name('videos.create');
+//     Route::post('/videos', [GymVideoController::class, 'store'])->name('videos.store');
+//     Route::get('/videos/{video}', [GymVideoController::class, 'show'])->name('videos.show');
+//     Route::get('/videos/{video}/edit', [GymVideoController::class, 'edit'])->name('videos.edit');
+//     Route::put('/videos/{video}', [GymVideoController::class, 'update'])->name('videos.update');
+//     Route::delete('/videos/{video}', [GymVideoController::class, 'destroy'])->name('videos.destroy');
 
-    // Messages Routes
-    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
-    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
-    Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+//     // Messages Routes
+//     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+//     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+//     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 
-    // Review Routes
-    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-    Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
-    Route::post('reviews/{review}/change-status', [ReviewController::class, 'changeStatus'])->name('reviews.changeStatus');
-});
+//     // Review Routes
+//     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+//     Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
+//     Route::post('reviews/{review}/change-status', [ReviewController::class, 'changeStatus'])->name('reviews.changeStatus');
+// });
 
 require __DIR__ . '/auth.php';

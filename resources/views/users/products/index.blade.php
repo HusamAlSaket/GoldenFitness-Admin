@@ -2,10 +2,7 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-<!--==============================
-    Breadcumb
-    ============================== -->
+<!-- Breadcrumb -->
 <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
     <div class="container">
         <div class="row">
@@ -18,38 +15,29 @@
     </div>
 </div>
 
-
 <!-- Category Filter -->
 <div class="container my-4">
-    <form method="GET" action="{{ route('products.index') }}">
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Category</label>
-                <select name="category" class="form-select" onchange="this.form.submit()">
-                    <!-- Automatically submit on change -->
-                    <option value="">All Categories</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}"
-                            {{ request('category') == $category->id ? 'selected' : '' }}>
-                            {{ $category->category_name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+    <form method="GET" action="{{ route('products.index') }}" class="d-flex align-items-center gap-3">
+        <div class="form-group">
+            <label for="category" class="form-label">Category</label>
+            <select name="category" id="category" class="form-select" onchange="this.form.submit()">
+                <option value="">All Categories</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                        {{ $category->category_name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+        <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Reset Filters</a>
     </form>
 </div>
 
-
-
-
-<!--==============================
-    Shop Area
-    ==============================-->
+<!-- Shop Area -->
 <div class="shop-area space">
     <div class="container">
-        <div class="row gy-40 " id="productsList">
-            @foreach ($products as $product)
+        <div class="row gy-40" id="productsList">
+            @forelse ($products as $product)
                 <div class="col-lg-4 col-md-6 d-flex justify-content-center">
                     <div class="product" style="text-align: center; margin-bottom: 30px;">
                         <div class="product-img mb-3">
@@ -63,18 +51,13 @@
                                     style="width: 100%; max-width: 300px; height: 250px; object-fit: cover; border-radius: 10px;">
                             @endif
                         </div>
-                        <h3 class="product-title">
-                            {{ $product->name }}
-                        </h3>
-                        <p class="price">
-                            ${{ number_format($product->price, 2) }}
-                        </p>
+                        <h3 class="product-title">{{ $product->name }}</h3>
+                        <p class="price">${{ number_format($product->price, 2) }}</p>
                         <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <button type="submit" class="btn style2">Add to Cart</button>
                         </form>
-
                         <div class="actions">
                             <button type="button" class="btn style2 m-1" data-bs-toggle="modal"
                                 data-bs-target="#productModal{{ $product->id }}">
@@ -83,17 +66,14 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Product Details Modal -->
                 <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
                     aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 @if ($product->images->isNotEmpty())
@@ -107,19 +87,49 @@
                                 <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger " data-bs-dismiss="modal">Close</button>
-                                {{-- <a href="#" class="btn style2">Add to Cart</a> --}}
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p class="text-center">No products found for the selected category.</p>
+            @endforelse
         </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <!-- Pagination Info -->
+            @if ($products->hasPages())
+                <div class="pagination-info">
+                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} results (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
+                </div>
+        
+                <!-- Pagination Links -->
+                <ul class="pagination">
+                    <!-- Previous Button -->
+                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
+                    </li>
+        
+                    <!-- Page Numbers -->
+                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                        <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                    @endforeach
+        
+                    <!-- Next Button -->
+                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
+                    </li>
+                </ul>
+            @endif
+        </div>
+        
+        
+        
     </div>
 </div>
-
-
-
-
 
 @include('components.layout4')
