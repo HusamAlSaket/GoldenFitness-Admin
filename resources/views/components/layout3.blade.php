@@ -115,7 +115,7 @@
                         <a href="#">Project <i class="fa fa-project-diagram"></i></a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">Service <i class="fa fa-cogs"></i></a>
+                        <a href="{{route('user.subscriptions.index')}}">Subscriptions <i class="fa fa-cogs"></i></a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">Blog <i class="fa fa-blog"></i></a>
@@ -162,7 +162,7 @@
                                         <a href="{{route('about.index')}}"><i class="fa fa-info-circle"></i> About</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-cogs"></i> Service</a>
+                                        <a href="{{route('user.subscriptions.index')}}"><i class="fa fa-cogs"></i> Subscriptions</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Gym

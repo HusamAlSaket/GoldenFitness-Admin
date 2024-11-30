@@ -151,40 +151,48 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
 // Users Front End Routes Products
 
-        Route::prefix('users')->group(function () {
-            Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
-            Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
-            
-            // home controller 
-            Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
+Route::prefix('users')->group(function () {
+    Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
+    Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
 
-            // cart controller
-            Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-            Route::patch('/cart/update/{productId}/{action}', [CartController::class, 'update'])->name('cart.update');
-            Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+    // home controller 
+    Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
 
-            // Checkout Controller 
-            Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-            Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
-            Route::get('/thankyou/{orderId}', [CheckoutController::class, 'thankyou'])->name('thankyou');
+    // cart controller
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::patch('/cart/update/{productId}/{action}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 
-            // contact us controller 
+    // Checkout Controller 
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/thankyou/{orderId}', [CheckoutController::class, 'thankyou'])->name('thankyou');
 
-            Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+    // contact us controller 
 
-            // Messages Controller
-            Route::post('/messages',[MessageController::class,'store'])->name('messages');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
-            // About Controller
-            Route::get('/about',[AboutController::class,'index'])->name('about.index');
+    // Messages Controller
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages');
+
+    // About Controller
+    Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 
 
-            // subscription controller 
+    // subscription controller 
 
-    Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('users.subscriptions.index');
-    Route::get('/subscriptions/{subscription}', [UserSubscriptionController::class, 'show'])->name('users.subscriptions.show');
+    // Display the subscription creation form
+    Route::get('/subscriptions/create', [UserSubscriptionController::class, 'create'])->name('user.subscriptions.create');  
 
+    // Handle the subscription creation (POST request)
+    Route::post('/subscriptions', [UserSubscriptionController::class, 'store'])->name('user.subscriptions.store');  
+
+    // List all subscriptions for the logged-in user (GET request)
+    Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('user.subscriptions.index');  
+
+    // Show a single subscription (GET request)
+    Route::get('/subscriptions/{id}', [UserSubscriptionController::class, 'show'])->name('user.subscriptions.show');  
 });
 
 
