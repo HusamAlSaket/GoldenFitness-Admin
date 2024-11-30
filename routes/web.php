@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -173,6 +174,12 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
             // Messages Controller
             Route::post('/messages',[MessageController::class,'store'])->name('messages');
+
+            // About Controller
+            Route::get('/about',[AboutController::class,'index'])->name('about.index');
+
+
+
             // subscription controller 
 
     Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('users.subscriptions.index');

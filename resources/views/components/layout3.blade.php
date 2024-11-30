@@ -159,7 +159,7 @@
                                         <a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html"><i class="fa fa-info-circle"></i> About</a>
+                                        <a href="{{route('about.index')}}"><i class="fa fa-info-circle"></i> About</a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-cogs"></i> Service</a>
