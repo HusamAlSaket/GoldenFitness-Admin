@@ -25,7 +25,13 @@ class UserSubscriptionController extends Controller
 
     public function create()
     {
-        return view('users.subscriptions.create');
+        $benefits = [
+        'Weekly' => ['Gym Access'],
+        'Monthly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test'],
+        'Yearly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test', 'Blogs', 'Premium Video Content'],
+    ];
+
+    return view('users.subscriptions.create', compact('benefits'));
     }
 
     public function store(Request $request)
@@ -33,7 +39,6 @@ class UserSubscriptionController extends Controller
         $request->validate([
             'subscription_type' => 'required|in:Weekly,Monthly,Yearly',
         ]);
-
         $benefits = $this->getSubscriptionBenefits($request->subscription_type);
         $benefitsJson = json_encode($benefits);
         $price = $this->getSubscriptionPrice($request->subscription_type);

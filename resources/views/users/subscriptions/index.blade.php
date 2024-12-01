@@ -1,62 +1,55 @@
 @include('components.layout3')
-    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div class="container">
-    <h1>Your Subscriptions</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+<div class="pricing-area">
+    <div class="container">
+        <div class="title-area text-center">
+            <h2 class="sec-title">Your Active subscriptions</h2>
         </div>
-    @elseif(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Subscription Type</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
-                <th>Benefits</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($subscriptions as $subscription)
-                <tr>
-                    <td>{{ $subscription->subscription_type }}</td>
-                    <td>{{ $subscription->start_date->format('Y-m-d') }}</td>
-                    <td>{{ $subscription->end_date ? $subscription->end_date->format('Y-m-d') : 'N/A' }}</td>
-                    <td>{{ ucfirst($subscription->status) }}</td>
-                    <td>
-                        <ul>
-                            @php
-                                // Decode the benefits safely
-                                $benefits = json_decode($subscription->benefits);
-                            @endphp
-                        
-                            @if($benefits && is_array($benefits) && count($benefits) > 0)
-                                @foreach($benefits as $benefit)
-                                    <li>{{ $benefit }}</li>
-                                @endforeach
-                            @else
-                                <p>No benefits available</p>
-                            @endif
-                        </ul>
-                    </td>
-                    <td>
-                        <a href="{{ route('user.subscriptions.show', $subscription->id) }}" class="btn btn-info">View</a>
-                    </td>
-                </tr>
+        <div class="pricing-container">
+            @foreach ($subscriptions as $subscription)
+                <div class="pricing-card-wrapper m-3">
+                    <div class="pricing-card {{ $subscription->subscription_type === 'Yearly' ? 'pricing-card_active' : '' }}">
+                        <div class="pricing-card_bg">
+                            <img src="{{ asset('assets/img/bg/pricing-card1-bg.png') }}" alt="Background">
+                        </div>
+                        <div class="pricing-card_icon">
+                            <img src="{{ asset('assets/img/icon/picing-icon_1-' . ($loop->index + 1) . '.svg') }}" alt="Icon">
+                        </div>
+                        <h3 class="pricing-card_title">
+                            {{ ucfirst($subscription->subscription_type) }} Membership
+                        </h3>
+                        <h4 class="pricing-card_price">
+                            <span class="currency">$</span>{{ number_format($subscription->price, 2) }}
+                        </h4>
+                        <p class="pricing-card_content">
+                            This category typically offers access to the gym's facilities and equipment.
+                        </p>
+                        <div class="checklist">
+                            <ul>
+                                @php
+                                    $benefits = json_decode($subscription->benefits);
+                                @endphp
+                                @if ($benefits && is_array($benefits))
+                                    @foreach ($benefits as $benefit)
+                                        <li><i class="far fa-check-circle"></i> {{ $benefit }}</li>
+                                    @endforeach
+                                @else
+                                    <li><i class="far fa-times-circle"></i> No benefits available</li>
+                                @endif
+                            </ul>
+                        </div>
+                        <a class="btn style2" href="{{ route('user.subscriptions.show', $subscription->id) }}">
+                            View Details
+                        </a>
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
-
-    <a href="{{ route('user.subscriptions.create') }}" class="btn btn-success">Activate New Subscription</a>
+        </div>
+    </div>
 </div>
+<style>
+    
+</style>
 
 @include('components.layout4')

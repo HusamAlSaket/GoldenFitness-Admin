@@ -1,6 +1,6 @@
 
 @include('components.layout3')
-
+v
 <div class="container">
     <h1>Subscription Details</h1>
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserVideoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -193,6 +194,12 @@ Route::prefix('users')->group(function () {
 
     // Show a single subscription (GET request)
     Route::get('/subscriptions/{id}', [UserSubscriptionController::class, 'show'])->name('user.subscriptions.show');  
+
+    // videos controller 
+
+    Route::get('/videos',[UserVideoController::class,'index'])->name('users.videos.index');
+    // Route::get('/videos/{id}',[UserVideoController::class,'show'])->name('users.videos.show');
+    Route::get('/premium-videos',[UserVideoController::class,'premiumContent'])->name('users.videos.premium');
 });
 
 

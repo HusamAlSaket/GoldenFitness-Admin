@@ -117,6 +117,7 @@
                     <li class="menu-item-has-children">
                         <a href="{{route('user.subscriptions.index')}}">Subscriptions <i class="fa fa-cogs"></i></a>
                     </li>
+                    
                     <li class="menu-item-has-children">
                         <a href="#">Blog <i class="fa fa-blog"></i></a>
                     </li>
@@ -162,9 +163,13 @@
                                         <a href="{{route('about.index')}}"><i class="fa fa-info-circle"></i> About</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('user.subscriptions.index')}}"><i class="fa fa-cogs"></i> Subscriptions</a>
+                                        <a href="{{route('user.subscriptions.create')}}"><i class="fa fa-cogs"></i> Subscriptions</a>
                                     </li>
                                     <li>
+                                        <a href="{{route('user.subscriptions.index')}}"><i class="fa fa-cogs"></i>Active Subscriptions</a>
+                                    </li>
+                                    <li>
+                                        
                                         <a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Gym
                                             Equipments</a>
                                     </li>
