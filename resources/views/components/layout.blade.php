@@ -62,6 +62,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('blogs.index') }}">
+                        <i class="bi bi-film"></i> <span>Blogs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
                     </a>

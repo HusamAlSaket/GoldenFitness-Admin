@@ -105,36 +105,35 @@
     ============================== -->
     <div class="mobile-menu-wrapper">
         <div class="mobile-menu-area text-center">
-            <button class="menu-toggle"><i class="fal fa-times"></i></button>
+            <button class="menu-toggle"><i class="bi bi-x"></i></button> <!-- Bootstrap close icon -->
             <div class="mobile-logo">
                 <a href="index.html"><img src="{{ asset('assets/img/logo.svg') }}" alt="Fitmas"></a>
             </div>
             <div class="mobile-menu">
                 <ul>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('home.index') }}">Home <i class="fa fa-house-user"></i></a>
+                        <a href="{{ route('home.index') }}">Home <i class="bi bi-house-door"></i></a> <!-- Bootstrap Home icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('products.index') }}">Gym Equipments <i class="fa fa-file"></i></a>
+                        <a href="{{ route('products.index') }}">Gym Equipments <i class="bi bi-file-earmark"></i></a> <!-- Bootstrap File icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">Project <i class="fa fa-project-diagram"></i></a>
+                        <a href="#">Project <i class="bi bi-collection"></i></a> <!-- Bootstrap Project icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{route('user.subscriptions.index')}}">Subscriptions <i class="fa fa-cogs"></i></a>
+                        <a href="{{ route('user.subscriptions.index') }}">Subscriptions <i class="bi bi-gear"></i></a> <!-- Bootstrap Gear icon -->
                     </li>
-                    
                     <li class="menu-item-has-children">
-                        <a href="#">Blog <i class="fa fa-blog"></i></a>
+                        <a href="{{ route('users.blogs.index') }}">Blog <i class="bi bi-pencil"></i></a> <!-- Bootstrap Blog icon -->
                     </li>
                     <li>
-                        <a href="{{ route('contact.index') }}">Contact <i class="fa fa-phone-alt"></i></a>
+                        <a href="{{ route('contact.index') }}">Contact <i class="bi bi-telephone"></i></a> <!-- Bootstrap Phone icon -->
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-
+    
     <!--==============================
     Header Area
     ==============================-->
@@ -163,24 +162,22 @@
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul class="d-flex justify-content-start m-0 p-0">
                                     <li>
-                                        <a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home</a>
+                                        <a href="{{ route('home.index') }}"><i class="bi bi-house-door"></i> Home</a> <!-- Bootstrap Home icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('about.index')}}"><i class="fa fa-info-circle"></i> About</a>
+                                        <a href="{{route('about.index')}}"><i class="bi bi-info-circle"></i> About</a> <!-- Bootstrap Info Circle icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('user.subscriptions.create')}}"><i class="fa fa-cogs"></i> Subscriptions</a>
+                                        <a href="{{route('user.subscriptions.create')}}"><i class="bi bi-gear"></i> Subscriptions</a> <!-- Bootstrap Gear icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('user.subscriptions.index')}}"><i class="fa fa-cogs"></i>Active Subscriptions</a>
+                                        <a href="{{route('user.subscriptions.index')}}"><i class="bi bi-gear"></i> Active Subscriptions</a> <!-- Bootstrap Gear icon -->
                                     </li>
                                     <li>
-                                        
-                                        <a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Gym
-                                            Equipments</a>
+                                        <a href="{{ route('products.index') }}"><i class="bi bi-file-earmark"></i> Gym Equipments</a> <!-- Bootstrap File icon -->
                                     </li>
                                     <li>
-                                        <a href="{{ route('home.index') }}"><i class="fa fa-blog"></i> Blog</a>
+                                        <a href="{{ route('users.blogs.index') }}"><i class="bi bi-pencil"></i> Blog</a> <!-- Bootstrap Pencil icon -->
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a
@@ -191,7 +188,7 @@
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            <i class="fa fa-blog"></i> Videos
+                                            <i class="bi bi-play-circle"></i> Videos <!-- Bootstrap Play Circle icon -->
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <li>
@@ -200,16 +197,13 @@
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium Content</a>
                                             </li>
-                                            <!-- Add more items here if needed -->
                                         </ul>
                                     </li>
-                                    
                                     <li>
-                                        <a href="{{ route('contact.index') }}"><i class="fa fa-phone-alt"></i>
-                                            Contact</a>
+                                        <a href="{{ route('contact.index') }}"><i class="bi bi-telephone"></i> Contact</a> <!-- Bootstrap Phone icon -->
                                     </li>
                                 </ul>
-
+                        
                                 <!-- Cart Icon container aligned to the right -->
                                 <ul class="ms-auto m-0 p-0">
                                     <li>
@@ -217,8 +211,7 @@
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
                                                 class="cart-btn position-relative"
                                                 style="background: transparent; border: none; padding: 10px;">
-                                                <i class="fas fa-shopping-cart"
-                                                    style="font-size: 24px; color: #dc3545;"></i>
+                                                <i class="bi bi-cart" style="font-size: 24px; color: #dc3545;"></i> <!-- Bootstrap Cart icon -->
                                                 <span
                                                     class="cart-count badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
                                                     style="font-size: 12px; margin-top: -10px;">
@@ -229,8 +222,8 @@
                                     </li>
                                 </ul>
                             </nav>
-
                         </div>
+                        
                     </div>
                 </div>
             </div>

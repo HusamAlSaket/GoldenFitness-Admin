@@ -44,43 +44,47 @@
                         <i class="bi bi-chat-left"></i> <span>Messages</span>
                     </a>
                 </li>
-                @if(Auth::check() && Auth::user()->role=='superadmin')
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('reviews.index') }}">
-                        <i class="bi bi-star"></i> <span>Reviews</span>
-                    </a>
-                </li>
+                @if (Auth::check() && Auth::user()->role == 'superadmin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('reviews.index') }}">
+                            <i class="bi bi-star"></i> <span>Reviews</span>
+                        </a>
+                    </li>
                 @endif
-                @if(Auth::check() && Auth::user()->role=='superadmin')
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.index') }}">
-                        <i class="bi bi-tags"></i> <span>Categories</span>
-                    </a>
-                    @endif
+                @if (Auth::check() && Auth::user()->role == 'superadmin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('categories.index') }}">
+                            <i class="bi bi-tags"></i> <span>Categories</span>
+                        </a>
+                @endif
                 </li>
-                @if(Auth::check() && Auth::user()->role==='coach' || 'superadmin')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('videos.index') }}">
-                        <i class="bi bi-film"></i> <span>Videos</span>
-                    </a>
-                </li>
+                @if ((Auth::check() && Auth::user()->role === 'coach') || 'superadmin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('videos.index') }}">
+                            <i class="bi bi-film"></i> <span>Videos</span>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="nav-link" href="{{ route('blogs.index') }}">
+                        <i class="bi bi-newspaper"></i> <span>Blogs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
                     </a>
                     <form id="logout-form" method="POST" action="{{ route('logout') }}" class="d-none">
                         @csrf
                     </form>
                 </li>
-                
+
             </ul>
 
         </nav>
 
-    
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>

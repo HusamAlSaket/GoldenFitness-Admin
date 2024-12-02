@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -18,7 +19,9 @@ use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -147,6 +150,12 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     // orders routes 
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+    // blog route 
+
+    Route::resource('blogs', BlogController::class);
+
+
 });
 
 
@@ -200,6 +209,13 @@ Route::prefix('users')->group(function () {
     Route::get('/videos',[UserVideoController::class,'index'])->name('users.videos.index');
     // Route::get('/videos/{id}',[UserVideoController::class,'show'])->name('users.videos.show');
     Route::get('/premium-videos',[UserVideoController::class,'premiumContent'])->name('users.videos.premium');
+
+    // blog controller 
+    Route::get('/blogs',[UserBlogController::class,'index'])->name('users.blogs.index');
+    Route::get('/blogs/{id}', [UserBlogController::class, 'show'])->name('users.blogs.show');
+
+
+
 });
 
 
