@@ -128,10 +128,6 @@
             <div class="col-lg-12">
                 <div class="breadcumb-content">
                     <h1 class="breadcumb-title">About Us</h1>
-                    <ul class="breadcumb-menu">
-                        <li><a href="index.html">HOME</a></li>
-                        <li class="active">ABOUT US</li>
-                    </ul>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ class VideoBenefit extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['gym_video_id', 'benefit'];
+    protected $fillable = ['gym_video_id', 'benefit','is_premium'];
 
     // VideoBenefit belongs to a GymVideo
     public function gymVideo()

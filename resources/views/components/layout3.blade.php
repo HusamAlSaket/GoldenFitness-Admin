@@ -17,6 +17,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
     <!-- Bootstrap CSS -->
@@ -176,6 +182,28 @@
                                     <li>
                                         <a href="{{ route('home.index') }}"><i class="fa fa-blog"></i> Blog</a>
                                     </li>
+                                    <li class="nav-item dropdown">
+                                        <a
+                                            class="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="navbarDropdown"
+                                            role="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fa fa-blog"></i> Videos
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational Videos</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium Content</a>
+                                            </li>
+                                            <!-- Add more items here if needed -->
+                                        </ul>
+                                    </li>
+                                    
                                     <li>
                                         <a href="{{ route('contact.index') }}"><i class="fa fa-phone-alt"></i>
                                             Contact</a>

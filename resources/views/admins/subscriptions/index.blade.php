@@ -106,6 +106,8 @@
                 <tr>
                     <th>Subscription Type</th>
                     <th>Status</th>
+                    <th>Price</th>
+                    <th>Benefits</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Actions</th>
@@ -116,6 +118,8 @@
                     <tr>
                         <td>{{ $subscription->subscription_type }}</td>
                         <td>{{ $subscription->status }}</td>
+                        <td>{{$subscription->price}}</td>
+                        <td>{{$subscription->benefits}}</td>
                         <td>{{ $subscription->start_date }}</td>
                         <td>{{ $subscription->end_date }}</td>
                         <td>
@@ -172,6 +176,15 @@
                             <option value="Weekly">Weekly</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="price" name="price" class="form-control">
+                    </div>
+                    {{-- <div class="mb-3">
+                        <label class="form-label">Benefits</label>
+                        <input type="benefits" name="benefits" class="form-control">
+                    </div> --}}
+                    
                     <div class="mb-3">
                         <label class="form-label">Start Date</label>
                         <input type="date" name="start_date" class="form-control" required>
