@@ -72,8 +72,10 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 @if ($product->images->isNotEmpty())
@@ -99,35 +101,38 @@
 
         <!-- Pagination -->
         <div class="pagination-container">
-            <!-- Pagination Info -->
-            @if ($users->hasPages())
+            Pagination Info
+            @if ($products->hasPages())
                 <div class="pagination-info">
-                    Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} results 
-                    (Page {{ $users->currentPage() }} of {{ $users->lastPage() }})
+                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }}
+                    results
+                    (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
                 </div>
-        
-                <!-- Pagination Links -->
+
+                Pagination Links
                 <ul class="pagination">
                     <!-- Previous Button -->
-                    <li class="page-item {{ $users->onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
+                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev"
+                            aria-label="Previous">&lt;</a>
                     </li>
-        
+
                     <!-- Page Numbers -->
-                    @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
-                        <li class="page-item {{ $users->currentPage() == $page ? 'active' : '' }}">
+                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                        <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
                             <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                         </li>
                     @endforeach
-        
+
                     <!-- Next Button -->
-                    <li class="page-item {{ $users->hasMorePages() ? '' : 'disabled' }}">
-                        <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
+                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next"
+                            aria-label="Next">&gt;</a>
                     </li>
                 </ul>
             @endif
         </div>
-        
+
     </div>
 </div>
 

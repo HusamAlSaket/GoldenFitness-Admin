@@ -1,58 +1,74 @@
 @include('components.layout')
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <style>
-        :root {
-            --primary-red: #dc3545;
-            --light-red: #f8d7da;
-        }
-        body {
-            background-color: #f4f6f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .stat-card {
-            background-color: white !important;
-            border-left: 4px solid var(--primary-red);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
-        }
-        .card-header {
-            background-color: var(--primary-red) !important;
-        }
-        .fc-button-primary {
-            background-color: var(--primary-red) !important;
-            border-color: var(--primary-red) !important;
-        }
-        .fc-button-active {
-            background-color: #a71d2a !important;
-        }
-    </style>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Custom Styles -->
+<style>
+    :root {
+        --primary-red: #dc3545;
+        --light-red: #f8d7da;
+    }
+
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .stat-card {
+        background-color: white !important;
+        border-left: 4px solid var(--primary-red);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-header {
+        background-color: var(--primary-red) !important;
+    }
+
+    .fc-button-primary {
+        background-color: var(--primary-red) !important;
+        border-color: var(--primary-red) !important;
+    }
+
+    .fc-button-active {
+        background-color: #a71d2a !important;
+    }
+</style>
 </head>
+
 <body>
     <div class="container-fluid px-4 py-4">
-        <!-- Header -->
         <header class="mb-4 d-flex justify-content-between align-items-center">
             <h1 class="text-danger">GoldenFitness Dashboard</h1>
             <div class="d-flex align-items-center">
                 <span class="me-3 text-muted">Welcome, Admin</span>
                 <div class="dropdown">
                     <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle me-2"></i>Profile
+                        <i class="bi bi-person-circle me-2"></i> Profile
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                   
                     </ul>
                 </div>
+                <!-- Visible Logout Button -->
+                <a href="#"
+                   class="btn btn-outline-danger ms-3"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" class="d-none">
+                    @csrf
+                </form>
             </div>
         </header>
+        
 
         <!-- Stats Grid -->
         <div class="row g-4 mb-4">
@@ -141,12 +157,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-danger text-white text-center py-3 mt-4">
-        <div class="container">
-            <p class="mb-0">© 2024 GoldenFitness. All rights reserved.</p>
-        </div>
-    </footer>
+
 
     <!-- Bootstrap JS and Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -185,7 +196,8 @@
                     }
                 ],
                 eventClick: function(info) {
-                    alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps.description);
+                    alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps
+                        .description);
                 },
                 themeSystem: 'bootstrap5',
                 dayHeaderClassNames: ['bg-danger', 'text-white'],
@@ -250,4 +262,4 @@
             }
         });
     </script>
-@include('components.layout2')
+    @include('components.layout2')

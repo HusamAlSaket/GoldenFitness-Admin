@@ -302,4 +302,30 @@ body {
         padding: 8px 10px;
     }
 }
-
+:root {
+    --primary-red: #dc3545;
+    --light-red: #f8d7da;
+}
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.stat-card {
+    background-color: white !important;
+    border-left: 4px solid var(--primary-red);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+.card-header {
+    background-color: var(--primary-red) !important;
+}
+.fc-button-primary {
+    background-color: var(--primary-red) !important;
+    border-color: var(--primary-red) !important;
+}
+.fc-button-active {
+    background-color: #a71d2a !important;
+}

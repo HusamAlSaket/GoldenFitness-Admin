@@ -3,11 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldenFitness Admin Dashboard</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+    
+
 </head>
 
 <body>
@@ -24,109 +30,32 @@
                         <i class="bi bi-house-door"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">
-                        <i class="bi bi-person-circle"></i> <span>Users</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('products.index') }}">
-                        <i class="bi bi-box"></i> <span>Products</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('subscriptions.index') }}">
-                        <i class="bi bi-credit-card"></i> <span>Subscriptions</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('messages.index') }}">
-                        <i class="bi bi-chat-left"></i> <span>Messages</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('reviews.index') }}">
-                        <i class="bi bi-star"></i> <span>Reviews</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.index') }}">
-                        <i class="bi bi-tags"></i> <span>Categories</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('videos.index') }}">
-                        <i class="bi bi-film"></i> <span>Videos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('blogs.index') }}">
-                        <i class="bi bi-film"></i> <span>Blogs</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('orders.index') }}">
-                        <i class="bi bi-film"></i> <span>Orders</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
-                    </a>
-                    <form id="logout-form" method="POST" action="{{ route('logout') }}" class="d-none">
-                        @csrf
-                    </form>
-                </li>
+                <!-- Add more sidebar items here as needed -->
             </ul>
-
         </nav>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
+        <!-- Main content -->
+        <div class="main-content" id="mainContent">
+            <!-- Header -->
+
+
+            <!-- Stats Grid -->
+
+
+
+            <!-- Bootstrap JS and dependencies -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
                 // Sidebar toggle functionality
-                const toggleSidebarBtn = document.getElementById('toggleSidebar');
+                const toggleSidebar = document.getElementById('toggleSidebar');
                 const sidebar = document.getElementById('sidebar');
-                const mainContent = document.querySelector('.main-content');
-        
-                toggleSidebarBtn.addEventListener('click', function() {
+                const mainContent = document.getElementById('mainContent');
+
+                toggleSidebar.addEventListener('click', () => {
                     sidebar.classList.toggle('collapsed');
                     mainContent.classList.toggle('collapsed');
                 });
-        
-                // Highlight active nav-link based on the current path
-                const navLinks = document.querySelectorAll('.nav-link');
-                const currentPath = window.location.pathname;
-        
-                navLinks.forEach(link => {
-                    if (link.href.includes(currentPath)) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            });
-        </script>
-        
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.js"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const navLinks = document.querySelectorAll('.nav-link');
-                const currentPath = window.location.pathname;
-
-                navLinks.forEach(link => {
-                    if (link.href.includes(currentPath)) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            });
-        </script>
+            </script>
 </body>
 
 </html>

@@ -9,9 +9,10 @@
             <div class="stat-card">
                 <i class="bi bi-people"></i>
                 <div>
-                    <h5 class="mb-0">{{ $users->count() }}</h5>
+                    <h5 class="mb-0">{{ $totalUsers }}</h5>
                     <small class="text-muted">Total Users</small>
                 </div>
+                
             </div>
         </div>
         <div class="col-4">
