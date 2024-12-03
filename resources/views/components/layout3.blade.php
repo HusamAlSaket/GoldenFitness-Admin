@@ -5,51 +5,29 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Golden Fitness</title>
-    <meta name="description" content="Fitmas - Gym & Fitness HTML Template">
-    <meta name="keywords" content="Fitmas - Gym & Fitness HTML Template">
+    <meta name="description" content="Golden Fitness">
+    <meta name="keywords" content="Golden Fitness">
     <meta name="robots" content="INDEX,FOLLOW">
-
-    <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
     <!-- Favicons - Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Bundle with Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEJ03RbbkQgs2hhXAR5zV6b1usdfvI0r27OkSH9Yk0jA0p5TKw0e5MX0cBXwD" crossorigin="anonymous">
-
-    <!-- Bootstrap JS (Optional, for interactive components like dropdowns, modals, etc.) -->
-
-
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicons/favicon.png') }}">
     <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/ms-icon-144x144.png') }}">
-    <meta name="theme-color" content="#ffffff">
 
-    <!--==============================
-    Google Fonts
-    ============================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&amp;family=Kumbh+Sans:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
-
-    <!--==============================
-    All CSS File
-    ============================== -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
@@ -57,10 +35,6 @@
 </head>
 
 <body>
-
-    <!--********************************
-    Code Start From Here
-    ******************************** -->
 
     <!--==============================
     Preloader
@@ -85,16 +59,9 @@
             <div class="widget footer-widget">
                 <div class="widget-about">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{ asset('assets/img/logo-white.svg') }}" alt="Fitmas"></a>
+                        <a href="index.html"><img src="{{ asset('assets/img/logo-white.svg') }}" alt="Gold"></a>
                     </div>
-                    <p class="about-text">A gym, also known as a fitness center or health club, is a facility dedicated
-                        to physical fitness and exercise gyms and typically offer a range</p>
-                    <div class="social-btn style2">
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -107,33 +74,38 @@
         <div class="mobile-menu-area text-center">
             <button class="menu-toggle"><i class="bi bi-x"></i></button> <!-- Bootstrap close icon -->
             <div class="mobile-logo">
-                <a href="index.html"><img src="{{ asset('assets/img/logo.svg') }}" alt="Fitmas"></a>
+                <a href="index.html"><img src="{{ asset('assets/img/logo.svg') }}" alt="Gold"></a>
             </div>
             <div class="mobile-menu">
                 <ul>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('home.index') }}">Home <i class="bi bi-house-door"></i></a> <!-- Bootstrap Home icon -->
+                        <a href="{{ route('home.index') }}">Home <i class="bi bi-house-door"></i></a>
+                        <!-- Bootstrap Home icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('products.index') }}">Gym Equipments <i class="bi bi-file-earmark"></i></a> <!-- Bootstrap File icon -->
+                        <a href="{{ route('products.index') }}">Gym Equipments <i class="bi bi-file-earmark"></i></a>
+                        <!-- Bootstrap File icon -->
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">Project <i class="bi bi-collection"></i></a> <!-- Bootstrap Project icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('user.subscriptions.index') }}">Subscriptions <i class="bi bi-gear"></i></a> <!-- Bootstrap Gear icon -->
+                        <a href="{{ route('user.subscriptions.index') }}">Subscriptions <i class="bi bi-gear"></i></a>
+                        <!-- Bootstrap Gear icon -->
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="{{ route('users.blogs.index') }}">Blog <i class="bi bi-pencil"></i></a> <!-- Bootstrap Blog icon -->
+                        <a href="{{ route('users.blogs.index') }}">Blog <i class="bi bi-pencil"></i></a>
+                        <!-- Bootstrap Blog icon -->
                     </li>
                     <li>
-                        <a href="{{ route('contact.index') }}">Contact <i class="bi bi-telephone"></i></a> <!-- Bootstrap Phone icon -->
+                        <a href="{{ route('contact.index') }}">Contact <i class="bi bi-telephone"></i></a>
+                        <!-- Bootstrap Phone icon -->
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    
+
     <!--==============================
     Header Area
     ==============================-->
@@ -162,48 +134,56 @@
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul class="d-flex justify-content-start m-0 p-0">
                                     <li>
-                                        <a href="{{ route('home.index') }}"><i class="bi bi-house-door"></i> Home</a> <!-- Bootstrap Home icon -->
+                                        <a href="{{ route('home.index') }}"><i class="bi bi-house-door"></i> Home</a>
+                                        <!-- Bootstrap Home icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('about.index')}}"><i class="bi bi-info-circle"></i> About</a> <!-- Bootstrap Info Circle icon -->
+                                        <a href="{{ route('about.index') }}"><i class="bi bi-info-circle"></i>
+                                            About</a> <!-- Bootstrap Info Circle icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('user.subscriptions.create')}}"><i class="bi bi-gear"></i> Subscriptions</a> <!-- Bootstrap Gear icon -->
+                                        <a href="{{ route('user.subscriptions.create') }}"><i class="bi bi-gear"></i>
+                                            Subscriptions</a> <!-- Bootstrap Gear icon -->
                                     </li>
                                     <li>
-                                        <a href="{{route('user.subscriptions.index')}}"><i class="bi bi-gear"></i> Active Subscriptions</a> <!-- Bootstrap Gear icon -->
+                                        <a href="{{ route('user.subscriptions.index') }}"><i class="bi bi-gear"></i>
+                                            Active Subscriptions</a> <!-- Bootstrap Gear icon -->
                                     </li>
                                     <li>
-                                        <a href="{{ route('products.index') }}"><i class="bi bi-file-earmark"></i> Gym Equipments</a> <!-- Bootstrap File icon -->
+                                        <a href="{{ route('products.index') }}"><i class="bi bi-file-earmark"></i>
+                                            Gym Equipments</a> <!-- Bootstrap File icon -->
                                     </li>
                                     <li>
-                                        <a href="{{ route('users.blogs.index') }}"><i class="bi bi-pencil"></i> Blog</a> <!-- Bootstrap Pencil icon -->
+                                        <a href="{{ route('users.blogs.index') }}"><i class="bi bi-pencil"></i>
+                                            Blog</a> <!-- Bootstrap Pencil icon -->
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('users.supplements.index') }}"><i class="bi bi-star"></i>
+                                            Supplements</a> <!-- Bootstrap Pencil icon -->
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a
-                                            class="nav-link dropdown-toggle"
-                                            href="#"
-                                            id="navbarDropdown"
-                                            role="button"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                        >
-                                            <i class="bi bi-play-circle"></i> Videos <!-- Bootstrap Play Circle icon -->
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-play-circle"></i> Videos
+                                            <!-- Bootstrap Play Circle icon -->
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <li>
-                                                <a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational Videos</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('users.videos.index') }}">Educational Videos</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium Content</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('users.videos.premium') }}">Premium Content</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="{{ route('contact.index') }}"><i class="bi bi-telephone"></i> Contact</a> <!-- Bootstrap Phone icon -->
+                                        <a href="{{ route('contact.index') }}"><i class="bi bi-telephone"></i>
+                                            Contact</a> <!-- Bootstrap Phone icon -->
                                     </li>
                                 </ul>
-                        
+
                                 <!-- Cart Icon container aligned to the right -->
                                 <ul class="ms-auto m-0 p-0">
                                     <li>
@@ -211,7 +191,8 @@
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
                                                 class="cart-btn position-relative"
                                                 style="background: transparent; border: none; padding: 10px;">
-                                                <i class="bi bi-cart" style="font-size: 24px; color: #dc3545;"></i> <!-- Bootstrap Cart icon -->
+                                                <i class="bi bi-cart" style="font-size: 24px; color: #dc3545;"></i>
+                                                <!-- Bootstrap Cart icon -->
                                                 <span
                                                     class="cart-count badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
                                                     style="font-size: 12px; margin-top: -10px;">
@@ -223,131 +204,12 @@
                                 </ul>
                             </nav>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <style>
-        #cartModal .modal-dialog {
-            max-width: 650px;
-            margin: 0;
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            transform: none;
-            transition: all 0.3s ease;
-        }
-
-        #cartModal .modal-content {
-            height: 100%;
-            border-radius: 0;
-            border-left: 4px solid #dc3545;
-            box-shadow: -8px 0 20px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
-            padding: 20px;
-        }
-
-        #cartModal .modal-header {
-            background: linear-gradient(90deg, #dc3545 0%, #ff6b6b 100%);
-            color: white;
-            padding: 20px;
-            border-bottom: none;
-        }
-
-        #cartModal .modal-title {
-            color: white;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        #cartModal .table {
-            margin-bottom: 0;
-            font-size: 16px;
-        }
-
-        #cartModal .table thead {
-            background: rgba(220, 53, 69, 0.1);
-        }
-
-        #cartModal .table thead th {
-            color: #dc3545;
-            font-weight: 600;
-            text-transform: uppercase;
-            border-bottom: 2px solid #dc3545;
-        }
-
-        #cartModal .table tbody tr:hover {
-            background-color: rgba(220, 53, 69, 0.05);
-            transition: background-color 0.3s ease;
-        }
-
-        #cartModal .modal-footer {
-            background: linear-gradient(to right, #f8f9fa, #ffffff);
-            border-top: 2px solid #dc3545;
-            padding: 15px 20px;
-        }
-
-        #cartModal .table img {
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-        }
-
-        .cart-btn {
-            background-color: #dc3545;
-            color: white;
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .cart-btn:hover {
-            background-color: #ff6b6b;
-            transform: scale(1.1);
-        }
-
-        .cart-count {
-            font-size: 14px;
-            background-color: #ff6b6b;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 50%;
-        }
-
-        .btn-sm {
-            font-size: 14px;
-            padding: 5px 10px;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-        }
-
-        .btn-danger:hover {
-            background-color: #ff6b6b;
-        }
-
-        @media (max-width: 768px) {
-            #cartModal .modal-dialog {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .cart-btn {
-                padding: 15px;
-            }
-        }
-    </style>
 
 
 
@@ -477,10 +339,3 @@
             </div>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-</body>
-
-</html>

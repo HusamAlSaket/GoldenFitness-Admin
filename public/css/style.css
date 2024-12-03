@@ -10,6 +10,16 @@ body {
     background-color: var(--light-bg);
     font-family: "Arial", sans-serif;
 }
+/* Ensure the container accounts for the sidebar width */
+.container {
+    margin-left: 250px; /* Adjust this value to match the sidebar width */
+    transition: all 0.3s ease;
+}
+
+.sidebar.collapsed + .container {
+    margin-left: 80px; /* Adjust for collapsed sidebar width */
+}
+
 
 .sidebar {
     background: linear-gradient(

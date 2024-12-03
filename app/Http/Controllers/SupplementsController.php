@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class UserProductController extends Controller
+class SupplementsController extends Controller
 {
     public function index(Request $request)
     {
-        $excludedCategories = ['Vitamins and Minerals', 'Amino Acids', 'Creatine', 'Mass Gainer Protein','Whey Protein','isolate Proteins'];
+        $excludedCategories = ['Dumbbells', 'Barbells', 'Plates', 'Vests'];
     
         // Get IDs of the excluded categories
         $excludedCategoryIds = \App\Models\Category::whereIn('category_name', $excludedCategories)->pluck('id');
@@ -25,12 +25,7 @@ class UserProductController extends Controller
         // Pass categories to the view, excluding the unwanted ones
         $categories = \App\Models\Category::whereNotIn('id', $excludedCategoryIds)->get();
     
-        return view('users.products.index', compact('products', 'categories'));
+        return view('users.supplements.index', compact('products', 'categories'));
     }
     
-
-    public function show(Product $product)
-    {
-        return view('users.products.show', compact('product'));
-    }
 }

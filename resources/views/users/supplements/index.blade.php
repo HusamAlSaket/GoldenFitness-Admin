@@ -1,8 +1,6 @@
 @include('components.layout3')
-
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
 
 <!-- Breadcrumb -->
 <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
@@ -45,10 +43,12 @@
                         <div class="product-img mb-3">
                             @if ($product->images->isNotEmpty())
                                 <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                    alt="{{ $product->name }}" class="product-image">
+                                    alt="{{ $product->name }}" class="product-image"
+                                    style="width: 100%; max-width: 300px; height: 250px; object-fit: cover; border-radius: 10px;">
                             @else
                                 <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                    class="product-image">
+                                    class="product-image"
+                                    style="width: 100%; max-width: 300px; height: 250px; object-fit: cover; border-radius: 10px;">
                             @endif
                         </div>
                         <h3 class="product-title">{{ $product->name }}</h3>
@@ -100,33 +100,34 @@
         <!-- Pagination -->
         <div class="pagination-container">
             <!-- Pagination Info -->
-            @if ($users->hasPages())
+            @if ($products->hasPages())
                 <div class="pagination-info">
-                    Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} results 
-                    (Page {{ $users->currentPage() }} of {{ $users->lastPage() }})
+                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} results (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
                 </div>
         
                 <!-- Pagination Links -->
                 <ul class="pagination">
                     <!-- Previous Button -->
-                    <li class="page-item {{ $users->onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
+                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
                     </li>
         
                     <!-- Page Numbers -->
-                    @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
-                        <li class="page-item {{ $users->currentPage() == $page ? 'active' : '' }}">
+                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                        <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
                             <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                         </li>
                     @endforeach
         
                     <!-- Next Button -->
-                    <li class="page-item {{ $users->hasMorePages() ? '' : 'disabled' }}">
-                        <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
+                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
                     </li>
                 </ul>
             @endif
         </div>
+        
+        
         
     </div>
 </div>

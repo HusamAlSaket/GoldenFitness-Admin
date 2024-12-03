@@ -19,6 +19,7 @@ use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SupplementsController;
 use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
 
@@ -149,7 +150,7 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
     // orders routes 
 
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::resource('orders', OrderController::class);
 
     // blog route 
 
@@ -214,7 +215,7 @@ Route::prefix('users')->group(function () {
     Route::get('/blogs',[UserBlogController::class,'index'])->name('users.blogs.index');
     Route::get('/blogs/{id}', [UserBlogController::class, 'show'])->name('users.blogs.show');
 
-
+    Route::Get('/supplements',[SupplementsController::class,'index'])->name('users.supplements.index');
 
 });
 

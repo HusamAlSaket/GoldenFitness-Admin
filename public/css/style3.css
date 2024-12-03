@@ -96,3 +96,232 @@
         margin: 0 auto 20px;
     }
 }
+:root {
+    --primary-red: #dc3545;
+    --secondary-red: #ff6b6b;
+    --white: #ffffff;
+    --black: #333333;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.breadcumb-wrapper {
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+
+.breadcumb-title {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.form-select {
+    border-color: var(--primary-red);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-red);
+    border-color: var(--secondary-red);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.product {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product:hover .product-img img {
+    transform: scale(1.1);
+}
+
+.product-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: var(--primary-red);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.btn.style2 {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn.style2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+.pagination .page-link {
+    color: var(--primary-red);
+    background-color: var(--white);
+    border-color: var(--primary-red);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border-color: var(--primary-red);
+}
+
+.pagination .page-link:hover {
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+#cartModal .modal-dialog {
+    max-width: 650px;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    transform: none;
+    transition: all 0.3s ease;
+}
+
+#cartModal .modal-content {
+    height: 100%;
+    border-radius: 0;
+    border-left: 4px solid #dc3545;
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    padding: 20px;
+}
+
+#cartModal .modal-header {
+    background: linear-gradient(90deg, #dc3545 0%, #ff6b6b 100%);
+    color: white;
+    padding: 20px;
+    border-bottom: none;
+}
+
+#cartModal .modal-title {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#cartModal .table {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+#cartModal .table thead {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+#cartModal .table thead th {
+    color: #dc3545;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #dc3545;
+}
+
+#cartModal .table tbody tr:hover {
+    background-color: rgba(220, 53, 69, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+#cartModal .modal-footer {
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-top: 2px solid #dc3545;
+    padding: 15px 20px;
+}
+
+#cartModal .table img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.cart-btn {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cart-btn:hover {
+    background-color: #ff6b6b;
+    transform: scale(1.1);
+}
+
+.cart-count {
+    font-size: 14px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.btn-sm {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+    #cartModal .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .cart-btn {
+        padding: 15px;
+    }
+}

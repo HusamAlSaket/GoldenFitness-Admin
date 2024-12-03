@@ -54,8 +54,7 @@
             padding: 20px 0;
         }
     </style>
-</head>
-<body>
+
     <div class="blog-hero">
         <div class="container">
             <h1 class="display-4">Fitness Blogs </h1>
@@ -87,6 +86,7 @@
             @endforeach
         </div>
     </div>
+
 
 
 

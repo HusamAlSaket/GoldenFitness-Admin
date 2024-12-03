@@ -262,3 +262,51 @@
         });
     });
 </script>
+<!-- Pagination -->
+@if ($users->hasPages())
+    <nav aria-label="User Pagination" class="d-flex flex-column align-items-center my-4">
+        <!-- Pagination Links -->
+        <ul class="pagination justify-content-center mb-2">
+            <!-- First Button -->
+            <li class="page-item {{ $users->onFirstPage() ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $users->url(1) }}" aria-label="First" style="background-color: white; color: red; border: 1px solid red;">&laquo;&laquo; First</a>
+            </li>
+
+            <!-- Previous Button -->
+            <li class="page-item {{ $users->onFirstPage() ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev" aria-label="Previous" style="background-color: white; color: red; border: 1px solid red;">&laquo;</a>
+            </li>
+
+            <!-- Page Numbers -->
+            @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+                @if (abs($users->currentPage() - $page) <= 1) <!-- Display current, previous, and next pages only -->
+                    <li class="page-item {{ $users->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}" 
+                           style="background-color: {{ $users->currentPage() == $page ? '#ff4d4d' : 'white' }}; 
+                                  color: {{ $users->currentPage() == $page ? 'white' : 'red' }}; 
+                                  border: 1px solid red;">
+                            {{ $page }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+
+            <!-- Next Button -->
+            <li class="page-item {{ $users->hasMorePages() ? '' : 'disabled' }}">
+                <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next" aria-label="Next" style="background-color: white; color: red; border: 1px solid red;">&raquo;</a>
+            </li>
+
+            <!-- Last Button -->
+            <li class="page-item {{ $users->onLastPage() ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $users->url($users->lastPage()) }}" aria-label="Last" style="background-color: white; color: red; border: 1px solid red;">Last &raquo;&raquo;</a>
+            </li>
+        </ul>
+
+        <!-- Pagination Info -->
+        <div class="text-center" style="font-size: 14px; color: red;">
+            Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} results 
+            (Page {{ $users->currentPage() }} of {{ $users->lastPage() }})
+        </div>
+    </nav>
+@endif
+

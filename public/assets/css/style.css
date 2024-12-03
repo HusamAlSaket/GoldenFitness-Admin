@@ -2018,7 +2018,7 @@ textarea.is-invalid {
 }
 /*------------------- 3.2. Buttons -------------------*/
 .btn {
-  position: relative;
+  /* position: relative;
   z-index: 2;
   vertical-align: middle;
   display: inline-block;
@@ -2030,10 +2030,10 @@ textarea.is-invalid {
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
-  padding: 18.5px 35px 20.5px;
+  padding: 18.5px 35px 20.5px; */
 }
 .btn::before {
-  position: absolute;
+  /* position: absolute;
   content: "";
   left: 3px;
   top: 0;
@@ -2044,7 +2044,7 @@ textarea.is-invalid {
   z-index: -1;
   transition: 0.4s;
   border-radius: 10px;
-  transform: skewX(-10deg);
+  transform: skewX(-10deg); */
 }
 .btn:focus, .btn:hover, .btn:active {
   color: var(--white-color);
@@ -2247,9 +2247,9 @@ textarea.is-invalid {
   border-radius: 50%;
   transition: all ease 0.4s;
 }
-.play-btn:after {
+/* .play-btn:after {
   animation-delay: 2s;
-}
+} */
 .play-btn:hover i {
   background-color: var(--theme-color);
 }
@@ -3191,7 +3191,7 @@ a.text-theme:hover,
   animation-fill-mode: both;
   animation-iteration-count: 1;
   animation-duration: 1s;
-  animation-delay: 0.3s;
+  /* animation-delay: 0.3s; */
   animation-name: var(--animation-name);
 }
 
@@ -7216,7 +7216,7 @@ li.trackback {
   border-radius: 0;
 }
 .popup-search-box.show form {
-  transition-delay: 0.5s;
+  /* transition-delay: 0.5s; */
   transform: translate(-50%, -50%) scale(1);
 }
 
@@ -7278,7 +7278,7 @@ li.trackback {
   position: relative;
   right: -500px;
   cursor: auto;
-  transition-delay: 1s;
+  /* transition-delay: 1s; */
   transition: right ease 1s;
 }
 .sidemenu-wrapper .sidemenu-content::-webkit-scrollbar-track {
@@ -7621,16 +7621,16 @@ table.woocommerce-product-attributes {
   justify-content: center;
 }
 .login-tab button.nav-link {
-  background-color: var(--smoke-color);
+  /* background-color: var(--smoke-color);
   color: var(--title-color);
   padding: 11px 39px;
   font-size: 18px;
   font-weight: 500;
-  border-radius: 15px ​15px 0;
+  border-radius: 15px ​15px 0; */
 }
 .login-tab button.nav-link.active {
-  background-color: var(--theme-color);
-  color: var(--white-color);
+  /* background-color: var(--theme-color);
+  color: var(--white-color); */
 }
 
 .star-rating {
