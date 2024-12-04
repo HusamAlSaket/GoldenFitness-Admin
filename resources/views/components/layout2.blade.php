@@ -70,6 +70,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('recipes.index') }}">
+                        <i class="bi bi-egg-fried"></i> <span>Recipes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
@@ -89,16 +94,16 @@
                 const toggleSidebarBtn = document.getElementById('toggleSidebar');
                 const sidebar = document.getElementById('sidebar');
                 const mainContent = document.querySelector('.main-content');
-        
+
                 toggleSidebarBtn.addEventListener('click', function() {
                     sidebar.classList.toggle('collapsed');
                     mainContent.classList.toggle('collapsed');
                 });
-        
+
                 // Highlight active nav-link based on the current path
                 const navLinks = document.querySelectorAll('.nav-link');
                 const currentPath = window.location.pathname;
-        
+
                 navLinks.forEach(link => {
                     if (link.href.includes(currentPath)) {
                         link.classList.add('active');
@@ -108,12 +113,10 @@
                 });
             });
         </script>
-        
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-
-
             // Search functionality
             const searchInput = document.querySelector('input[placeholder="Search products..."]');
             searchInput.addEventListener('keyup', function() {

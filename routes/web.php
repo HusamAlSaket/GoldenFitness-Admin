@@ -22,6 +22,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SupplementsController;
 use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
+use App\Http\Controllers\RecipeController;
+
 
 
 Route::get('/', function () {
@@ -155,6 +157,11 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     // blog route 
 
     Route::resource('blogs', BlogController::class);
+
+    // Recipe Route
+
+    Route::resource('recipes', RecipeController::class);
+
 
 
 });
