@@ -22,4 +22,4 @@ class ReplyToMessageMail extends Mailable
                     ->subject('Reply to your message')
                     ->with(['replyContent' => $this->replyContent]);
     }
-}
+} 

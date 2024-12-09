@@ -95,7 +95,7 @@
                                                     <label for="reply" class="form-label">Reply</label>
                                                     <textarea class="form-control" name="reply" id="reply-{{ $message->id }}" rows="3"></textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Send Reply</button>
+                                                <button type="submit" class="btn btn-danger">Send Reply</button>
                                             </form>
                                         </div>
                                     </div>
