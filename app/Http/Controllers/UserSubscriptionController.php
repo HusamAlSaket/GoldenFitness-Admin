@@ -10,11 +10,11 @@ class UserSubscriptionController extends Controller
 {
 
 
-    public function index()
-    {
-        $subscriptions = Subscription::where('user_id', Auth::id())->get();
-        return view('users.subscriptions.index', compact('subscriptions'));
-    }
+    // public function index()
+    // {
+    //     $subscriptions = Subscription::where('user_id', Auth::id())->get();
+    //     return view('users.subscriptions.index', compact('subscriptions'));
+    // }
 
     public function show($id)
     {
@@ -26,42 +26,74 @@ class UserSubscriptionController extends Controller
     public function create()
     {
         $benefits = [
-        'Weekly' => ['Gym Access'],
-        'Monthly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test'],
-        'Yearly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test', 'Blogs', 'Premium Video Content'],
-    ];
+            'Weekly' => ['Gym Access'],
+            'Monthly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test'],
+            'Yearly' => ['Gym Access', 'Sauna Access', 'Jacuzzi Access', 'In-body Test', 'Blogs', 'Premium Video Content'],
+        ];
+    
+        // Check if the user has an active subscription
+        $activeSubscription = Subscription::where('user_id', Auth::id())
+            ->where('status', 'active')
+            ->first();
+    
+        return view('users.subscriptions.create', compact('benefits', 'activeSubscription'));
+    }
+    public function cancel($id)
+{
+    $subscription = Subscription::where('user_id', Auth::id())->findOrFail($id);
 
-    return view('users.subscriptions.create', compact('benefits'));
+    if ($subscription->status !== 'active') {
+        return redirect()->route('user.subscriptions.index')->with('error', 'This subscription is already canceled.');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'subscription_type' => 'required|in:Weekly,Monthly,Yearly',
-        ]);
-        $benefits = $this->getSubscriptionBenefits($request->subscription_type);
-        $benefitsJson = json_encode($benefits);
-        $price = $this->getSubscriptionPrice($request->subscription_type);
+    $subscription->update(['status' => 'expired', 'end_date' => now()]);
 
-        // Ensure user is authenticated and user_id is set
-        $userId = Auth::id();
-        if (!$userId) {
-            return redirect()->route('login')->with('error', 'You must be logged in to subscribe.');
-        }
-        $benefitsJson = $benefitsJson ?: json_encode([]); // Default to empty array if benefits are null
+    return redirect()->route('user.subscriptions.create')
+        ->with('success', 'Subscription canceled successfully.');
+}
 
-        Subscription::create([
-            'user_id' => $userId,
-            'subscription_type' => $request->subscription_type,
-            'start_date' => now(),
-            'end_date' => $this->calculateEndDate($request->subscription_type),
-            'status' => 'active',
-            'price' => $price,
-            'benefits' => $benefitsJson,
-        ]);
-        return redirect()->route('user.subscriptions.index')
-            ->with('success', 'Subscription activated successfully!');
+
+public function store(Request $request)
+{
+    $request->validate([
+        'subscription_type' => 'required|in:Weekly,Monthly,Yearly',
+    ]);
+
+    $userId = Auth::id();
+
+    // Ensure the user is authenticated
+    if (!$userId) {
+        return redirect()->route('login')->with('error', 'You must be logged in to subscribe.');
     }
+
+    // Check for existing active subscription
+    $activeSubscription = Subscription::where('user_id', $userId)
+        ->where('status', 'active')
+        ->first();
+
+    if ($activeSubscription) {
+        return redirect()->route('user.subscriptions.create')
+            ->with('error', 'You already have an active subscription. Please cancel it before subscribing to a new plan.');
+    }
+
+    $benefits = $this->getSubscriptionBenefits($request->subscription_type);
+    $benefitsJson = json_encode($benefits);
+    $price = $this->getSubscriptionPrice($request->subscription_type);
+
+    Subscription::create([
+        'user_id' => $userId,
+        'subscription_type' => $request->subscription_type,
+        'start_date' => now(),
+        'end_date' => $this->calculateEndDate($request->subscription_type),
+        'status' => 'active',
+        'price' => $price,
+        'benefits' => $benefitsJson,
+    ]);
+
+    return redirect()->route('user.subscriptions.create')
+        ->with('success', 'Subscription activated successfully!');
+}
+
 
     private function calculateEndDate($type)
     {

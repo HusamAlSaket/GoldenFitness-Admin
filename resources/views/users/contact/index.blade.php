@@ -1,25 +1,28 @@
 @include('components.layout3')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <!-- Hero Section -->
-<div class="breadcumb-wrapper" style="height:700px; position: relative;">
+<div class="breadcumb-wrapper" 
+     style="height: 700px; background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); 
+            background-size: cover; background-position: center; position: relative;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <!-- Image with centered text -->
+                <!-- Centered Text -->
                 <div class="breadcumb-content"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                     style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                            text-align: center; color: white;">
                     <h1 class="breadcumb-title">Contact Us</h1>
                     <ul class="breadcumb-menu">
-                        <!-- Optionally, add breadcrumb items here -->
+                        <!-- Add breadcrumb items here if needed -->
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Background Image -->
-    <img src="{{ asset('assets/img/hero/hero_bg_2_1.png') }}" alt="Hero Image" class="w-100"
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
 </div>
+
+
 
 <!-- Contact Information Section -->
 <div class="contact-area space bg-smoke2">

@@ -33,59 +33,11 @@
             </div>
         </div>
     </div>
-<style>
-    /* Action Buttons Styles */
-.table td .btn {
-    padding: 6px 10px; /* Slightly reduced padding */
-    font-size: 16px; /* Larger icon size for better visibility */
-    margin: 0 5px; /* Reduced margin for better spacing */
-    text-align: center;
-}
 
-/* Action Buttons Color */
-.table td .btn-info {
-    background-color: #00bcd4;
-    color: white;
-}
-
-.table td .btn-info:hover {
-    background-color: #008c9e;
-}
-
-.table td .btn-warning {
-    background-color: #ff9800;
-    color: white;
-}
-
-.table td .btn-warning:hover {
-    background-color: #f57c00;
-}
-
-.table td .btn-danger {
-    background-color: #f44336;
-    color: white;
-}
-
-.table td .btn-danger:hover {
-    background-color: #d32f2f;
-}
-
-/* Action Buttons Container */
-.table td {
-    white-space: nowrap; /* Prevent text wrapping */
-    padding: 8px 10px; /* Adjust cell padding for better alignment */
-}
-
-/* Table Hover Effect */
-.table tbody tr:hover {
-    background-color: #f0a1a1; /* Light red hover effect */
-}
-
-</style>
     <!-- Subscriptions Table Container -->
     <div class="subscriptions-table-container">
         <div class="subscriptions-header d-flex justify-content-between  align-items-center mb-4">
-            <h4>Subscription List</h4>
+            <h4 class="text-danger">Subscription List</h4>
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('subscriptions.index') }}" class="search-form">
                     <input type="text" name="search" placeholder="Search products..." value="{{ request()->get('search') }}">
@@ -122,30 +74,28 @@
                         <td>{{$subscription->benefits}}</td>
                         <td>{{ $subscription->start_date }}</td>
                         <td>{{ $subscription->end_date }}</td>
-                        <td>
+                        <td class="d-flex">
                             <!-- View Action -->
-                            <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm">
-                                <i class="bi bi-eye"></i> View
+                            <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm" style="height: 30px; width: 30px;">
+                                <i class="bi bi-eye"></i>
                             </a>
-
+                        
                             <!-- Edit Action -->
-                            <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
-                                <i class="bi bi-pencil"></i> Edit
+                            <a href="#" class="btn btn-warning btn-sm ms-1" style="height: 30px; width: 30px;" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
+                                <i class="bi bi-pencil"></i>
                             </a>
-
+                        
                             <!-- Delete Action -->
-                            <form id="delete-form-{{ $subscription->id }}"
-                                action="{{ route('subscriptions.destroy', $subscription->id) }}" method="POST"
-                                style="display: inline;">
+                            <form id="delete-form-{{ $subscription->id }}" action="{{ route('subscriptions.destroy', $subscription->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger btn-sm"
-                                    onclick="confirmDelete({{ $subscription->id }})">
-                                    <i class="bi bi-trash"></i> Delete
+                                <button type="button" class="btn btn-danger btn-sm ms-1" style="height: 30px; width: 30px;" onclick="confirmDelete({{ $subscription->id }})">
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>
+                        
+
                     </tr>
                 @endforeach
             </tbody>

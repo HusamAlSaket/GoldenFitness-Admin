@@ -207,11 +207,12 @@ Route::prefix('users')->group(function () {
     Route::post('/subscriptions', [UserSubscriptionController::class, 'store'])->name('user.subscriptions.store');  
 
     // List all subscriptions for the logged-in user (GET request)
-    Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('user.subscriptions.index');  
+    // Route::get('/subscriptions', [UserSubscriptionController::class, 'index'])->name('user.subscriptions.index');  
 
     // Show a single subscription (GET request)
     Route::get('/subscriptions/{id}', [UserSubscriptionController::class, 'show'])->name('user.subscriptions.show');  
-
+    Route::post('/subscriptions/{id}/cancel', [UserSubscriptionController::class, 'cancel'])->name('user.subscriptions.cancel');
+    
     // videos controller 
 
     Route::get('/videos',[UserVideoController::class,'index'])->name('users.videos.index');

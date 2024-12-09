@@ -1,18 +1,5 @@
 @extends('components.layout2')
-<style>
-    /* Ensure proper spacing between action buttons */
-    .action-buttons .btn {
-        margin-right: 5px;
-        /* Adjust spacing between buttons */
-        min-width: 40px;
-        /* Optional: makes buttons of uniform size */
-    }
 
-    /* Optional: Hover effects for buttons */
-    .action-buttons .btn:hover {
-        opacity: 0.85;
-    }
-</style>
 <!-- Main Content -->
 <main class="main-content" id="mainContent">
     <!-- Recipe Stats Grid -->
@@ -24,19 +11,12 @@
                 <small class="text-muted">Total Recipes</small>
             </div>
         </div>
-        <div class="stat-card">
-            <i class="bi bi-tags"></i>
-            <div>
-                <h5 class="mb-0">{{ $categories->count() }}</h5>
-                <small class="text-muted">Recipe Categories</small>
-            </div>
-        </div>
     </div>
 
     <!-- Recipes Table Container -->
     <div class="recipes-table-container">
         <div class="recipes-header d-flex justify-content-between align-items-center mb-4">
-            <h4>Recipe List</h4>
+            <h4 class="text-danger">Recipe List</h4>
             <div class="d-flex align-items-center">
                 <input type="text" class="form-control me-2" placeholder="Search recipes..." style="width: 200px;">
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
@@ -44,7 +24,7 @@
                 </button>
             </div>
         </div>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Image</th>

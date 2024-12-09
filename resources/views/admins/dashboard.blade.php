@@ -4,45 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<!-- Custom Styles -->
-<style>
-    :root {
-        --primary-red: #dc3545;
-        --light-red: #f8d7da;
-    }
 
-    body {
-        background-color: #f4f6f9;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .stat-card {
-        background-color: white !important;
-        border-left: 4px solid var(--primary-red);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .stat-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-    }
-
-    .card-header {
-        background-color: var(--primary-red) !important;
-    }
-
-    .fc-button-primary {
-        background-color: var(--primary-red) !important;
-        border-color: var(--primary-red) !important;
-    }
-
-    .fc-button-active {
-        background-color: #a71d2a !important;
-    }
-</style>
-</head>
-
-<body>
     <div class="container-fluid px-4 py-4">
         <header class="mb-4 d-flex justify-content-between align-items-center">
             <h1 class="text-danger">GoldenFitness Dashboard</h1>
@@ -70,58 +32,43 @@
         </header>
         
 
-        <!-- Stats Grid -->
-        <div class="row g-4 mb-4">
-            <div class="col-md-3">
-                <div class="stat-card card shadow-sm border-0 h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="bi bi-people fs-2 text-danger me-3"></i>
-                        <div>
-                            <h3 class="card-title text-danger mb-1">{{ $totalUsers }}</h3>
-                            <p class="text-muted mb-0">Total Users</p>
-                        </div>
+        <div class="row message-stats mb-4">
+            <div class="col-4">
+                <div class="stat-card">
+                    <i class="bi bi-people"></i>
+                    <div>
+                        <h5 class="mb-0">{{ $totalUsers }}</h5>
+                        <small class="text-muted">Total Users</small>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="stat-card card shadow-sm border-0 h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="bi bi-box fs-2 text-danger me-3"></i>
-                        <div>
-                            <h3 class="card-title text-danger mb-1">{{ $totalProducts }}</h3>
-                            <p class="text-muted mb-0">Products</p>
-                        </div>
+            <div class="col-4">
+                <div class="stat-card">
+                    <i class="bi bi-calendar"></i>
+                    <div>
+                        <h5 class="mb-0">{{ $totalProducts }}</h5>
+                        <small class="text-muted">Total Products</small>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="stat-card card shadow-sm border-0 h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="bi bi-cart fs-2 text-danger me-3"></i>
-                        <div>
-                            <h3 class="card-title text-danger mb-1">{{ $totalOrders }}</h3>
-                            <p class="text-muted mb-0">Orders</p>
-                        </div>
+            <div class="col-4">
+                <div class="stat-card">
+                    <i class="bi bi-clock"></i>
+                    <div>
+                        <h5 class="mb-0">{{ $totalOrders }}</h5>
+                        <small class="text-muted">Total Orders</small>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="stat-card card shadow-sm border-0 h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="bi bi-cash-coin fs-2 text-danger me-3"></i>
-                        <div>
-                            <h3 class="card-title text-danger mb-1">{{ $Subscriptions }}</h3>
-                            <p class="text-muted mb-0">Subscriptions</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
+    
+        
 
         <!-- Charts Row -->
         <div class="row g-4 mb-4">
             <div class="col-lg-6">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm ">
                     <div class="card-header text-white text-center py-3">
                         <h5 class="mb-0">Monthly Sales</h5>
                     </div>

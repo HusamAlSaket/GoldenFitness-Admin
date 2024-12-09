@@ -44,14 +44,14 @@ class MessageController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            // 'name' => 'required|string|max:225',
-            // 'email' => 'required|email|max:225',
+            'name' => 'required|string|max:225',
+            'email' => 'required|email|max:225',
             'message' => 'required|string|max:225',
 
         ]);
         Message::create([
-            // 'name' =>$request->input('name') ,  
-            // 'email'=>$request->input('email') ,
+            'name' =>$request->input('name') ,  
+            'email'=>$request->input('email') ,
             'user_id' => Auth::id(),
             'message'=>$request->input('message') ,
         ]);

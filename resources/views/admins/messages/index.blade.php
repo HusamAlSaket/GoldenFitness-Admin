@@ -36,16 +36,14 @@
     <!-- messages Table Container -->
     <div class="messages-table-container">
         <div class="messages-header d-flex justify-content-between align-items-center mb-4">
-            <h4>message List</h4>
+            <h4 class="text-danger">Message List</h4>
             <div class="d-flex ms-auto">
                 <form method="GET" action="{{ route('messages.index') }}" class="search-form">
-                <input type="text" name="search" placeholder="Search products..." value="{{ request()->get('search') }}">
-                <button type="submit">Search</button>
-            </form>
-                
+                    <input type="text" name="search" placeholder="Search products..." value="{{ request()->get('search') }}">
+                    <button type="submit">Search</button>
+                </form>
             </div>
         </div>
-        
 
         <!-- List messages -->
         <table class="table">
@@ -54,8 +52,8 @@
                     <th>ID</th>
                     <th>User ID</th>
                     <th>Message</th>
-                    <th>created at</th>
-                    <th>updated at</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <th>Actions</th>
                     <th>Reply</th>
                 </tr>
@@ -78,7 +76,7 @@
                             </form>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal-{{ $message->id }}">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openReplyModal({{ $message->id }})">
                                 <i class="bi bi-reply"></i> Reply
                             </button>
 
@@ -91,11 +89,11 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('messages.reply', $message->id) }}" method="POST">
+                                            <form action="{{ route('messages.reply', $message->id) }}" method="POST" id="replyForm-{{ $message->id }}">
                                                 @csrf
                                                 <div class="mb-3">
                                                     <label for="reply" class="form-label">Reply</label>
-                                                    <textarea class="form-control" name="reply" id="reply" rows="3"></textarea>
+                                                    <textarea class="form-control" name="reply" id="reply-{{ $message->id }}" rows="3"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Send Reply</button>
                                             </form>
@@ -112,6 +110,7 @@
 </main>
 
 <script>
+// Function to confirm delete with SweetAlert
 function confirmDelete(messageId) {
     Swal.fire({
         title: 'Are you sure?',
@@ -127,6 +126,7 @@ function confirmDelete(messageId) {
     });
 }
 
+// Display success message on success
 @if (session('success'))
 Swal.fire({
     icon: 'success',
@@ -136,17 +136,22 @@ Swal.fire({
     timer: 4000
 });
 @endif
-</script>
-<script>
-    // Search functionality
-    const searchInput = document.querySelector('input[placeholder="Search products..."]');
-    searchInput.addEventListener('keyup', function() {
-        const filter = this.value.toLowerCase();
-        const rows = document.querySelectorAll('tbody tr');
 
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(filter) ? '' : 'none';
-        });
+// Open the Reply Modal manually using JavaScript (avoiding any unwanted refresh issues)
+function openReplyModal(messageId) {
+    const modal = new bootstrap.Modal(document.getElementById('replyModal-' + messageId));
+    modal.show();
+}
+
+// Search functionality for messages
+const searchInput = document.querySelector('input[placeholder="Search products..."]');
+searchInput.addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('tbody tr');
+
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
     });
+});
 </script>

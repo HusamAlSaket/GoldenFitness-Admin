@@ -10,6 +10,7 @@ body {
     background-color: var(--light-bg);
     font-family: "Arial", sans-serif;
 }
+
 /* Ensure the container accounts for the sidebar width */
 .container {
     margin-left: 250px; /* Adjust this value to match the sidebar width */
@@ -19,6 +20,7 @@ body {
 .sidebar.collapsed + .container {
     margin-left: 80px; /* Adjust for collapsed sidebar width */
 }
+
 
 
 .sidebar {
@@ -115,6 +117,31 @@ body {
     margin-right: 15px;
     color: var(--primary-red);
 }
+.card-header {
+    background-color: var(--primary-red); /* Use your primary color for the header background */
+    color: var(--white); /* Ensure text is white for readability */
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+.card-header h5 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+.card-body {
+    padding: 1.5rem;
+    background-color: var(--white); /* White background for content */
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto; /* Center the canvas in its container */
+}
+
 
 .products-table-container {
     background: white;
@@ -202,130 +229,190 @@ body {
 
 
 
-/* table */
-
-
-/* Global Table Styles */
+/* table *//* Uniform Table Border Styling */
 .table {
+    border-collapse: collapse; /* Ensures no double borders */
     width: 100%;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background-color: #fff;
-    color: #333;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    border: 2px solid #e63946; /* Red border around the entire table */
 }
 
-/* Table Header */
+.table, 
+.table th, 
+.table td {
+    border: 1px solid rgba(220, 53, 69, 0.3); /* Same border for all table elements */
+}
+
 .table thead {
-    background-color: #e63946; /* Red color */
-    color: #fff;
-    font-weight: bold;
-    border-bottom: 2px solid #b32d2f; /* Red line under the header */
+    background: linear-gradient(135deg, #ff4c4c, #dc3545); /* Red gradient background */
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Table Rows */
+.table thead th {
+    padding: 15px;
+    color:red;
+    text-align:center;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
 .table tbody tr:nth-child(even) {
-    background-color: #f1f1f1; /* Light grey for even rows */
+    background-color: rgba(220, 53, 69, 0.05);
 }
 
 .table tbody tr:nth-child(odd) {
-    background-color: #fff; /* White for odd rows */
+    background-color: white;
 }
 
-/* Table Hover Effect */
 .table tbody tr:hover {
-    background-color: #f0a1a1; /* Light red hover effect */
+    background-color: rgba(220, 53, 69, 0.1);
+        /* transform: scale(1.01); */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Table Cells */
-.table td,
+.table td, 
 .table th {
-    padding: 12px 15px;
+    padding: 10px;
     text-align: left;
-    border: 1px solid #e63946; /* Red border between columns and rows */
+    font-size: 14px;
 }
 
-/* Table Header Cells */
-.table th {
-    border-top: 1px solid #b32d2f; /* Top border for header */
-    border-left: 1px solid #b32d2f; /* Left border for header */
+/* Alternating Row Colors with Subtle Gradient */
+.table tbody tr:nth-child(even) {
+    background: linear-gradient(to right, rgba(220, 53, 69, 0.05), rgba(255, 255, 255, 0.5));
 }
 
-/* Buttons */
+/* Action Buttons */
 .table .btn {
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 4px;
-    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 0 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .table .btn-info {
-    background-color: #00bcd4;
+    background-color: #17a2b8;
     color: white;
 }
 
 .table .btn-info:hover {
-    background-color: #008c9e;
+    background-color: #138496;
+    transform: translateY(-2px);
 }
 
 .table .btn-warning {
-    background-color: #ff9800;
-    color: white;
+    background-color: #ffc107;
+    color: #212529;
+}
+.fc .fc-daygrid-day-number{
+    color:red;
+    text-decoration:none;
+}
+.fc .fc-col-header-cell-cushion{
+    color:white;
+    text-decoration:none;
 }
 
+
+
+
 .table .btn-warning:hover {
-    background-color: #f57c00;
+    background-color: #e0a800;
+    transform: translateY(-2px);
 }
 
 .table .btn-danger {
-    background-color: #f44336;
+    background-color: #dc3545;
     color: white;
 }
 
 .table .btn-danger:hover {
-    background-color: #d32f2f;
+    background-color: #bd2130;
+    transform: translateY(-2px);
 }
 
-/* Modal and Form Styles */
-.modal-dialog {
-    max-width: 800px;
-}
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .table {
-        font-size: 12px; /* Reduce font size for small screens */
+        font-size: 12px;
     }
 
-    .table td, .table th {
-        padding: 8px 10px;
+    .table td, 
+    .table th {
+        padding: 10px;
     }
 }
-:root {
-    --primary-red: #dc3545;
-    --light-red: #f8d7da;
+
+/* Scrollbar for Overflow */
+/* Webkit Scrollbar Styling */
+body::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
 }
-body {
-    background-color: #f4f6f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+body::-webkit-scrollbar-track {
+    background: #f5f5f5; /* Background color of the scrollbar track */
 }
-.stat-card {
-    background-color: white !important;
-    border-left: 4px solid var(--primary-red);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+body::-webkit-scrollbar-thumb {
+    background-color: red; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded edges for the scrollbar thumb */
+    border: 2px solid #f5f5f5; /* Optional: adds a border around the thumb */
 }
-.stat-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: darkred; /* Darker red when hovered */
 }
-.card-header {
-    background-color: var(--primary-red) !important;
+
+
+
+/* Style for the Edit Modal */
+/* Modal Header and Footer Red Styling */
+.modal-header {
+    background: linear-gradient(135deg, #dc3545, #ff4c4c);
+    color: white;
+    border-bottom: none;
+    padding: 1rem;
 }
-.fc-button-primary {
-    background-color: var(--primary-red) !important;
-    border-color: var(--primary-red) !important;
+
+.modal-header .modal-title {
+    color: white;
+    font-weight: 600;
 }
-.fc-button-active {
-    background-color: #a71d2a !important;
+
+.modal-header .btn-close {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.modal-header .btn-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-footer {
+    background: linear-gradient(135deg, #dc3545, #ff4c4c);
+    border-top: none;
+    padding: 1rem;
+}
+
+.modal-footer .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-dialog .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }

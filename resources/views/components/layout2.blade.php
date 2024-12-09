@@ -74,8 +74,13 @@
                         <i class="bi bi-egg-fried"></i> <span>Recipes</span>
                     </a>
                 </li>
+                <a class="nav-link" href="{{ route('orders.index') }}">
+                    <i class="bi bi-basket"></i> <span>Orders</span>
+                </a>
+            </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#"
+                    <a class="nav-link nav-link-logout" href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> <span>Logout</span>
                     </a>
@@ -83,6 +88,7 @@
                         @csrf
                     </form>
                 </li>
+                
 
             </ul>
 
@@ -153,7 +159,7 @@
         <script>
             import Swal from 'sweetalert2';
         </script>
-
+    
 </body>
 
 </html>

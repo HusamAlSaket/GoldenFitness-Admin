@@ -10,7 +10,7 @@
 
         <!-- user Details Section (Main Content) -->
         <div class="col-md-9">
-            <h1 class="text-center">user Details</h1>
+            <h1 class="text-center test">user Details</h1>
 
             <div class="user-details">
                 <p><strong>Name:</strong> {{ $user->name }}</p>

@@ -1,4 +1,4 @@
-@include('components.layout3')
+{{-- @include('components.layout3')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="pricing-area">
@@ -38,18 +38,21 @@
                                     <li><i class="far fa-times-circle"></i> No benefits available</li>
                                 @endif
                             </ul>
+
                         </div>
+                        
                         <a class="btn style2" href="{{ route('user.subscriptions.show', $subscription->id) }}">
                             View Details
                         </a>
+                        <form action="{{ route('user.subscriptions.cancel', $subscription->id) }}" method="POST" style="display: inline-block; margin-top: 10px;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Cancel Subscription</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 </div>
-<style>
-    
-</style>
 
-@include('components.layout4')
+@include('components.layout4') --}}

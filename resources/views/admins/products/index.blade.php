@@ -24,7 +24,7 @@
     <!-- Products Table Container -->
     <div class="products-table-container">
         <div class="products-header d-flex justify-content-between align-items-center mb-4">
-            <h4>Product List</h4>
+            <h4 class="text-danger">Product List</h4>
             <div class="d-flex align-items-center">
                 <input type="text" class="form-control me-2" placeholder="Search products..." style="width: 200px;">
                 <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#addProductModal">

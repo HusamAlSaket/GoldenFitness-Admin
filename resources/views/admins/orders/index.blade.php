@@ -26,7 +26,7 @@
             <table class="table table-hover table-striped table-bordered align-middle text-center">
                 <thead class="bg-danger text-white">
                     <tr>
-                        <th class="text-uppercase">Name</th>
+                        <th class="text-uppercase">id</th>
                         <th class="text-uppercase">Description</th>
                         <th class="text-uppercase">Price</th>
                         <th class="text-uppercase">Order Date</th>
@@ -87,16 +87,16 @@
                                                                     <i
                                                                         class="bi bi-person-circle me-3 text-danger fs-2"></i>
                                                                     <div>
-                                                                        <h5 class="mb-1">{{ $order->user->name }}
+                                                                        {{-- <h5 class="mb-1">{{ $order->user->name }} --}}
                                                                         </h5>
                                                                         <p class="text-muted mb-0">
-                                                                            {{ $order->user->email }}</p>
+                                                                            {{-- {{ $order->user->email }}</p> --}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex align-items-center">
                                                                     <i
                                                                         class="bi bi-geo-alt-fill me-3 text-danger fs-2"></i>
-                                                                    <p class="mb-0">{{ $order->user->address }}</p>
+                                                                    {{-- <p class="mb-0">{{ $order->user->address}}</p> --}}
                                                                 </div>
                                                             </div>
                                                         </div>

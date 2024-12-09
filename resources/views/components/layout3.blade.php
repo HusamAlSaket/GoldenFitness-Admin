@@ -89,10 +89,10 @@
                     <li class="menu-item-has-children">
                         <a href="#">Project <i class="bi bi-collection"></i></a> <!-- Bootstrap Project icon -->
                     </li>
-                    <li class="menu-item-has-children">
+                    {{-- <li class="menu-item-has-children">
                         <a href="{{ route('user.subscriptions.index') }}">Subscriptions <i class="bi bi-gear"></i></a>
                         <!-- Bootstrap Gear icon -->
-                    </li>
+                    </li> --}}
                     <li class="menu-item-has-children">
                         <a href="{{ route('users.blogs.index') }}">Blog <i class="bi bi-pencil"></i></a>
                         <!-- Bootstrap Blog icon -->
@@ -145,10 +145,10 @@
                                         <a href="{{ route('user.subscriptions.create') }}"><i class="bi bi-gear"></i>
                                             Subscriptions</a> <!-- Bootstrap Gear icon -->
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('user.subscriptions.index') }}"><i class="bi bi-gear"></i>
                                             Active Subscriptions</a> <!-- Bootstrap Gear icon -->
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{ route('products.index') }}"><i class="bi bi-file-earmark"></i>
                                             Gym Equipments</a> <!-- Bootstrap File icon -->

@@ -5,32 +5,14 @@
 <main class="main-content" id="mainContent">
     <!-- user Stats Grid -->
     <div class="row user-stats mb-4">
-        <div class="col-4">
+        <div class="col-lg-12">
             <div class="stat-card">
                 <i class="bi bi-people"></i>
-                <div>
+                <div >
                     <h5 class="mb-0">{{ $totalUsers }}</h5>
-                    <small class="text-muted">Total Users</small>
+                    <small >Total Users</small>
                 </div>
                 
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="stat-card">
-                <i class="bi bi-calendar"></i>
-                <div>
-                    {{-- <h5 class="mb-0">{{ $activeusersCount }}</h5> --}}
-                    <small class="text-muted">Active users</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="stat-card">
-                <i class="bi bi-clock"></i>
-                <div>
-                    {{-- <h5 class="mb-0">{{ $expiredusersCount }}</h5> --}}
-                    <small class="text-muted">Expired users</small>
-                </div>
             </div>
         </div>
     </div>
@@ -38,7 +20,7 @@
     <!-- users Table Container -->
     <div class="users-table-container">
         <div class="users-header d-flex justify-content-between  align-items-center mb-4">
-            <h4>user List</h4>
+            <h4 class="text-danger">user List</h4>
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('users.index') }}" class="search-form">
                     <input type="text" name="search" placeholder="Search products..."
@@ -79,14 +61,14 @@
 
                         <td>
                             <!-- View Action -->
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm">
-                                <i class="bi bi-eye"></i> View
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm test">
+                                <i class="bi bi-eye"></i> 
                             </a>
 
                             <!-- Edit Action -->
-                            <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                            <a href="#" class="btn btn-warning btn-sm " data-bs-toggle="modal"
                                 data-bs-target="#editUserModal-{{ $user->id }}">
-                                <i class="bi bi-pencil"></i> Edit
+                                <i class="bi bi-pencil"></i> 
                             </a>
 
                             <!-- Delete Action -->
@@ -97,7 +79,7 @@
                                 @method('DELETE')
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{ $user->id }})">
-                                    <i class="bi bi-trash"></i> Delete
+                                    <i class="bi bi-trash"></i> 
                                 </button>
                             </form>
                         </td>

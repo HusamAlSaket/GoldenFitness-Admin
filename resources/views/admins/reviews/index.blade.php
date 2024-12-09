@@ -36,7 +36,7 @@
     <!-- Reviews Table Container -->
     <div class="reviews-table-container">
         <div class="reviews-header d-flex justify-content-between align-items-center mb-4">
-            <h4>Review List</h4>
+            <h4 class="text-danger">Review List</h4>
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('reviews.index') }}" class="search-form">
                     <input type="text" name="search" placeholder="Search reviews..." value="{{ request()->get('search') }}">
@@ -47,7 +47,7 @@
 
         <!-- List Reviews -->
         <div class="table-responsive">
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
