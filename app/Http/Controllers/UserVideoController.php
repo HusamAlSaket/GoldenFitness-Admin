@@ -39,7 +39,7 @@ class UserVideoController extends Controller
         $benefits = $subscription ? json_decode($subscription->benefits, true) : [];
     
         if (!in_array('Premium Video Content', $benefits)) {
-            return redirect()->route('user.subscriptions.index')->with('error', 'You do not have access to premium content.');
+            return redirect()->route('users.videos.index')->with('error', 'You do not have access to premium content.');
         }
     
         $premiumVideos = GymVideo::whereHas('benefits', function ($query) {
