@@ -13,7 +13,6 @@
     <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
-    <!-- Favicons - Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
@@ -22,7 +21,6 @@
         integrity="sha384-KyZXEJ03RbbkQgs2hhXAR5zV6b1usdfvI0r27OkSH9Yk0jA0p5TKw0e5MX0cBXwD" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicons/favicon.png') }}">
     <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
@@ -33,9 +31,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 <body>
-
     <!--==============================
     Preloader
     ==============================-->
@@ -61,138 +60,75 @@
                     <div class="footer-logo">
                         <a href="index.html"><img src="{{ asset('assets/img/logo-white.svg') }}" alt="Gold"></a>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-    <!--==============================
-    Mobile Menu
-    ============================== -->
-    <div class="mobile-menu-wrapper">
-        <div class="mobile-menu-area text-center">
-            <button class="menu-toggle"><i class="bi bi-x"></i></button> <!-- Bootstrap close icon -->
-            <div class="mobile-logo">
-                <a href="index.html"><img src="{{ asset('assets/img/logo.svg') }}" alt="Gold"></a>
-            </div>
-            <div class="mobile-menu">
-                <ul>
-                    <li class="menu-item-has-children">
-                        <a href="{{ route('home.index') }}">Home <i class="bi bi-house-door"></i></a>
-                        <!-- Bootstrap Home icon -->
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="{{ route('products.index') }}">Gym Equipments <i class="bi bi-file-earmark"></i></a>
-                        <!-- Bootstrap File icon -->
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">Project <i class="bi bi-collection"></i></a> <!-- Bootstrap Project icon -->
-                    </li>
-                    {{-- <li class="menu-item-has-children">
-                        <a href="{{ route('user.subscriptions.index') }}">Subscriptions <i class="bi bi-gear"></i></a>
-                        <!-- Bootstrap Gear icon -->
-                    </li> --}}
-                    <li class="menu-item-has-children">
-                        <a href="{{ route('users.blogs.index') }}">Blog <i class="bi bi-pencil"></i></a>
-                        <!-- Bootstrap Blog icon -->
-                    </li>
-                    <li>
-                        <a href="{{ route('contact.index') }}">Contact <i class="bi bi-telephone"></i></a>
-                        <!-- Bootstrap Phone icon -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!--==============================
-    Header Area
-    ==============================-->
-    <header class="nav-header header-layout1">
-        <div class="header-top d-lg-block d-none">
-            <div class="container-fluid">
-                <div class="row justify-content-center justify-content-lg-between align-items-center gy-2">
-                </div>
-                <div class="col-auto">
-                </div>
-            </div>
-        </div>
+    <header class="nav-header header-layout1" style="background-color: white; position: sticky; top: 0; z-index: 999;">
         <div class="sticky-wrapper">
             <!-- Main Menu Area -->
             <div class="menu-area">
                 <div class="container-fluid">
-                    <div class="row align-items-center justify-content-lg-start justify-content-between">
+                    <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
                                 <x-logo class="w-16 h-16 animate-pulse-slow" />
-                                <span>Golden Fitness</span>
+                                <span style="color: black;">Golden Fitness</span>
                             </div>
-
                         </div>
                         <div class="col-auto">
+                            <!-- Toggle Button (for mobile) -->
+                            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <!-- Navbar Links -->
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul class="d-flex justify-content-start m-0 p-0">
-                                    <li>
-                                        <a href="{{ route('home.index') }}"><i class="bi bi-house-door"></i> Home</a>
-                                        <!-- Bootstrap Home icon -->
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('about.index') }}"><i class="bi bi-info-circle"></i>
-                                            About</a> <!-- Bootstrap Info Circle icon -->
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('user.subscriptions.create') }}"><i class="bi bi-gear"></i>
-                                            Subscriptions</a> <!-- Bootstrap Gear icon -->
-                                    </li>
-                                    {{-- <li>
-                                        <a href="{{ route('user.subscriptions.index') }}"><i class="bi bi-gear"></i>
-                                            Active Subscriptions</a> <!-- Bootstrap Gear icon -->
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{ route('products.index') }}"><i class="bi bi-file-earmark"></i>
-                                            Gym Equipments</a> <!-- Bootstrap File icon -->
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('users.blogs.index') }}"><i class="bi bi-pencil"></i>
-                                            Blog</a> <!-- Bootstrap Pencil icon -->
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('users.supplements.index') }}"><i class="bi bi-star"></i>
-                                            Supplements</a> <!-- Bootstrap Pencil icon -->
-                                    </li>
+                                    <li><a href="{{ route('home.index') }}" class="nav-link text-black">Home</a></li>
+                                    <li><a href="{{ route('about.index') }}" class="nav-link text-black">About</a></li>
+                                    <li><a href="{{ route('products.index') }}" class="nav-link text-black">Gym
+                                            Equipments</a></li>
+                                    <li><a href="{{ route('users.blogs.index') }}"
+                                            class="nav-link text-black">Blog</a></li>
+                                    <li><a href="{{ route('users.supplements.index') }}"
+                                            class="nav-link text-black">Supplements</a></li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-play-circle"></i> Videos
-                                            <!-- Bootstrap Play Circle icon -->
+                                        <a class="nav-link dropdown-toggle text-black" href="#"
+                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            Videos
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li>
-                                                <a class="dropdown-item"
+                                            <li><a class="dropdown-item"
                                                     href="{{ route('users.videos.index') }}">Educational Videos</a>
                                             </li>
-                                            <li>
-                                                <a class="dropdown-item"
+                                            <li><a class="dropdown-item"
                                                     href="{{ route('users.videos.premium') }}">Premium Content</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('contact.index') }}"><i class="bi bi-telephone"></i>
-                                            Contact</a> <!-- Bootstrap Phone icon -->
-                                    </li>
+                                    <li><a href="{{ route('contact.index') }}"
+                                            class="nav-link text-black">Contact</a></li>
                                 </ul>
+                            </nav>
+                        </div>
 
-                                <!-- Cart Icon container aligned to the right -->
-                                <ul class="ms-auto m-0 p-0">
+                        <!-- Profile, Login, Cart aligned to the right -->
+                        <div class="col-auto ms-auto">
+                            <nav class="main-menu d-flex justify-content-end">
+                                <ul class="d-flex m-0 p-0 align-items-center">
+                                    <li><a href="#" class="nav-link text-black">Profile</a></li>
+                                    <li><a href="#" class="nav-link text-black">Login</a></li>
                                     <li>
                                         <div class="cart-icon-container">
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
                                                 class="cart-btn position-relative"
                                                 style="background: transparent; border: none; padding: 10px;">
                                                 <i class="bi bi-cart" style="font-size: 24px; color: #dc3545;"></i>
-                                                <!-- Bootstrap Cart icon -->
                                                 <span
                                                     class="cart-count badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
                                                     style="font-size: 12px; margin-top: -10px;">
@@ -204,14 +140,41 @@
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
                 </div>
             </div>
+
+            <!-- Collapsible Navbar for mobile view -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link text-black">Home</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('about.index') }}" class="nav-link text-black">About</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link text-black">Gym
+                            Equipments</a></li>
+                    <li class="nav-item"><a href="{{ route('users.blogs.index') }}"
+                            class="nav-link text-black">Blog</a></li>
+                    <li class="nav-item"><a href="{{ route('users.supplements.index') }}"
+                            class="nav-link text-black">Supplements</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Videos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational
+                                    Videos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium
+                                    Content</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('contact.index') }}"
+                            class="nav-link text-black">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </header>
-
-
 
 
     {{-- cart modal --}}

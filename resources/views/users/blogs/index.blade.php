@@ -6,7 +6,7 @@
 <!--==============================
     Breadcumb
 ==============================-->
-<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
+<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/804850.jpg') }}" style="width: 100%; height: 750px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
