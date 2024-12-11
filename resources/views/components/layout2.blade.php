@@ -78,6 +78,13 @@
                     <i class="bi bi-basket"></i> <span>Orders</span>
                 </a>
             </li>
+            {{-- profile --}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admins.profile.edit') }}">
+                    <i class="bi bi-person-circle"></i> <span>Profile</span>
+                </a>
+            </li>
+            
 
                 <li class="nav-item">
                     <a class="nav-link nav-link-logout" href="#"

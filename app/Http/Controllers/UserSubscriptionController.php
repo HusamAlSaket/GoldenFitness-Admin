@@ -51,8 +51,6 @@ class UserSubscriptionController extends Controller
     return redirect()->route('user.subscriptions.create')
         ->with('success', 'Subscription canceled successfully.');
 }
-
-
 public function store(Request $request)
 {
     $request->validate([
@@ -80,6 +78,9 @@ public function store(Request $request)
     $benefitsJson = json_encode($benefits);
     $price = $this->getSubscriptionPrice($request->subscription_type);
 
+    // Set the video_benefit based on the benefits array or always premium for Yearly
+    $videoBenefit = ($request->subscription_type === 'Yearly') ? 'premium' : (in_array('Premium Video Content', $benefits) ? 'premium' : 'free');
+
     Subscription::create([
         'user_id' => $userId,
         'subscription_type' => $request->subscription_type,
@@ -88,12 +89,12 @@ public function store(Request $request)
         'status' => 'active',
         'price' => $price,
         'benefits' => $benefitsJson,
+        'video_benefit' => $videoBenefit, // Save video_benefit value
     ]);
 
     return redirect()->route('user.subscriptions.create')
         ->with('success', 'Subscription activated successfully!');
 }
-
 
     private function calculateEndDate($type)
     {

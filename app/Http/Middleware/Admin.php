@@ -13,7 +13,7 @@ class Admin
     {
         // dd('middleware');
         if (!in_array(Auth::user()->role, ['admin'])) {
-            return redirect('admins/404'); // Or redirect to a different accessible page
+            return redirect('404'); // Or redirect to a different accessible page
         }
 
         return $next($request);

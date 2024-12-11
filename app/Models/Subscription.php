@@ -10,7 +10,7 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'user_id', 'subscription_type', 'start_date', 'end_date', 'status', 'price', 'benefits', ];
+    protected $fillable = [ 'user_id', 'subscription_type', 'start_date', 'end_date', 'status', 'price', 'benefits', 'video_benefit'];
 
     // Automatically convert to Carbon instances for start_date and end_date
     protected $casts = [ 'start_date' => 'datetime', 'end_date' => 'datetime', ];

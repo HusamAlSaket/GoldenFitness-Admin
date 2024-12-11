@@ -38,11 +38,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
 
 Route::prefix('admins')->middleware(['admin'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admins.dashboard');
+
+    // profile
+
 
     // Product Routes
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -162,7 +166,11 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
     Route::resource('recipes', RecipeController::class);
 
+    // profile routes
 
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('admins.profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('admins.profile.update');
+    Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.update_picture');
 
 });
 
@@ -172,6 +180,7 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
     Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
+    Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.update_picture');
 
     // home controller 
     Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');

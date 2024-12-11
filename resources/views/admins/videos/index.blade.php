@@ -30,6 +30,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Video</th>
+                    <th>Benefits</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -46,6 +47,14 @@
                                 </button>
                             </div>
                         </td>
+                        <td>
+                            @if($video->benefits->isNotEmpty())
+                                {{ $video->benefits->first()->benefit }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        
                         <td class="action-buttons">
                             <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
                                 data-bs-target="#editVideoModal-{{ $video->id }}">
@@ -86,61 +95,57 @@
                         </div>
                     </div>
 
-                    <!-- Edit Video Modal -->
-                    <!-- Edit Video Modal -->
-                    <div class="modal fade" id="editVideoModal-{{ $video->id }}" tabindex="-1"
-                        aria-labelledby="editVideoModalLabel-{{ $video->id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="editVideoModalLabel-{{ $video->id }}">Edit Video
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('videos.update', $video->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label for="title-{{ $video->id }}" class="form-label">Title</label>
-                                            <input type="text" name="title" id="title-{{ $video->id }}"
-                                                class="form-control" value="{{ old('title', $video->title) }}"
-                                                required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="description-{{ $video->id }}"
-                                                class="form-label">Description</label>
-                                            <textarea name="description" id="description-{{ $video->id }}" class="form-control" rows="3">{{ old('description', $video->description) }}</textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="video_url-{{ $video->id }}" class="form-label">Video
-                                                URL</label>
-                                            <input type="url" name="video_url" id="video_url-{{ $video->id }}"
-                                                class="form-control" value="{{ old('video_url', $video->video_url) }}"
-                                                required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="benefit" class="form-label">Benefits (comma
-                                                separated)</label>
-                                            <input type="text" name="benefit" id="benefit" class="form-control"
-                                                required>
-                                            <small class="form-text text-muted">e.g. Premium Video Content, Access to
-                                                Gym</small>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-danger">Save Changes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+<!-- Edit Video Modal -->
+<div class="modal fade" id="editVideoModal-{{ $video->id }}" tabindex="-1"
+    aria-labelledby="editVideoModalLabel-{{ $video->id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editVideoModalLabel-{{ $video->id }}">Edit Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('videos.update', $video->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label for="title-{{ $video->id }}" class="form-label">Title</label>
+                        <input type="text" name="title" id="title-{{ $video->id }}" class="form-control"
+                            value="{{ old('title', $video->title) }}" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="description-{{ $video->id }}" class="form-label">Description</label>
+                        <textarea name="description" id="description-{{ $video->id }}" class="form-control"
+                            rows="3">{{ old('description', $video->description) }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="video_url-{{ $video->id }}" class="form-label">Video URL</label>
+                        <input type="url" name="video_url" id="video_url-{{ $video->id }}" class="form-control"
+                            value="{{ old('video_url', $video->video_url) }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="benefit" class="form-label">Benefit</label>
+                        <select name="benefit" id="benefit" class="form-control" required>
+                            <option value="" disabled selected>{{ isset($video) ? ucfirst($video->benefit) : 'Select Benefit' }}</option>
+                            <option value="free" {{ isset($video) && $video->benefit == 'free' ? 'selected' : '' }}>Free</option>
+                            <option value="premium" {{ isset($video) && $video->benefit == 'premium' ? 'selected' : '' }}>Premium</option>
+                        </select>
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-danger">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
                 @endforeach
             </tbody>
         </table>
     </div>
 </main>
-
 <!-- Add Video Modal -->
 <div class="modal fade" id="addVideoModal" tabindex="-1" aria-labelledby="addVideoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -165,10 +170,13 @@
                         <input type="url" name="video_url" id="video_url" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="benefit" class="form-label">Benefits (comma separated)</label>
-                        <input type="text" name="benefit" id="benefit" class="form-control" required>
-                        <small class="form-text text-muted">e.g. Premium Video Content, Access to Gym</small>
+                        <label for="benefit" class="form-label">Benefit</label>
+                        <select name="benefit" id="benefit" class="form-control" required>
+                            <option value="free" {{ old('benefit', $video->benefit ?? '') == 'free' ? 'selected' : '' }}>Free</option>
+                            <option value="premium" {{ old('benefit', $video->benefit ?? '') == 'premium' ? 'selected' : '' }}>Premium</option>
+                        </select>
                     </div>
+                    
                     <button type="submit" class="btn btn-danger">Save Video</button>
                 </form>
             </div>

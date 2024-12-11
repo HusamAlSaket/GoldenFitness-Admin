@@ -1,4 +1,5 @@
 @include('components.layout3')
+
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
     .video-grid {
@@ -29,6 +30,7 @@
         border-radius: 0.5rem;
     }
 </style>
+
 <body class="bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-5xl font-extrabold text-center text-gray-800 mb-12">Premium Fitness Videos</h1>
@@ -59,5 +61,6 @@
             </div>
         @endif
     </div>
+    
     @include('components.layout4')
 </body>

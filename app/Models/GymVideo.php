@@ -11,7 +11,7 @@ class GymVideo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'video_url', 'coach_id', 'is_premium'];
+    protected $fillable = ['title', 'description', 'video_url', 'coach_id', 'is_premium','benefit','video_benefit'];
 
     // GymVideo belongs to a coach (user)
     public function coach()
@@ -24,4 +24,8 @@ class GymVideo extends Model
     {
         return $this->hasMany(VideoBenefit::class, 'gym_video_id');
     }
+    public function benefit()
+{
+    return $this->belongsTo(VideoBenefit::class, 'video_benefit_id');
+}
 }

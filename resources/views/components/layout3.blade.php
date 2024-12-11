@@ -30,9 +30,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <body>
     <!--==============================
@@ -90,30 +93,34 @@
                                 <ul class="d-flex justify-content-start m-0 p-0">
                                     <li><a href="{{ route('home.index') }}" class="nav-link text-black">Home</a></li>
                                     <li><a href="{{ route('about.index') }}" class="nav-link text-black">About</a></li>
-                                    <li><a href="{{ route('products.index') }}" class="nav-link text-black">Gym
-                                            Equipments</a></li>
-                                    <li><a href="{{ route('users.blogs.index') }}"
-                                            class="nav-link text-black">Blog</a></li>
-                                    <li><a href="{{ route('users.supplements.index') }}"
-                                            class="nav-link text-black">Supplements</a></li>
+                                    <li><a href="{{ route('products.index') }}" class="nav-link text-black">Gym Equipments</a></li>
+                                    <li><a href="{{ route('users.blogs.index') }}" class="nav-link text-black">Blog</a></li>
+                                    <li><a href="{{ route('users.supplements.index') }}" class="nav-link text-black">Supplements</a></li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-black" href="#"
-                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
                                             Videos
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('users.videos.index') }}">Educational Videos</a>
-                                            </li>
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('users.videos.premium') }}">Premium Content</a>
-                                            </li>
+                                            <li><a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational Videos</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium Content</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('contact.index') }}"
-                                            class="nav-link text-black">Contact</a></li>
+                                        {{--  --}}
+                                        <li class="nav-item dropdown">
+
+                                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Subscriptions
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{ route('user.subscriptions.create') }}">Subscriptions </a></li>
+                                        {{-- <li><a class="dropdown-item" href="{{ route('users.subscriptions.index') }}">Active Subscriptions</a></li> --}}
+                                    </ul>
+                                    
+                                    <li><a href="{{ route('contact.index') }}" class="nav-link text-black">Contact</a></li>
                                 </ul>
+                            </li>
                             </nav>
                         </div>
 

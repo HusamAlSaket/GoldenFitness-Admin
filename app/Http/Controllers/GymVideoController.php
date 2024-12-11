@@ -24,7 +24,7 @@ class GymVideoController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'video_url' => 'required|url',
-            'benefit' => 'nullable|string', // Benefit is now a string that will be split later
+            'benefit' => 'nullable|in:premium,free', // Ensure only 'premium' or 'free' can be submitted
         ]);
     
         // Step 2: Store the video in the gym_videos table
@@ -35,20 +35,11 @@ class GymVideoController extends Controller
             'coach_id' => Auth::id(), // Assuming you're using the authenticated user as coach
         ]);
     
-        // Step 3: Handle multiple benefits
+        // Step 3: Store the benefit related to this video (if any)
         if ($request->benefit) {
-            // Split the benefits into an array
-            $benefits = explode(',', $request->benefit);
-    
-            // Trim any excess whitespace around the benefit names
-            $benefits = array_map('trim', $benefits);
-    
-            // Store each benefit related to this video
-            foreach ($benefits as $benefit) {
-                $video->benefits()->create([
-                    'benefit' => $benefit,
-                ]);
-            }
+            $video->benefits()->create([
+                'benefit' => $request->benefit,
+            ]);
         }
     
         return redirect()->route('videos.index')->with('success', 'Video created successfully!');
@@ -71,7 +62,7 @@ class GymVideoController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'video_url' => 'required|url',
-            'benefit' => 'nullable|string', // Benefit is now a string that will be split later
+            'benefit' => 'nullable|in:premium,free', // Ensure only 'premium' or 'free' can be submitted
         ]);
     
         // Step 2: Find the video to update
@@ -82,24 +73,14 @@ class GymVideoController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'video_url' => $request->video_url,
-            
         ]);
     
+        // Step 4: Update the benefit related to this video (if any)
         if ($request->benefit) {
-            // Split the benefits into an array
-            $benefits = explode(',', $request->benefit);
-    
-            // Trim any excess whitespace around the benefit names
-            $benefits = array_map('trim', $benefits);
-    
-            // Store each benefit related to this video
-            foreach ($benefits as $benefit) {
-                $video->benefits()->create([
-                    'benefit' => $benefit,
-                ]);
-            }
+            $video->benefits()->update([
+                'benefit' => $request->benefit,
+            ]);
         }
-    
     
         return redirect()->route('videos.index')->with('success', 'Video updated successfully!');
     }

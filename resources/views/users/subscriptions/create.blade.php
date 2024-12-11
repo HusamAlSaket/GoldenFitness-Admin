@@ -4,6 +4,7 @@
     @foreach(['Weekly', 'Monthly', 'Yearly'] as $type)
         @php
             $isDisabled = isset($activeSubscription) && $activeSubscription->subscription_type !== $type && $activeSubscription->end_date > now();
+            $videoBenefit = isset($activeSubscription) && $activeSubscription->subscription_type == $type ? $activeSubscription->video_benefit : null;
         @endphp
         <div class="pricing-card-wrapper">
             <form id="subscribeForm{{ $type }}" action="{{ route('user.subscriptions.store') }}" method="POST" style="display: none;">
@@ -40,7 +41,14 @@
                     @else
                         <li>No benefits available</li>
                     @endif
+                    <!-- Add Video Benefit Information -->
+                    @if($type === 'Yearly' || (isset($videoBenefit) && $videoBenefit === 'premium'))
+                        <li><i class="far fa-check-circle"></i> Video Content: Premium Access</li>
+                    @elseif(isset($videoBenefit) && $videoBenefit === 'free')
+                        <li><i class="far fa-check-circle"></i> Video Content: Free Access</li>
+                    @endif
                 </ul>
+                
                 @if(isset($activeSubscription) && $activeSubscription->status == 'active' && $activeSubscription->subscription_type == $type)
                     <!-- If the user already has this active subscription, show the Cancel button -->
                     <form action="{{ route('user.subscriptions.cancel', $activeSubscription->id) }}" method="POST">
