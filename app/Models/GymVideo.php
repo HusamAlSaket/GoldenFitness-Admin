@@ -28,4 +28,9 @@ class GymVideo extends Model
 {
     return $this->belongsTo(VideoBenefit::class, 'video_benefit_id');
 }
+public function videoBenefits()
+{
+    return $this->hasMany(VideoBenefit::class, 'gym_video_id');
+}
+
 }

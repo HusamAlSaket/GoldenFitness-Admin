@@ -27,7 +27,7 @@ use App\Http\Controllers\RecipeController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.home.index');
 });
 
 Route::get('/dashboard', function () {
@@ -226,7 +226,8 @@ Route::prefix('users')->group(function () {
 
     Route::get('/videos',[UserVideoController::class,'index'])->name('users.videos.index');
     // Route::get('/videos/{id}',[UserVideoController::class,'show'])->name('users.videos.show');
-    Route::get('/premium-videos',[UserVideoController::class,'premiumContent'])->name('users.videos.premium');
+    // Route::get('/premium-videos',[UserVideoController::class,'premiumContent'])->name('users.videos.premium');
+    Route::get('/premium-videos', [UserVideoController::class, 'premiumContent'])->name('users.videos.premium');
 
     // blog controller 
     Route::get('/blogs',[UserBlogController::class,'index'])->name('users.blogs.index');

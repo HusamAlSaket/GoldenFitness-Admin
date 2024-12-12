@@ -128,8 +128,24 @@
                         <div class="col-auto ms-auto">
                             <nav class="main-menu d-flex justify-content-end">
                                 <ul class="d-flex m-0 p-0 align-items-center">
-                                    <li><a href="#" class="nav-link text-black">Profile</a></li>
-                                    <li><a href="#" class="nav-link text-black">Login</a></li>
+                                    @auth
+                                        <!-- Display these only if the user is logged in -->
+                                        <li><a href="#" class="nav-link text-black">Profile</a></li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="nav-link text-black" style="background: none; border: none; cursor: pointer;">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </li>
+                                    @endauth
+                                
+                                    @guest
+                                        <!-- Display this only if the user is not logged in -->
+                                        <li><a href="{{ route('login') }}" class="nav-link text-black">Login</a></li>
+                                    @endguest
+                                
                                     <li>
                                         <div class="cart-icon-container">
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
@@ -145,6 +161,7 @@
                                         </div>
                                     </li>
                                 </ul>
+                                
                             </nav>
                         </div>
                     </div>
@@ -178,6 +195,7 @@
                     </li>
                     <li class="nav-item"><a href="{{ route('contact.index') }}"
                             class="nav-link text-black">Contact</a></li>
+
                 </ul>
             </div>
         </div>

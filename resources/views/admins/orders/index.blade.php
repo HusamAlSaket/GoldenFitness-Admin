@@ -87,10 +87,10 @@
                                                                     <i
                                                                         class="bi bi-person-circle me-3 text-danger fs-2"></i>
                                                                     <div>
-                                                                        {{-- <h5 class="mb-1">{{ $order->user->name }} --}}
+                                                                        <h5 class="mb-1">{{ $order->user->name ?? 'N/A' }}
                                                                         </h5>
                                                                         <p class="text-muted mb-0">
-                                                                            {{-- {{ $order->user->email }}</p> --}}
+                                                                            {{ $order->user->email }}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex align-items-center">

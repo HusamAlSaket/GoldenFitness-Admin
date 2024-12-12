@@ -6,46 +6,50 @@ use App\Models\GymVideo;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\VideoBenefit;
 
 class UserVideoController extends Controller
 {
     public function index()
     {
-        $subscription = Subscription::where('user_id', Auth::id())
-            ->where('status', 'active')
-            ->first(); 
-    
-        $benefits = $subscription ? json_decode($subscription->benefits, true) : [];
-    
-        $canViewPremium = in_array('Premium Video Content', $benefits);
-    
-        $videos = GymVideo::with('benefits')->get();
-    
-        if (!$canViewPremium) {
-            $videos = $videos->filter(function ($video) {
-                return !$video->benefits->contains('benefit', 'Premium Video Content');
-            });
-        }
+        // Fetch only free videos (videos not associated with "Premium Video Content")
+        $videos = GymVideo::whereDoesntHave('videoBenefits', function ($query) {
+            $query->where('benefit', 'Premium');
+        })->get();
     
         return view('users.videos.index', compact('videos'));
     }
     
     public function premiumContent()
-    {
-        $subscription = Subscription::where('user_id', Auth::id())
-            ->where('status', 'active')
-            ->first(); 
-    
-        $benefits = $subscription ? json_decode($subscription->benefits, true) : [];
-    
-        if (!in_array('Premium Video Content', $benefits)) {
-            return redirect()->route('users.videos.index')->with('error', 'You do not have access to premium content.');
-        }
-    
-        $premiumVideos = GymVideo::whereHas('benefits', function ($query) {
-            $query->where('benefit', 'Premium Video Content');
-        })->get();
-    
-        return view('users.videos.premium', compact('premiumVideos'));
+{
+    // Check if the user has an active subscription
+    $subscription = Subscription::where('user_id', Auth::id())
+        ->where('status', 'active')
+        ->first();
+
+    if (!$subscription) {
+        return redirect()->route('users.videos.index')->with('error', 'No active subscription found.');
     }
+
+    // Decode the benefits JSON column
+    $benefits = json_decode($subscription->benefits, true);
+
+    // Debugging step: Log the benefits for verification
+    \Log::info('User subscription benefits: ', ['benefits' => $benefits]);
+
+    // Check if "Premium Video Content" is in the benefits array
+    if (!in_array('Premium Video Content', $benefits)) {
+        return redirect()->route('users.videos.index')->with('error', 'You do not have access to premium content.');
+    }
+
+    // Fetch premium videos
+    $premiumVideos = GymVideo::whereHas('videoBenefits', function ($query) {
+        $query->where('benefit', 'Premium');
+    })->get();
+
+    // Render the premium videos view
+    return view('users.videos.premium', compact('premiumVideos'));
+}
+
+    
 }    

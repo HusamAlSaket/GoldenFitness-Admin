@@ -32,24 +32,26 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-5xl font-extrabold text-center text-gray-800 mb-12">Fitness Videos</h1>
+        <h1 class="text-5xl font-extrabold text-center text-gray-800 mb-12">Free Fitness Videos</h1>
         
         <div class="video-grid">
             @foreach($videos as $video)
-            <div class="video-item bg-white shadow-md rounded-lg p-6">
-                <div class="px-4 mb-4">
-                    <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ $video->title }}</h1>
-                    <p class="text-gray-700 text-lg">{{ Str::limit($video->description, 150) }}</p>
-                </div>
-                <div class="video-container mb-4">
-                    <iframe 
-                        src="{{ $video->video_url }}"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
+                @if(!$video->benefits->contains('benefit', 'Premium Video Content'))
+                    <div class="video-item bg-white shadow-md rounded-lg p-6">
+                        <div class="px-4 mb-4">
+                            <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ $video->title }}</h1>
+                            <p class="text-gray-700 text-lg">{{ Str::limit($video->description, 150) }}</p>
+                        </div>
+                        <div class="video-container mb-4">
+                            <iframe 
+                                src="{{ $video->video_url }}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>
