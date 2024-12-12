@@ -61,9 +61,9 @@
 
                         <td>
                             <!-- View Action -->
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm test">
+                            {{-- <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm test">
                                 <i class="bi bi-eye"></i> 
-                            </a>
+                            </a> --}}
 
                             <!-- Edit Action -->
                             <a href="#" class="btn btn-warning btn-sm " data-bs-toggle="modal"

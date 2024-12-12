@@ -90,13 +90,13 @@
                                                                         <h5 class="mb-1">{{ $order->user->name ?? 'N/A' }}
                                                                         </h5>
                                                                         <p class="text-muted mb-0">
-                                                                            {{ $order->user->email }}</p>
+                                                                            {{ $order->user->email ?? 'N/A' }}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex align-items-center">
                                                                     <i
                                                                         class="bi bi-geo-alt-fill me-3 text-danger fs-2"></i>
-                                                                    {{-- <p class="mb-0">{{ $order->user->address}}</p> --}}
+                                                                    <p class="mb-0">{{ $order->user->address ?? 'N/A'}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

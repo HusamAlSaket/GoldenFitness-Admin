@@ -61,10 +61,10 @@
                         <td>{{ $recipe->preparation_time }} mins</td>
                         <td>
                             <div class="action-buttons text-center">
-                                <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-sm btn-outline-info"
+                                {{-- <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-sm btn-outline-info"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="View Recipe">
                                     <i class="bi bi-eye"></i>
-                                </a>
+                                </a> --}}
                                 <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal"
                                     data-bs-target="#editRecipeModal-{{ $recipe->id }}" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Edit Recipe">

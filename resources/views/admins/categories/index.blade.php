@@ -39,9 +39,9 @@
                             <td class="fw-bold">{{ $category->category_name }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($category->description, 50) }}</td>
                             <td class="action-buttons">
-                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-info shadow-sm">
+                                {{-- <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-info shadow-sm">
                                     <i class="bi bi-eye"></i>
-                                </a>
+                                </a> --}}
                                 <button class="btn btn-sm btn-warning shadow-sm" data-bs-toggle="modal"
                                     data-bs-target="#editcategoryModal-{{ $category->id }}">
                                     <i class="bi bi-pencil"></i>

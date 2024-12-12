@@ -67,9 +67,9 @@
                             </span>
                         </td>
                         <td class="action-buttons">
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">
+                            {{-- <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">
                                 <i class="bi bi-eye"></i>
-                            </a>
+                            </a> --}}
                             <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
                                 data-bs-target="#editProductModal-{{ $product->id }}">
                                 <i class="bi bi-pencil"></i>

@@ -76,9 +76,9 @@
                         <td>{{ $subscription->end_date }}</td>
                         <td class="d-flex">
                             <!-- View Action -->
-                            <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm" style="height: 30px; width: 30px;">
+                            {{-- <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm" style="height: 30px; width: 30px;">
                                 <i class="bi bi-eye"></i>
-                            </a>
+                            </a> --}}
                         
                             <!-- Edit Action -->
                             <a href="#" class="btn btn-warning btn-sm ms-1" style="height: 30px; width: 30px;" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
