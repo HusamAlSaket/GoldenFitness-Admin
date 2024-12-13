@@ -129,6 +129,7 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::post('/messages/{message}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+    Route::post('messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 
     // Review Routes
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');

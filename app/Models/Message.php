@@ -14,5 +14,11 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // In Message model
+public function replies()
+{
+    return $this->hasMany(MessageReply::class);
+}
+
 }
     

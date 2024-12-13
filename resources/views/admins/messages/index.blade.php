@@ -161,3 +161,22 @@ searchInput.addEventListener('keyup', function() {
 </script>
 {{-- 00bcd4
  db3741--}}
+ <script>
+    document.getElementById('replyForm-' + messageId).addEventListener('submit', function (e) {
+    e.preventDefault();  // Prevent the default form submission
+    let form = e.target;
+    let replyContent = form.querySelector('textarea[name="reply"]').value;
+
+    // Add any necessary checks or logging
+    if (replyContent.trim() !== "") {
+        // Submit form
+        form.submit();
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please enter a reply.',
+        });
+    }
+});
+
+ </script>

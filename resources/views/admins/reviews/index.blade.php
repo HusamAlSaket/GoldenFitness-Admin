@@ -115,7 +115,9 @@ function confirmStatusChange(event, status) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, change it!',
-        cancelButtonText: 'Cancel'
+        confirmButtonColor:'db3741',
+        cancelButtonText: 'Cancel',
+        cancelButtonColor: '00bcd4',
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({

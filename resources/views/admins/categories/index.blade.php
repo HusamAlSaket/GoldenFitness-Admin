@@ -121,20 +121,27 @@
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @if (session('success'))
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: '{{ session('success') }}',
-            showConfirmButton: false,
-            timer: 700
+            showConfirmButton: true,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#00bcd4', // Custom color for confirm button
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setTimeout(() => {
+                    Swal.close(); // Close the SweetAlert after a delay
+                }, 700); // Delay of 700ms (0.7 seconds)
+            }
         });
     </script>
 @endif
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function confirmDelete(categoryId) {
         Swal.fire({
@@ -143,14 +150,19 @@
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
+            confirmButtonColor: '#db3741', // Custom color for confirm button
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#00bcd4' // Custom color for cancel button
         }).then((result) => {
             if (result.isConfirmed) {
                 document.getElementById('delete-form-' + categoryId).submit();
             }
         });
     }
+</script>
 
+
+    <script>
     document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.querySelector('input[placeholder="Search categories..."]');
         searchInput.addEventListener('keyup', function () {
