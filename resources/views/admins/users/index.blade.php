@@ -284,7 +284,7 @@
                 <a class="page-link" href="{{ $users->url($users->lastPage()) }}" aria-label="Last" style="background-color: white; color: red; border: 1px solid red;">Last &raquo;&raquo;</a>
             </li>
         </ul>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Pagination Info -->
         <div class="text-center" style="font-size: 14px; color: red;">
             Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} results 
@@ -292,4 +292,64 @@
         </div>
     </nav>
 @endif
+
+@if (session('success_add'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'User Added!',
+            text: '{{ session('success_add') }}',
+            showConfirmButton: true,  // Show the confirm button
+            confirmButtonText: 'Okay',  // Custom text for the button
+            confirmButtonColor: '#00bcd4',  // Optional: color of the button
+        });
+    </script>
+@endif
+
+@if (session('success_edit'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'User Updated!',
+            text: '{{ session('success_edit') }}',
+            showConfirmButton: true,  // Show the confirm button
+            confirmButtonText: 'Okay',  // Custom text for the button
+            confirmButtonColor: '#00bcd4',  // Optional: color of the button
+        });
+    </script>
+@endif
+
+<script>
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to undo this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#db3741', // Red color for the confirm button
+            cancelButtonColor: '#00bcd4',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Show the success message with a delay
+                Swal.fire(
+                    'Deleted!',
+                    'The user has been deleted.',
+                    'success',
+                    {
+                        confirmButtonText: 'Okay',  // Custom text for the button
+                        confirmButtonColor: 'red'  // Set the color of the "Okay" button
+                    }
+                );
+
+                // Add a delay before submitting the form
+                setTimeout(function() {
+                    document.getElementById('delete-form-' + userId).submit();
+                }, 1500); // 1500ms (1.5 seconds) delay before submitting the form
+            }
+        });
+    }
+</script>
+
+
 

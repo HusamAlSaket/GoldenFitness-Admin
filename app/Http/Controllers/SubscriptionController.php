@@ -57,9 +57,9 @@ class SubscriptionController extends Controller
             'benefits' => json_encode($benefits), // Save benefits as JSON
         ]);
 
-        return redirect()->route('subscriptions.index')->with('success', 'Subscription created successfully!');
+        return redirect()->route('subscriptions.index')->with('success_add', 'Subscription created successfully!');
     }
-
+    
     // Show a specific subscription
     public function show($id)
     {
@@ -94,7 +94,7 @@ class SubscriptionController extends Controller
             'benefits' => json_encode($benefits), // Save benefits as JSON
         ]));
 
-        return redirect()->route('subscriptions.index')->with('success', 'Subscription updated successfully');
+        return redirect()->route('subscriptions.index')->with('success_edit', 'Subscription updated successfully');
     }
 
     // Delete subscription

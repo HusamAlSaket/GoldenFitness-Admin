@@ -40,17 +40,18 @@
             <h4 class="text-danger">Subscription List</h4>
             <div class="d-flex ms-auto align-items-center">
                 <form method="GET" action="{{ route('subscriptions.index') }}" class="search-form">
-                    <input type="text" name="search" placeholder="Search products..." value="{{ request()->get('search') }}">
+                    <input type="text" name="search" placeholder="Search products..."
+                        value="{{ request()->get('search') }}">
                     <button type="submit">Search</button>
                 </form>
-    
+
                 <button class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#addSubscriptionModal">
                     <i class="bi bi-plus me-1"></i>Add Subscription
                 </button>
             </div>
         </div>
-    
-      
+
+
 
         <!-- List subscriptions -->
         <table class="table">
@@ -70,8 +71,8 @@
                     <tr>
                         <td>{{ $subscription->subscription_type }}</td>
                         <td>{{ $subscription->status }}</td>
-                        <td>{{$subscription->price}}</td>
-                        <td>{{$subscription->benefits}}</td>
+                        <td>{{ $subscription->price }}</td>
+                        <td>{{ $subscription->benefits }}</td>
                         <td>{{ $subscription->start_date }}</td>
                         <td>{{ $subscription->end_date }}</td>
                         <td class="">
@@ -79,22 +80,26 @@
                             {{-- <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm" style="height: 30px; width: 30px;">
                                 <i class="bi bi-eye"></i>
                             </a> --}}
-                        
+
                             <!-- Edit Action -->
-                            <a href="#" class="btn btn-danger  ms-1"  style="background-color:#00bcd4;" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
+                            <a href="#" class="btn btn-danger  ms-1" style="background-color:#00bcd4;"
+                                data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
                                 <i class="bi bi-pencil"></i>
                             </a>
-                        
+
                             <!-- Delete Action -->
-                            <form id="delete-form-{{ $subscription->id }}" action="{{ route('subscriptions.destroy', $subscription->id) }}" method="POST" style="display: inline;">
+                            <form id="delete-form-{{ $subscription->id }}"
+                                action="{{ route('subscriptions.destroy', $subscription->id) }}" method="POST"
+                                style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger " onclick="confirmDelete({{ $subscription->id }})">
+                                <button type="button" class="btn btn-danger "
+                                    onclick="confirmDelete({{ $subscription->id }})">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>
-                        
+
 
                     </tr>
                 @endforeach
@@ -134,7 +139,7 @@
                         <label class="form-label">Benefits</label>
                         <input type="benefits" name="benefits" class="form-control">
                     </div> --}}
-                    
+
                     <div class="mb-3">
                         <label class="form-label">Start Date</label>
                         <input type="date" name="start_date" class="form-control" required>
@@ -158,45 +163,8 @@
     </div>
 </div>
 
-<script>
-    function confirmDelete(subscriptionId) {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'This action cannot be undone!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Subscription Has Been Deleted successfully!',
-                    showConfirmButton: false,
-                    timer: 1000 // Duration for displaying success message
-                }).then(() => {
-                    // Submit the form after displaying the SweetAlert success message
-                    document.getElementById('delete-form-' + subscriptionId).submit();
-                });
-            }
-        });
-    }
-</script>
 
 
-
-@if (session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: '{{ session('success') }}',
-            showConfirmButton: false,
-            timer: 1500
-        });
-    </script>
-@endif
 
 <!-- Edit Subscription Modal -->
 @foreach ($subscriptions as $subscription)
@@ -217,13 +185,19 @@
                         <div class="mb-3">
                             <label class="form-label">Subscription Type</label>
                             <select name="subscription_type" class="form-select" required>
-                                <option value="Monthly" {{ old('subscription_type', $subscription->subscription_type) == 'Monthly' ? 'selected' : '' }}>Monthly</option>
-                                <option value="Yearly" {{ old('subscription_type', $subscription->subscription_type) == 'Yearly' ? 'selected' : '' }}>Yearly</option>
-                                <option value="Weekly" {{ old('subscription_type', $subscription->subscription_type) == 'Weekly' ? 'selected' : '' }}>Weekly</option>
+                                <option value="Monthly"
+                                    {{ old('subscription_type', $subscription->subscription_type) == 'Monthly' ? 'selected' : '' }}>
+                                    Monthly</option>
+                                <option value="Yearly"
+                                    {{ old('subscription_type', $subscription->subscription_type) == 'Yearly' ? 'selected' : '' }}>
+                                    Yearly</option>
+                                <option value="Weekly"
+                                    {{ old('subscription_type', $subscription->subscription_type) == 'Weekly' ? 'selected' : '' }}>
+                                    Weekly</option>
                             </select>
                         </div>
-                        
-        
+
+
 
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
@@ -257,6 +231,7 @@
     </div>
 @endforeach
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     // Search functionality
     const searchInput = document.querySelector('input[placeholder="Search products..."]');
@@ -270,3 +245,59 @@
         });
     });
 </script>
+
+@if (session('success_edit'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Subscription Updated!',
+            text: '{{ session('success_edit') }}',
+            showConfirmButton: true, // Show the confirm button
+            confirmButtonText: 'Okay', // Custom text for the button
+            confirmButtonColor: '#00bcd4', // Optional: color of the button
+        });
+    </script>
+@endif
+
+<script>
+function confirmDelete(subscriptionId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        confirmButtonColor:'db3741',
+        cancelButtonText: 'Cancel',
+        cancelButtonColor:'00bcd4',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Subscription Has Been Deleted successfully!',
+                showConfirmButton: false,
+                timer: 1000 // Duration for displaying success message
+            }).then(() => {
+                // Submit the form after displaying the SweetAlert success message
+                document.getElementById('delete-form-' + subscriptionId).submit();
+            });
+        }
+    });
+}
+
+</script>
+
+
+@if (session('success_add'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Subscription Added!',
+            text: '{{ session('success_add') }}',
+            showConfirmButton: true, // Show the confirm button
+            confirmButtonText: 'Okay', // Custom text for the button
+            confirmButtonColor: '#00bcd4', // Optional: color of the button
+        });
+    </script>
+@endif

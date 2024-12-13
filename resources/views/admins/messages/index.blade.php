@@ -108,6 +108,7 @@
         </table>
     </div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 // Function to confirm delete with SweetAlert
@@ -118,7 +119,10 @@ function confirmDelete(messageId) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
+        confirmButtonColor:'db3741',
+        cancelButtonText: 'Cancel',
+        cancelButtonColor:'00bcd4',
+
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById('delete-form-' + messageId).submit();
@@ -155,3 +159,5 @@ searchInput.addEventListener('keyup', function() {
     });
 });
 </script>
+{{-- 00bcd4
+ db3741--}}
