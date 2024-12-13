@@ -65,20 +65,21 @@
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="View Recipe">
                                     <i class="bi bi-eye"></i>
                                 </a> --}}
-                                <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal"
+                                <button class="btn btn-sm btn-danger " data-bs-toggle="modal"
                                     data-bs-target="#editRecipeModal-{{ $recipe->id }}" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Edit Recipe">
+                                    data-bs-placement="top" title="Edit Recipe" style="background-color:#00bcd4;" >
                                     <i class="bi bi-pencil"></i>
                                 </button>
                                 <form action="{{ route('recipes.destroy', $recipe->id) }}" method="POST"
                                     id="delete-form-{{ $recipe->id }}" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-sm btn-outline-danger"
+                                    <button type="button" class="btn btn-sm btn-danger"
                                         onclick="confirmDelete({{ $recipe->id }})" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Delete Recipe">
                                         <i class="bi bi-trash"></i>
                                     </button>
+                                    
                                 </form>
                             </div>
                         </td>

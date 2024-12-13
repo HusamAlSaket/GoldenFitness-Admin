@@ -381,20 +381,17 @@ body::-webkit-scrollbar-thumb:hover {
     padding: 1rem;
 }
 
-.modal-header .modal-title {
-    color: white;
-    font-weight: 600;
-}
-
 .modal-header .btn-close {
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     opacity: 1;
+    color: white; /* Set the text color to white */
 }
 
 .modal-header .btn-close:hover {
-    background: rgba(255, 255, 255, 0.3);
+    color: #f8f9fa; /* Optional: Set hover color if needed */
 }
+
+
 
 .modal-footer {
     background: linear-gradient(135deg, #dc3545, #ff4c4c);

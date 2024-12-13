@@ -66,7 +66,7 @@
                             </a> --}}
 
                             <!-- Edit Action -->
-                            <a href="#" class="btn btn-warning btn-sm " data-bs-toggle="modal"
+                            <a href="#" class="btn btn-danger btn-sm"  style="background-color:#00bcd4;"  data-bs-toggle="modal"
                                 data-bs-target="#editUserModal-{{ $user->id }}">
                                 <i class="bi bi-pencil"></i> 
                             </a>

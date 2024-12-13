@@ -76,7 +76,7 @@
                             </form>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" onclick="openReplyModal({{ $message->id }})">
+                            <button type="button" class="btn btn-primary btn-sm"  style="background-color:#00bcd4;" onclick="openReplyModal({{ $message->id }})">
                                 <i class="bi bi-reply"></i> Reply
                             </button>
 

@@ -45,8 +45,8 @@
                 </td>
                 <td class="d-flex">
                     <!-- Edit Button -->
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#editBlogModal-{{ $blog->id }}">
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#editBlogModal-{{ $blog->id }}" style="background-color:#00bcd4;">
                         <i class="bi bi-pencil"></i>
                     </button>
                     <!-- Delete Button -->

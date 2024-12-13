@@ -56,7 +56,7 @@
                         </td>
                         
                         <td class="action-buttons">
-                            <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                            <button class="btn btn-sm btn-danger" style="background-color:#00bcd4;" data-bs-toggle="modal"
                                 data-bs-target="#editVideoModal-{{ $video->id }}">
                                 <i class="bi bi-pencil"></i>
                             </button>

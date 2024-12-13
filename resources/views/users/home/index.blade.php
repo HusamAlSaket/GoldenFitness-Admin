@@ -18,11 +18,11 @@
                             <span class="hero-subtitle" data-ani="slideinup" data-ani-delay="0s">Welcome To Our
                                 Company</span>
                             <h1 class="hero-title text-white" data-ani="slideinup" data-ani-delay="0.1s">The Best
-                                <span>Fitness</span> Studio
+                                <span>Fitness</span> Gym
                                 In Town
                             </h1>
                             <div class="btn-group" data-ani="slideinup" data-ani-delay="0.2s">
-                                <a href="contact.html" class="btn style2">Make Appointment</a>
+                                <a href="{{route('user.subscriptions.create')}}" class="btn style2">Unlock Your Fitness Potential now</a>
                             </div>
                         </div>
                     </div>
@@ -40,11 +40,11 @@
                             <span class="hero-subtitle" data-ani="slideinup" data-ani-delay="0s">Welcome To Our
                                 Company</span>
                             <h1 class="hero-title text-white" data-ani="slideinup" data-ani-delay="0.1s">The Best
-                                <span>Fitness</span> Studio
+                                <span>Fitness</span> Gym
                                 In Town
                             </h1>
                             <div class="btn-group" data-ani="slideinup" data-ani-delay="0.2s">
-                                <a href="contact.html" class="btn style2">Make Appointment</a>
+                                <a href="{{route('user.subscriptions.create')}}" class="btn style2">Unlock Your Fitness Potential now</a>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                     <div class="btn-wrap mt-40">
-                        <a href="about.html" class="btn">Make Appointment</a>
+                        <a href="{{route('user.subscriptions.create')}}" class="btn">Unlock Your Fitness Potential now</a>
                         <div class="about-info-wrap">
                             <div class="icon"><i class="fas fa-phone-volume"></i></div>
                             <div class="details">
@@ -992,7 +992,7 @@
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Free Fitness Training</h4>
-                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling studio.
+                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling Gym.
                             Equipped with stationary bikes...</p>
                     </div>
                 </div>
@@ -1002,7 +1002,7 @@
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Cardio and Strength</h4>
-                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling studio.
+                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling Gym.
                             Equipped with stationary bikes...</p>
                     </div>
                 </div>

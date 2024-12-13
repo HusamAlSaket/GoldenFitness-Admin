@@ -53,9 +53,9 @@
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <div class="text-center">
+                        {{-- <div class="text-center">
                             <a href="{{ $video->video_url }}" class="text-blue-500 hover:underline" target="_blank">Watch Video</a>
-                        </div>
+                        </div> --}}
                     </div>
                 @endforeach
             </div>

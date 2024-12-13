@@ -70,7 +70,7 @@
                             {{-- <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info">
                                 <i class="bi bi-eye"></i>
                             </a> --}}
-                            <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                            <button class="btn btn-sm btn-danger"  style="background-color:#00bcd4;"  data-bs-toggle="modal"
                                 data-bs-target="#editProductModal-{{ $product->id }}">
                                 <i class="bi bi-pencil"></i>
                             </button>

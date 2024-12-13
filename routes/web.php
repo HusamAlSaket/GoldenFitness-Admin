@@ -23,8 +23,7 @@ use App\Http\Controllers\SupplementsController;
 use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
 use App\Http\Controllers\RecipeController;
-
-
+use App\Http\Controllers\UserProfileController;
 
 Route::get('/', function () {
     return view('users.home.index');
@@ -235,6 +234,11 @@ Route::prefix('users')->group(function () {
 
     Route::Get('/supplements',[SupplementsController::class,'index'])->name('users.supplements.index');
 
+    // profile controller 
+
+    Route::get('/profile', [UserProfileController::class, 'showProfile'])->name('profile.show');
+    Route::post('/profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.password.update');
 });
 
 

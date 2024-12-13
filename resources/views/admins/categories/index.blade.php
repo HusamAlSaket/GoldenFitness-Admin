@@ -42,7 +42,7 @@
                                 {{-- <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-info shadow-sm">
                                     <i class="bi bi-eye"></i>
                                 </a> --}}
-                                <button class="btn btn-sm btn-warning shadow-sm" data-bs-toggle="modal"
+                                <button class="btn btn-sm btn-danger shadow-sm"  style="background-color:#00bcd4;" data-bs-toggle="modal"
                                     data-bs-target="#editcategoryModal-{{ $category->id }}">
                                     <i class="bi bi-pencil"></i>
                                 </button>

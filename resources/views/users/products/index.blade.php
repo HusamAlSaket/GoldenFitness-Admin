@@ -2,7 +2,18 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .product-modal-img {
+    width: 100%; /* Ensures it scales to fit the modal width */
+    max-width: 300px; /* Limits the image to a maximum width */
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the image */
+    border-radius: 10px; /* Keeps the rounded corners */
+    max-height: 300px;
+}
 
+</style>
 
 <!-- Breadcrumb -->
 <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
@@ -80,10 +91,10 @@
                             <div class="modal-body">
                                 @if ($product->images->isNotEmpty())
                                     <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                        alt="{{ $product->name }}" class="img-fluid mb-3" style="border-radius: 10px;">
+                                        alt="{{ $product->name }}" class="img-fluid mb-3 product-modal-img" style="border-radius: 10px;">
                                 @else
                                     <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                        class="img-fluid mb-3" style="border-radius: 10px;">
+                                        class="img-fluid mb-3 product-modal-img" style="border-radius: 10px;">
                                 @endif
                                 <p><strong>Description:</strong> {{ $product->description }}</p>
                                 <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>

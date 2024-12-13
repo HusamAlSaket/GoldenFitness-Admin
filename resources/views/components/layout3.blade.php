@@ -130,7 +130,7 @@
                                 <ul class="d-flex m-0 p-0 align-items-center">
                                     @auth
                                         <!-- Display these only if the user is logged in -->
-                                        <li><a href="#" class="nav-link text-black">Profile</a></li>
+                                        <li><a href="{{route('profile.show')}}" class="nav-link text-black">Profile</a></li>
                                         <li>
                                             <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                                                 @csrf

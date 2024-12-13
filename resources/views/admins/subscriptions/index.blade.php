@@ -74,14 +74,14 @@
                         <td>{{$subscription->benefits}}</td>
                         <td>{{ $subscription->start_date }}</td>
                         <td>{{ $subscription->end_date }}</td>
-                        <td class="d-flex">
+                        <td class="">
                             <!-- View Action -->
                             {{-- <a href="{{ route('subscriptions.show', $subscription->id) }}" class="btn btn-info btn-sm" style="height: 30px; width: 30px;">
                                 <i class="bi bi-eye"></i>
                             </a> --}}
                         
                             <!-- Edit Action -->
-                            <a href="#" class="btn btn-warning btn-sm ms-1" style="height: 30px; width: 30px;" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
+                            <a href="#" class="btn btn-danger  ms-1"  style="background-color:#00bcd4;" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal-{{ $subscription->id }}">
                                 <i class="bi bi-pencil"></i>
                             </a>
                         
@@ -89,7 +89,7 @@
                             <form id="delete-form-{{ $subscription->id }}" action="{{ route('subscriptions.destroy', $subscription->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger btn-sm ms-1" style="height: 30px; width: 30px;" onclick="confirmDelete({{ $subscription->id }})">
+                                <button type="button" class="btn btn-danger " onclick="confirmDelete({{ $subscription->id }})">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
