@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    /** @use HasFactory<\Database\Factories\MessageFactory> */
     use HasFactory;
-    protected $fillable = ['id', 'user_id','message','name','email'];
+
+    protected $fillable = ['user_id', 'message', 'is_replied'];
+
+    public $timestamps = true;
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    // In Message model
-public function replies()
-{
-    return $this->hasMany(MessageReply::class);
-}
 
+    public function replies()
+    {
+        return $this->hasMany(MessageReply::class);
+    }
 }
-    

@@ -198,7 +198,12 @@ Route::prefix('users')->group(function () {
 
     // contact us controller 
 
+
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('/contact/messages', [ContactController::class, 'store'])->name('messages.store');
+    
+
+
 
     // Messages Controller
     Route::post('/messages', [MessageController::class, 'store'])->name('messages');
@@ -242,6 +247,7 @@ Route::prefix('users')->group(function () {
     Route::post('/profile', [UserProfileController::class, 'updateProfile'])->name('update');
     Route::put('/password', [UserProfileController::class, 'update'])->name('password.update');
     
+
 }); 
 
 
