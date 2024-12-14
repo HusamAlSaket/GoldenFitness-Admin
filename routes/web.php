@@ -169,7 +169,8 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
     // profile routes
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('admins.profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('admins.profile.update');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('admins.profile.update');
+    Route::post('/profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.update_picture');
 
 });
@@ -237,10 +238,11 @@ Route::prefix('users')->group(function () {
 
     // profile controller 
 
-    Route::get('/profile', [UserProfileController::class, 'showProfile'])->name('profile.show');
-    Route::post('/profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::post('/profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.password.update');
-});
+    Route::get('/profile', [UserProfileController::class, 'showProfile'])->name('show');
+    Route::post('/profile', [UserProfileController::class, 'updateProfile'])->name('update');
+    Route::put('/password', [UserProfileController::class, 'update'])->name('password.update');
+    
+}); 
 
 
 // Route::prefix('admins')->middleware(['auth', 'coach'])->group(function () {

@@ -238,3 +238,36 @@
         }
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(recipeId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this recipe!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#db3741', // Custom color for confirm button (red)
+            cancelButtonColor: '#00bcd4', // Custom color for cancel button (blue)
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form if confirmed
+                document.getElementById(`delete-form-${recipeId}`).submit();
+            }
+        });
+    }
+</script>
+
+<script>
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            showConfirmButton: true,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#00bcd4', // Custom color for confirm button (blue)
+        });
+    @endif
+</script>

@@ -16,7 +16,7 @@
             <h4 class="fw-bold text-danger">Order List</h4>
             <div class="d-flex align-items-center">
                 <input type="text" class="form-control me-2" placeholder="Search orders..." style="width: 250px;">
-                <button class="btn btn-danger shadow-sm" data-bs-toggle="modal" data-bs-target="#addorderModal">
+                <button class="btn btn-danger shadow-sm" data-bs-toggle="modal" data-bs-target="#addOrderModal">
                     <i class="bi bi-plus me-1"></i> Add order
                 </button>
             </div>
@@ -26,7 +26,7 @@
             <table class="table table-hover table-striped table-bordered align-middle text-center">
                 <thead class="bg-danger text-white">
                     <tr>
-                        <th class="text-uppercase">id</th>
+                        <th class="text-uppercase">ID</th>
                         <th class="text-uppercase">Description</th>
                         <th class="text-uppercase">Price</th>
                         <th class="text-uppercase">Order Date</th>
@@ -39,7 +39,7 @@
                         <tr id="order-{{ $order->id }}">
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->user->name ?? 'N/A' }}</td>
-                            <td>{{ $order->total_price }}</td>
+                            <td>${{ number_format($order->total_price, 2) }}</td>
                             <td>{{ $order->order_date }}</td>
                             <td>
                                 <form action="{{ route('orders.update', $order->id) }}" method="POST">
@@ -60,12 +60,12 @@
                             <td class="action-buttons">
                                 <!-- Trigger Button -->
                                 <button type="button" class="btn btn-danger" style="background-color:#00bcd4;"
-                                    data-bs-toggle="modal" data-bs-target="#orderModal">
+                                    data-bs-toggle="modal" data-bs-target="#orderModal-{{ $order->id }}">
                                     <i class="bi bi-eye"></i>
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel"
+                                <div class="modal fade" id="orderModal-{{ $order->id }}" tabindex="-1" aria-labelledby="orderModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -139,7 +139,7 @@
                                                                             <div class="d-flex align-items-center mb-3">
                                                                                 @if ($item->product->images->isNotEmpty())
                                                                                     <img src="{{ asset('storage/' . $item->product->images->first()->image_url) }}"
-                                                                                        alt="{{ $item->product->name }}"
+                                                                                        alt="{{ $item->product->name }} "
                                                                                         class="me-3 rounded"
                                                                                         style="width: 50px; height: 50px; object-fit: cover;">
                                                                                 @endif
@@ -162,12 +162,8 @@
                                                             @endforeach
                                                         </div>
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -232,3 +228,4 @@
         }
     }
 </script>
+

@@ -24,7 +24,7 @@ class UserProfileController extends Controller
         $user->email=$request->input('email');
         $user->save();
 
-        return back()->with('success',',Profile updated successfully');
+        return back()->with('success', 'Profile updated successfully.');
     }
     public function updatePassword(Request $request){
         $request->validate([
@@ -40,6 +40,6 @@ class UserProfileController extends Controller
         $user->password=Hash::make($request->input('password'));
         $user->save();
 
-        return back()->with('success', 'Password Updated Successfully!');
+        return back()->with('success_pass', 'Password updated successfully!');
     }
 }

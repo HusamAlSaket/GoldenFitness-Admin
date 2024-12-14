@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
 </head>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
@@ -67,140 +67,193 @@
             </div>
         </div>
     </div>
-
-    <header class="nav-header header-layout1" style="background-color: white; position: sticky; top: 0; z-index: 999;">
-        <div class="sticky-wrapper">
-            <!-- Main Menu Area -->
-            <div class="menu-area">
-                <div class="container-fluid">
-                    <div class="row align-items-center justify-content-between">
-                        <div class="col-auto">
-                            <div class="header-logo">
-                                <x-logo class="w-16 h-16 animate-pulse-slow" />
-                                <span style="color: black;">Golden Fitness</span>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <!-- Toggle Button (for mobile) -->
-                            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-
-                            <!-- Navbar Links -->
-                            <nav class="main-menu d-none d-lg-inline-block">
-                                <ul class="d-flex justify-content-start m-0 p-0">
-                                    <li><a href="{{ route('home.index') }}" class="nav-link text-black">Home</a></li>
-                                    <li><a href="{{ route('about.index') }}" class="nav-link text-black">About</a></li>
-                                    <li><a href="{{ route('products.index') }}" class="nav-link text-black">Gym Equipments</a></li>
-                                    <li><a href="{{ route('users.blogs.index') }}" class="nav-link text-black">Blog</a></li>
-                                    <li><a href="{{ route('users.supplements.index') }}" class="nav-link text-black">Supplements</a></li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Videos
-                                        </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational Videos</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium Content</a></li>
-                                        </ul>
-                                    </li>
-                                        {{--  --}}
-                                        <li class="nav-item dropdown">
-
-                                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+    <header class="nav-header header-layout1" style="background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%); position: sticky; top: 0; z-index: 999; box-shadow: 0 4px 6px rgba(255,0,0,0.1);">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark fitness-navbar" style="padding: 10px 15px; height: 85px;">
+                <!-- Logo Section -->
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand d-flex align-items-center" href="{{ route('home.index') }}" style="transition: transform 0.2s;">
+                        <x-logo class="w-16 h-16 animate-pulse-slow" style="filter: drop-shadow(0 0 3px rgba(255,0,0,0.3));" />
+                        <span style="color: #ff2020; margin-left: 10px; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px;">
+                            Golden Fitness
+                        </span>
+                    </a>
+                </div>
+    
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                    style="border: 2px solid #ff2020; background-color: transparent;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Collapsible Navbar Content -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Main Navigation Links -->
+                    <ul class="navbar-nav mx-auto" style="gap: 20px;">
+                        @php
+                            $navItems = [
+                                ['route' => 'home.index', 'label' => 'Home'],
+                                ['route' => 'about.index', 'label' => 'About'],
+                                ['route' => 'products.index', 'label' => 'Gym Equipments'],
+                                ['route' => 'users.blogs.index', 'label' => 'Blog'],
+                                ['route' => 'users.supplements.index', 'label' => 'Supplements']
+                            ];
+                        @endphp
+    
+                        @foreach($navItems as $item)
+                            <li class="nav-item">
+                                <a href="{{ route($item['route']) }}" class="nav-link" 
+                                   style="color: #ff2020; font-size: 1rem;">
+                                    {{ $item['label'] }}
+                                </a>
+                            </li>
+                        @endforeach
+    
+                        <!-- Videos Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+                               role="button" data-bs-toggle="dropdown" 
+                               aria-expanded="false" 
+                               style="color: #ff2020; font-size: 1rem;">
+                                Videos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('users.videos.index') }}">
+                                        Educational Videos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('users.videos.premium') }}">
+                                        Premium Content
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <!-- Subscriptions Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSubscriptions" 
+                               role="button" data-bs-toggle="dropdown" 
+                               aria-expanded="false" 
+                               style="color: #ff2020; font-size: 1rem;">
+                                Subscriptions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownSubscriptions">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('user.subscriptions.create') }}">
                                         Subscriptions
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{ route('user.subscriptions.create') }}">Subscriptions </a></li>
-                                        {{-- <li><a class="dropdown-item" href="{{ route('users.subscriptions.index') }}">Active Subscriptions</a></li> --}}
-                                    </ul>
-                                    
-                                    <li><a href="{{ route('contact.index') }}" class="nav-link text-black">Contact</a></li>
-                                </ul>
-                            </li>
-                            </nav>
-                        </div>
-
-                        <!-- Profile, Login, Cart aligned to the right -->
-                        <div class="col-auto ms-auto">
-                            <nav class="main-menu d-flex justify-content-end">
-                                <ul class="d-flex m-0 p-0 align-items-center">
-                                    @auth
-                                        <!-- Display these only if the user is logged in -->
-                                        <li><a href="{{route('profile.show')}}" class="nav-link text-black">Profile</a></li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                                                @csrf
-                                                <button type="submit" class="nav-link text-black" style="background: none; border: none; cursor: pointer;">
-                                                    Logout
-                                                </button>
-                                            </form>
-                                        </li>
-                                    @endauth
-                                
-                                    @guest
-                                        <!-- Display this only if the user is not logged in -->
-                                        <li><a href="{{ route('login') }}" class="nav-link text-black">Login</a></li>
-                                    @endguest
-                                
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index') }}" class="nav-link" 
+                               style="color: #ff2020; font-size: 1rem;">
+                                Contact
+                            </a>
+                        </li>
+    
+                        <!-- User Authentication -->
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+                                   role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false"
+                                   style="color: #ff2020; font-size: 1rem;">
+                                    Profile
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                     <li>
-                                        <div class="cart-icon-container">
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
-                                                class="cart-btn position-relative"
-                                                style="background: transparent; border: none; padding: 10px;">
-                                                <i class="bi bi-cart" style="font-size: 24px; color: #dc3545;"></i>
-                                                <span
-                                                    class="cart-count badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
-                                                    style="font-size: 12px; margin-top: -10px;">
-                                                    {{ collect(session('cart', []))->sum('quantity') }}
-                                                </span>
+                                        <a class="dropdown-item" href="{{ route('show') }}">
+                                            View Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">
+                                                Logout
                                             </button>
-                                        </div>
+                                        </form>
                                     </li>
                                 </ul>
-                                
-                            </nav>
-                        </div>
-                    </div>
+                            </li>
+                        @endauth
+    
+                        @guest
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="nav-link" 
+                                   style="color: #ff2020; 
+                                          border: 2px solid #ff2020; 
+                                          border-radius: 20px; 
+                                          padding: 5px 15px;">
+                                    Login
+                                </a>
+                            </li>
+                        @endguest
+                    </ul>
+    
+                    <!-- Cart Icon -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#cartModal"
+                                class="cart-btn position-relative" 
+                                style="background: transparent; 
+                                       border: none; 
+                                       position: relative; 
+                                       transition: transform 0.2s;">
+                                <i class="bi bi-cart" style="font-size: 24px; color: #ff2020;"></i>
+                                <span class="cart-count badge rounded-circle bg-danger position-absolute top-0 start-100 translate-middle"
+                                    style="font-size: 12px; 
+                                           padding: 3px 6px; 
+                                           line-height: 1;">
+                                    {{ collect(session('cart', []))->sum('quantity') }}
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <!-- Collapsible Navbar for mobile view -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link text-black">Home</a>
-                    </li>
-                    <li class="nav-item"><a href="{{ route('about.index') }}" class="nav-link text-black">About</a>
-                    </li>
-                    <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link text-black">Gym
-                            Equipments</a></li>
-                    <li class="nav-item"><a href="{{ route('users.blogs.index') }}"
-                            class="nav-link text-black">Blog</a></li>
-                    <li class="nav-item"><a href="{{ route('users.supplements.index') }}"
-                            class="nav-link text-black">Supplements</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Videos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('users.videos.index') }}">Educational
-                                    Videos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('users.videos.premium') }}">Premium
-                                    Content</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="{{ route('contact.index') }}"
-                            class="nav-link text-black">Contact</a></li>
-
-                </ul>
-            </div>
+            </nav>
         </div>
     </header>
-
+    
+    <style>
+        /* Dropdown Menu Styling */
+        .dropdown-menu {
+            background-color: #1a1a1a;
+            border: 1px solid #ff2020;
+        }
+        
+        .dropdown-item {
+            color: #ff2020;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(255,32,32,0.1);
+            color: #ff4040;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background-color: #1e1e1e;
+                padding: 15px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            
+            .navbar-nav {
+                gap: 10px;
+            }
+        }
+    </style>
+    
+    <!-- Ensure these are included in your layout -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- cart modal --}}
 
@@ -327,3 +380,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
