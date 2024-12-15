@@ -302,8 +302,8 @@
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                                                        <i class="bi bi-plus"></i>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-plus"></i>
                                                     </button>
                                                 </form>
                                                 <span class="mx-2">{{ $item['quantity'] }}</span>
@@ -311,18 +311,19 @@
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                                                        <i class="bi bi-minus">-</i>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-minus"></i>
                                                     </button>
                                                 </form>
                                             </div>
+                                            
                                         </td>
                                         <td>${{ number_format($itemTotal, 2) }}</td>
                                         <td>
                                             <form action="{{ route('cart.remove', $id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                                <button type="submit" class="btn style2">Remove</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -1,6 +1,5 @@
 @include('components.layout3')
 
-
 <!--==============================
     Breadcumb
 ==============================-->
@@ -13,13 +12,11 @@
             <div class="col-lg-12">
                 <div class="breadcumb-content text-center">
                     <h1 class="breadcumb-title">Our Blogs</h1>
-                
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!--==============================
     Blog Area
@@ -28,7 +25,6 @@
     <div class="container">
         <div class="row">
             <!-- Blog List -->
-            <!-- Blog List -->
             <div class="col-xxl-8 col-lg-7">
                 <div id="blog-list">
                     @foreach ($initialBlogs as $blog)
@@ -36,16 +32,15 @@
                             <div class="blog-img">
                                 @if ($blog->image_url)
                                     <img src="{{ asset('storage/' . $blog->image_url) }}" alt="{{ $blog->title }}"
-                                        class="img-fluid" style="max-height: 500px;">
+                                        class="img-fluid fixed-image">
                                 @else
                                     <img src="https://via.placeholder.com/450x300" alt="Placeholder Image"
-                                        class="img-fluid" style="max-height: 500px;">
+                                        class="img-fluid fixed-image">
                                 @endif
                             </div>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <a href="#"><i
-                                            class="far fa-clock"></i>{{ $blog->created_at->format('d M, Y') }}</a>
+                                    <a href="#"><i class="far fa-clock"></i>{{ $blog->created_at->format('d M, Y') }}</a>
                                     <a href="#"><i class="far fa-user"></i>Post by: Admin</a>
                                 </div>
                                 <h3 class="blog-title">{{ $blog->title }}</h3>
@@ -66,7 +61,7 @@
 
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
-                    let offset = 3; // Start after the initial 2 blogs
+                    let offset = 3; // Start after the initial 3 blogs
                     const loadMoreButton = document.getElementById('load-more');
                     const blogList = document.getElementById('blog-list');
 
@@ -83,7 +78,7 @@
                                         const blogCard = `
                             <div class="blog-card style4 mb-4">
                                 <div class="blog-img">
-                                    <img src="${blog.image_url ? `{{ asset('storage/') }}/${blog.image_url}` : 'https://via.placeholder.com/450x300'}" alt="${blog.title}" class="img-fluid" style="max-height: 500px;">
+                                    <img src="${blog.image_url ? `{{ asset('storage/') }}/${blog.image_url}` : 'https://via.placeholder.com/450x300'}" alt="${blog.title}" class="img-fluid fixed-image">
                                 </div>
                                 <div class="blog-content">
                                     <div class="blog-meta">
@@ -111,13 +106,9 @@
                 });
             </script>
 
-
-
             <!-- Sidebar -->
             <div class="col-xxl-4 col-lg-5">
                 <aside class="sidebar-area">
-                    <!-- Search Widget -->
-
                     <!-- Recent Blogs Widget -->
                     <div class="widget mt-4">
                         <h3 class="widget_title">Recent Blogs</h3>
@@ -127,16 +118,15 @@
                                     <div class="media-img">
                                         <a href="{{ route('users.blogs.show', $latest->id) }}">
                                             <img src="{{ asset('storage/' . $latest->image_url) }}"
-                                                alt="{{ $latest->title }}" class="img-fluid">
+                                                alt="{{ $latest->title }}" class="img-fluid fixed-image">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h4 class="post-title">
-                                            <a
-                                                href="{{ route('users.blogs.show', $latest->id) }}">{{ $latest->title }}</a>
+                                            <a href="{{ route('users.blogs.show', $latest->id) }}" class="text-danger">{{ $latest->title }}</a>
                                         </h4>
                                         <div class="recent-post-meta">
-                                            <a href="#">{{ $latest->created_at->format('d M, Y') }}</a>
+                                            <a href="#" class="date-link text-danger">{{ $latest->created_at->format('d M, Y') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -145,10 +135,22 @@
                     </div>
                 </aside>
             </div>
+            
         </div>
     </div>
 </section>
+<style>
+    .recent-post-meta a.date-link {
+    color: #ff0000; /* Red color */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
 
+.recent-post-meta a.date-link:hover {
+    color: #cc0000; /* Darker red color on hover */
+}
+
+</style>
 <!-- Scroll To Top -->
 <div class="scroll-top">
     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -159,3 +161,84 @@
 </div>
 
 @include('components.layout4')
+
+<style>
+    .blog-card {
+        position: relative;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 1px solid transparent;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .blog-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        border-color: rgba(255, 0, 0, 0.3);
+    }
+
+    .blog-img {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .blog-img img.fixed-image {
+        width: 100%;
+        height: 650px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .blog-img:hover img.fixed-image {
+        transform: scale(1.1);
+    }
+
+    .recent-post {
+        background-color: #fff;
+        border: 1px solid #ff0000;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .recent-post:hover {
+        transform: scale(1.05);
+        border-color: #ff4c4c;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .recent-post .media-img img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .recent-post:hover .media-img img {
+        transform: scale(1.1);
+    }
+
+    .blog-meta a,
+    .recent-post-meta a {
+        color: #ff0000;
+        font-weight: bold;
+    }
+
+    .blog-title,
+    .post-title {
+        color: #333;
+    }
+
+    .link-btn {
+        color: #ff0000;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .link-btn:hover {
+        color: #ff4c4c;
+    }
+</style>
