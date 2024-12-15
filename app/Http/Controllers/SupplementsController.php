@@ -9,7 +9,7 @@ class SupplementsController extends Controller
 {
     public function index(Request $request)
     {
-        $excludedCategories = ['Dumbbells', 'Barbells', 'Plates', 'Vests'];
+        $excludedCategories = ['Dumbbells', 'Barbells', 'Plates', 'Vests','Healthy Food'];
     
         // Get IDs of the excluded categories
         $excludedCategoryIds = \App\Models\Category::whereIn('category_name', $excludedCategories)->pluck('id');

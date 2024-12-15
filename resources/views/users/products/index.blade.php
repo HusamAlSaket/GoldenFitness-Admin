@@ -30,7 +30,52 @@
         </div>
     </div>
 </div>
+<style>
+    /* Styling for the select box and option */
+/* Styling for the select box */
+#category {
+    background-color: #f8f9fa;
+    border: 2px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    width: 200px;
+}
 
+/* Styling for options inside the select box */
+#category option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Special styling for "All Categories" option */
+#category option:first-child {
+    background: linear-gradient(135deg, #ff4d4d, #ff8000); /* Cool gradient */
+    color: #fff;                /* White text */
+    font-weight: bold;
+    border-bottom: 3px solid #333; /* Bold border */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+    padding: 12px;
+}
+
+/* Hover effect for options */
+#category option:hover {
+    background-color: #e6e6e6;
+}
+
+/* Select box focus styling */
+#category:focus {
+    border-color: #ff4d4d;  /* Red border on focus */
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.6); /* Subtle glow effect */
+}
+
+
+</style>
 <!-- Category Filter -->
 <div class="container my-4">
     <form method="GET" action="{{ route('products.index') }}" class="d-flex align-items-center gap-3">
@@ -45,7 +90,7 @@
                 @endforeach
             </select>
         </div>
-        <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Reset Filters</a>
+        <a href="{{ route('products.index') }}" class="btn btn style2">Reset Filters</a>
     </form>
 </div>
 
@@ -80,6 +125,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- Product Details Modal -->
                 <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
                     aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">

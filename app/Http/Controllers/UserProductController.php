@@ -9,7 +9,7 @@ class UserProductController extends Controller
 {
     public function index(Request $request)
     {
-        $excludedCategories = ['Vitamins and Minerals', 'Amino Acids', 'Creatine', 'Mass Gainer Protein','Whey Protein','isolate Proteins'];
+        $excludedCategories = ['Vitamins and Minerals', 'Amino Acids', 'Creatine', 'Mass Gainer Protein','Whey Protein','isolate Proteins','Healthy Food'];
     
         // Get IDs of the excluded categories
         $excludedCategoryIds = \App\Models\Category::whereIn('category_name', $excludedCategories)->pluck('id');

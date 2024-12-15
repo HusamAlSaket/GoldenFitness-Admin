@@ -17,11 +17,68 @@
         </div>
     </div>
 </div>
+<style>
+    /* Styling for images inside the product modal */
+.modal-body img {
+    width: 100%; /* Ensure the image scales to container width */
+    max-width: 300px; /* Set a maximum width for the image */
+    height: 350px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image maintains its aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    margin: 0 auto; /* Center the image */
+    display: block; /* Ensure the image is a block element for centering */
+}
 
+</style>
+<style>
+    
+    /* Styling for the select box and option */
+#category {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+    width:200px;
+}
+
+#category option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+}
+
+/* Custom styling for "All Categories" option */
+#category option:first-child {
+    background-color: #ff4d4d;  /* Red background */
+    color: #fff;                /* White text */
+    font-weight: bold;
+    border-bottom: 2px solid #333; /* Cool border */
+    padding: 10px;
+}
+
+/* Styling for hovering over the options */
+#category option:hover {
+    background-color: #e6e6e6;
+}
+
+/* Adding a custom border to the select box */
+#category {
+    border: 2px solid #333;
+    outline: none;
+}
+
+#category:focus {
+    border-color: #ff4d4d;
+}
+
+</style>
 
 <!-- Category Filter -->
 <div class="container my-4">
-    <form method="GET" action="{{ route('products.index') }}" class="d-flex align-items-center gap-3">
+    <form method="GET" action="{{ route('users.supplements.index') }}" class="d-flex align-items-center gap-3">
         <div class="form-group">
             <label for="category" class="form-label">Category</label>
             <select name="category" id="category" class="form-select" onchange="this.form.submit()">
@@ -33,7 +90,7 @@
                 @endforeach
             </select>
         </div>
-        <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Reset Filters</a>
+        <a href="{{ route('users.supplements.index') }}" class="btn style2" style="">Reset Filters</a>
     </form>
 </div>
 
