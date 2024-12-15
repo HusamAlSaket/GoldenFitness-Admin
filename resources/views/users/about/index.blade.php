@@ -19,7 +19,7 @@
         <div class="widget footer-widget">
             <div class="widget-about">
                 <div class="footer-logo">
-                    <a href="index.html"><img src="{{ asset('assets/img/logo-white.svg') }}" alt="Golden Fitness"></a>
+                    <a href="index.html"><img src="{{ asset('assets/img/hero/hero_bg_1_1.png') }}" alt="Golden Fitness"></a>
                 </div>
                 <p class="about-text">A gym, also known as a fitness center or health club, is a facility dedicated to
                     physical fitness and exercise gyms and typically offer a range</p>
@@ -121,19 +121,20 @@
 <!--==============================
     Breadcumb
     ============================== -->
-<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
-    <!-- bg animated image/ -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcumb-content">
-                    <h1 class="breadcumb-title">About Us</h1>
+    <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/hero/hero_bg_2_1.png') }}" style="height:660px; display: flex; align-items: center; justify-content: center; background-image: url('{{ asset('assets/img/hero/hero_bg_2_1.png') }}'); background-size: cover; background-position: center;">
+        <!-- bg animated image/ -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcumb-content text-center">
+                        <h1 class="breadcumb-title">About Us</h1>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+    
+
 
 <!--==============================
     About Area
@@ -170,36 +171,259 @@
                                     <div class="about-tab-icon">
                                         <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
-                                    <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
-                                        lifestyle. They provide a supportive and motivating environment for individuals
-                                        to engage in regular physical activity.</p>
+                                    <p class="about-tab-text">To inspire and support individuals in achieving their
+                                        fitness goals by providing a welcoming, motivating, and well-equipped
+                                        environment..</p>
                                 </div>
                                 <div class="filter-item cat2">
                                     <div class="about-tab-icon">
                                         <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
-                                    <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
-                                        lifestyle. They provide a supportive and motivating environment for individuals
-                                        to engage in regular physical activity.</p>
+                                    <p class="about-tab-text">To be a leading gym that fosters a healthier community by
+                                        empowering individuals to prioritize their physical and mental well-being..</p>
                                 </div>
                                 <div class="filter-item cat3">
                                     <div class="about-tab-icon">
                                         <img src="{{ asset('assets/img/icon/about-icon.svg') }}" alt="img">
                                     </div>
-                                    <p class="about-tab-text">Gyms play a vital role in promoting an active and healthy
-                                        lifestyle. They provide a supportive and motivating environment for individuals
-                                        to engage in regular physical activity.</p>
+                                    <p class="about-tab-text">To offer personalized training, state-of-the-art
+                                        facilities, and ongoing encouragement, helping each member lead an active and
+                                        healthy lifestyle.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-wrap mt-40">
-                        <a href="about.html" class="btn">Make Appointment</a>
-                        <div class="about-info-wrap">
-                            <div class="icon"><i class="fas fa-phone-volume"></i></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="service-bg-area" data-bg-src="{{ asset('assets/img/bg/service-bg.png') }}">
+    <div class="sec-shape-top">
+        <img src="{{ asset('assets/img/bg/sec-shape-top.png') }}" alt="img">
+    </div>
+    <!--==============================
+        Service Area 01
+        ==============================-->
+    <div class="service-area-1 space overflow-hidden">
+        <div class="container">
+            <div class="title-area">
+                <span class="sub-title">Our Features</span>
+                <h2 class="sec-title text-white">Services We're Offering</h2>
+            </div>
+        </div>
+        <div class="container-fluid p-0">
+            <div class="row global-carousel service-slider-1" data-slide-show="4" data-ml-slide-show="3"
+                data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1"
+                data-dots="false">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
+                            </h4>
+                            <p class="service-card_text">explore wide variety of Equipments
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
+                            <p class="service-card_text">Feel the adrenaline with rows of high-performance cardio
+                                machines. Perfect for a heart-pounding workout.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
+                            </h4>
+                            <p class="service-card_text">Push your limits with advanced strength training equipment.
+                                Build muscle and elevate your fitness game.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
+                            </h4>
+                            <p class="service-card_text">Access a variety of equipment to suit every fitness goal. From
+                                free weights to machines, we've got you covered.
+
+
+
+
+
+
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-2.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Rows of Cardio</a></h4>
+                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
+                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
+                            </h4>
+                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--==============================
+        Why-choose-us Area
+        ==============================-->
+    <div class="wcu-area-1 space-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="wcu-thumb">
+                        <img class="img-1" src="{{ asset('assets/img/normal/wcu_1-2.png') }}" alt="img">
+                        <div class="img-2 jump">
+                            <img src="{{ asset('assets/img/normal/wcu_1-1.png') }}" alt="img">
+                        </div>
+                        <div class="wcu-grid jump2">
+                            <div class="icon">
+                                <img src="{{ asset('assets/img/icon/wcu-icon_1-1.svg') }}" alt="img">
+                            </div>
                             <div class="details">
-                                <p class="about-info-title">Need Help?</p>
-                                <a class="about-info-link" href="tel:+25825692582">(+258) 2569 2582</a>
+                                <h3 class="wcu-grid_year"><span class="counter-number">25</span>+</h3>
+                                <span class="wcu-grid_text">Years Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="wcu-wrap">
+                        <div class="title-area mb-50">
+                            <span class="sub-title">Why Choose Us?</span>
+                            <h2 class="sec-title text-white">Why Choose Us?</h2>
+                            <p class="sec-text text-white">We’re here to help you every step of the way, with
+                                personalized care, top-notch facilities, and a welcoming community</p>
+                        </div>
+                        <div class="accordion-area accordion" id="faqAccordion">
+
+                            <div class="accordion-card active">
+                                <div class="accordion-header" id="collapse-item-1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                        <i class="fas fa-clock"></i> What are your gym's operating hours?
+                                    </button>
+
+                                </div>
+                                <div id="collapse-1" class="accordion-collapse collapse show"
+                                    aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p class="faq-text">Enjoy round-the-clock access to our facilities, with
+                                            24-hour availability every day of the week.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+                                rel="stylesheet">
+
+
+                            <div class="accordion-card ">
+                                <div class="accordion-header" id="collapse-item-2">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false"
+                                        aria-controls="collapse-2">
+                                        <i class="fas fa-cogs"></i> What amenities and facilities does your gym offer?
+                                    </button>
+
+                                </div>
+                                <div id="collapse-2" class="accordion-collapse collapse "
+                                    aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p class="faq-text">Our gym offers top-notch facilities, including a fully
+                                            equipped workout area, sauna, jacuzzi, and dedicated spaces for group
+                                            classes.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="accordion-card ">
+                                <div class="accordion-header" id="collapse-item-3">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false"
+                                        aria-controls="collapse-3">
+                                        <i class="fas fa-dumbbell"></i> Do you provide personal training services?
+                                    </button>
+
+                                </div>
+                                <div id="collapse-3" class="accordion-collapse collapse "
+                                    aria-labelledby="collapse-item-3" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p class="faq-text">Get one-on-one guidance from our certified personal
+                                            trainers to maximize your workouts and results.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,120 +431,123 @@
             </div>
         </div>
     </div>
-</div>
 
+    <div class="sec-shape-bottom">
+        <img src="{{ asset('assets/img/bg/sec-shape-bottom.png') }}" alt="img">
+    </div>
+</div>
 <!--==============================
     Service Area 02
     ==============================-->
-<div class="service-area-2 space-bottom overflow-hidden">
-    <div class="container">
-        <div class="title-area text-center">
-            <span class="sub-title">Our Services</span>
-            <h2 class="sec-title">Service We Provide</h2>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row global-carousel service-slider-2 slider-shadow" data-slide-show="3" data-ml-slide-show="3"
-            data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1"
-            data-dots="false">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-card style2">
-                    <div class="service-card_icon">
-                        <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
-                    </div>
-                    <div class="service-card_content">
-                        <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
-                        <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
-                            exercise and
-                            short recovery periods...</p>
-                        <a href="service-details.html" class="link-btn" tabindex="0"><i
-                                class="fas fa-arrow-right"></i> Read More</a>
-                    </div>
-                </div>
+{{-- <div class="service-area-2 space-bottom overflow-hidden">
+        <div class="container">
+            <div class="title-area text-center">
+                <span class="sub-title">Our Services</span>
+                <h2 class="sec-title">Service We Provide</h2>
             </div>
         </div>
-    </div>
-</div>
+        <div class="container">
+            <div class="row global-carousel service-slider-2 slider-shadow" data-slide-show="3" data-ml-slide-show="3"
+                data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1"
+                data-dots="false">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-1.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Gym Fitness Class</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-2.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Power Lifting</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card style2">
+                        <div class="service-card_icon">
+                            <img src="{{ asset('assets/img/icon/service-icon_2-3.svg') }}" alt="img">
+                        </div>
+                        <div class="service-card_content">
+                            <h4 class="service-card_title h5"><a href="service-details.html">Body Building</a></h4>
+                            <p class="service-card_text">High-intensity workouts that alternate between intense bursts of
+                                exercise and
+                                short recovery periods...</p>
+                            <a href="service-details.html" class="link-btn" tabindex="0"><i
+                                    class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
 <!--==============================
     Cta Area
     ==============================-->
-<section class="cta-area space" data-bg-src="{{ asset('assets/img/bg/cta-bg1.png') }}">
+{{-- <section class="cta-area space" data-bg-src="{{ asset('assets/img/bg/cta-bg1.png') }}">
     <div class="container">
         <div class="row justify-content-lg-end justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10">
@@ -344,7 +571,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!--==============================
     Team Area
@@ -358,23 +585,7 @@
         <div class="row global-carousel team-slider-1 slider-shadow" data-slide-show="4" data-ml-slide-show="4"
             data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1"
             data-center-mode="true">
-            <div class="col-lg-4 col-md-6">
-                <div class="team-card">
-                    <div class="team-card_img">
-                        <img src="{{ asset('assets/img/team/team-1.png') }}" alt="img">
-                    </div>
-                    <div class="team-card_content">
-                        <h4 class="team-card_title"><a href="team-details.html">George Thomas</a>
-                        </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
-                        <div class="social-btn">
-                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.discord.com/"><i class="fab fa-discord"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
@@ -383,7 +594,7 @@
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Mike Johnson</a>
                         </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
+                        <span class="team-card_desig">Coach</span>
                         <div class="social-btn">
                             <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                             <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
@@ -392,6 +603,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="team-card">
                     <div class="team-card_img">
@@ -400,7 +612,7 @@
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Amelia Harper</a>
                         </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
+                        <span class="team-card_desig">Coach</span>
                         <div class="social-btn">
                             <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                             <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
@@ -417,75 +629,7 @@
                     <div class="team-card_content">
                         <h4 class="team-card_title"><a href="team-details.html">Oliver Samuel</a>
                         </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
-                        <div class="social-btn">
-                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.discord.com/"><i class="fab fa-discord"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-card">
-                    <div class="team-card_img">
-                        <img src="{{ asset('assets/img/team/team-1.png') }}" alt="img">
-                    </div>
-                    <div class="team-card_content">
-                        <h4 class="team-card_title"><a href="team-details.html">George Thomas</a>
-                        </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
-                        <div class="social-btn">
-                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.discord.com/"><i class="fab fa-discord"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-card">
-                    <div class="team-card_img">
-                        <img src="{{ asset('assets/img/team/team-2.png') }}" alt="img">
-                    </div>
-                    <div class="team-card_content">
-                        <h4 class="team-card_title"><a href="team-details.html">Mike Johnson</a>
-                        </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
-                        <div class="social-btn">
-                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.discord.com/"><i class="fab fa-discord"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-card">
-                    <div class="team-card_img">
-                        <img src="{{ asset('assets/img/team/team-3.png') }}" alt="img">
-                    </div>
-                    <div class="team-card_content">
-                        <h4 class="team-card_title"><a href="team-details.html">Amelia Harper</a>
-                        </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
-                        <div class="social-btn">
-                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                            <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.discord.com/"><i class="fab fa-discord"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-card">
-                    <div class="team-card_img">
-                        <img src="{{ asset('assets/img/team/team-4.png') }}" alt="img">
-                    </div>
-                    <div class="team-card_content">
-                        <h4 class="team-card_title"><a href="team-details.html">Oliver Samuel</a>
-                        </h4>
-                        <span class="team-card_desig">CEO/Founder</span>
+                        <span class="team-card_desig">Coach</span>
                         <div class="social-btn">
                             <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                             <a href="https://linkedin.com/"><i class="fab fa-linkedin-in"></i></a>

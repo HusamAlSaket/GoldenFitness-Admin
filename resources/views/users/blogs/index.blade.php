@@ -4,20 +4,22 @@
 <!--==============================
     Breadcumb
 ==============================-->
-<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/804850.jpg') }}" style="width: 100%; height: 750px;">
+<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/hero/hero_bg_2_2.png') }}" 
+     style="width: 100%; height:700px; display: flex; align-items: center; justify-content: center; 
+            background-image: url('{{ asset('assets/img/hero/hero_bg_2_2.png') }}'); 
+            background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="breadcumb-content">
+                <div class="breadcumb-content text-center">
                     <h1 class="breadcumb-title">Our Blogs</h1>
-                    <ul class="breadcumb-menu">
-                        <li class="active">BLOG PAGE</li>
-                    </ul>
+                
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <!--==============================
     Blog Area

@@ -16,11 +16,14 @@
 </style>
 
 <!-- Breadcrumb -->
-<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}">
+<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}" 
+     style="height:500px; display: flex; align-items: center; justify-content: center; 
+            background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); 
+            background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="breadcumb-content">
+                <div class="breadcumb-content text-center">
                     <h1 class="breadcumb-title">Gym Equipments</h1>
                 </div>
             </div>

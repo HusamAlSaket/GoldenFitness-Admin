@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <style>
@@ -83,14 +84,16 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <footer class="fitness-footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <img src="/api/placeholder/200/60" alt="GoldenFitness Logo" class="footer-logo mb-3">
-                    <p class="text-light">Transforming bodies and lives through cutting-edge fitness solutions and personalized training.</p>
-                    
+                    <h3 class="footer-logo mb-3">Golden Fitness</h3>
+                    <p class="text-light">Transforming bodies and lives through cutting-edge fitness solutions and
+                        personalized training.</p>
+
                     <div class="social-icons mt-3">
                         <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
@@ -102,17 +105,21 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="section-title">Quick Links</h5>
                     <div class="quick-links">
-                        <a href="#" class="d-block mb-2">Training Programs</a>
-                        <a href="#" class="d-block mb-2">Membership</a>
-                        <a href="#" class="d-block mb-2">Classes</a>
-                        <a href="#" class="d-block mb-2">Contact Us</a>
+                        <a href="{{route('users.videos.index')}}" class="d-block mb-2 text-white">Guides </a>
+                        <a href="{{route('user.subscriptions.create')}}" class="d-block mb-2 text-white">Membership</a>
+                        <a href="{{route('users.blogs.index')}}" class="d-block mb-2 text-white">Blogs</a>
+                        <a href="{{route('contact.index')}}" class="d-block mb-2 text-white">Contact Us</a>
                     </div>
                 </div>
-
+                <style>
+                    .form-control::placeholder {
+                        color: white;
+                    }
+                </style>
                 <div class="col-md-4 mb-4">
                     <h5 class="section-title">Stay Updated</h5>
                     <p class="text-light mb-3">Subscribe for exclusive fitness tips and offers!</p>
-                    
+
                     <form class="newsletter-form">
                         <div class="input-group">
                             <input type="email" class="form-control" placeholder="Your email address" required>
@@ -133,28 +140,28 @@
 
 
 
-    <!-- Scroll To Top -->
-    <div class="scroll-top">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-            </path>
-        </svg>
-    </div>
+<!-- Scroll To Top -->
+<div class="scroll-top">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+            style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+        </path>
+    </svg>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgGGszZfQj1vna4eq/3H7cS2n6lgZ7Qbx91z5kU7y5Y93Y0tIu" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgGGszZfQj1vna4eq/3H7cS2n6lgZ7Qbx91z5kU7y5Y93Y0tIu" crossorigin="anonymous"></script>
+<script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 </body>
 

@@ -22,7 +22,8 @@
                                 In Town
                             </h1>
                             <div class="btn-group" data-ani="slideinup" data-ani-delay="0.2s">
-                                <a href="{{route('user.subscriptions.create')}}" class="btn style2">Unlock Your Fitness Potential now</a>
+                                <a href="{{ route('user.subscriptions.create') }}" class="btn style2">Unlock Your
+                                    Fitness Potential now</a>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,8 @@
                                 In Town
                             </h1>
                             <div class="btn-group" data-ani="slideinup" data-ani-delay="0.2s">
-                                <a href="{{route('user.subscriptions.create')}}" class="btn style2">Unlock Your Fitness Potential now</a>
+                                <a href="{{ route('user.subscriptions.create') }}" class="btn style2">Unlock Your
+                                    Fitness Potential now</a>
                             </div>
                         </div>
                     </div>
@@ -74,13 +76,13 @@
                         <div class="feature-card_icon">
                             <img src="{{ asset('assets/img/icon/feature-icon1-1.svg') }}" alt="img">
                         </div>
-                        <h6 class="feature-card_subtitle">Healthier Life</h6>
-                        <h4 class="feature-card_title"><a href="service-detail.html">Achieve Your Goals</a></h4>
-                        <p class="feature-card_text">We believe that with the right guidance, support, and mindset, you
-                            can accomplish anything you set your mind to.</p>
-                        <a href="contact.html" class="btn style2">View Class Schedule</a>
+                        <h6 class="feature-card_subtitle">Fitness Transformation</h6>
+                        <h4 class="feature-card_title"><a href="{{route('products.index')}}">Achieve Your Fitness Goals</a></h4>
+                        <p class="feature-card_text">At our gym, we provide top-quality equipment to help you reach your fitness potential. Whether you’re lifting, stretching, or running, we’ve got the tools to support your success.</p>
+                        <a href="{{route('products.index')}}" class="btn style2">Explore Equipment</a>
                     </div>
                 </div>
+                
                 <div class="col-lg-4">
                     <div class="feature-card feature-card-active">
                         <div class="feature-card_bg">
@@ -89,13 +91,13 @@
                         <div class="feature-card_icon">
                             <img src="{{ asset('assets/img/icon/feature-icon1-2.svg') }}" alt="img">
                         </div>
-                        <h6 class="feature-card_subtitle">Healthier Life</h6>
-                        <h4 class="feature-card_title"><a href="service-detail.html">Best Institute Certificate</a></h4>
-                        <p class="feature-card_text">We believe that with the right guidance, support, and mindset, you
-                            can accomplish anything you set your mind to.</p>
-                        <a href="contact.html" class="btn style2">View Class Schedule</a>
+                        <h6 class="feature-card_subtitle">Certified Excellence</h6>
+                        <h4 class="feature-card_title"><a href="{{route('about.index')}}">Best Institute Certificate</a></h4>
+                        <p class="feature-card_text">We are more than just a gym. Our certified trainers and comprehensive programs ensure that you’re getting the best fitness education. Join us and become a part of our success story.</p>
+                        <a href="{{route('about.index')}}" class="btn style2">Learn More About Us</a>
                     </div>
                 </div>
+                
                 <div class="col-lg-4">
                     <div class="feature-card">
                         <div class="feature-card_bg">
@@ -104,13 +106,13 @@
                         <div class="feature-card_icon">
                             <img src="{{ asset('assets/img/icon/feature-icon1-3.svg') }}" alt="img">
                         </div>
-                        <h6 class="feature-card_subtitle">Healthier Life</h6>
-                        <h4 class="feature-card_title"><a href="service-detail.html">Train Day and Night</a></h4>
-                        <p class="feature-card_text">We believe that with the right guidance, support, and mindset, you
-                            can accomplish anything you set your mind to.</p>
-                        <a href="contact.html" class="btn style2">View Class Schedule</a>
+                        <h6 class="feature-card_subtitle">Anytime, Anywhere Workouts</h6>
+                        <h4 class="feature-card_title"><a href="{{route('users.videos.index')}}">Train Day and Night</a></h4>
+                        <p class="feature-card_text">Access our comprehensive workout library anytime, anywhere. Whether you're at home or on the go, our videos are designed to guide you to peak fitness no matter your schedule.</p>
+                        <a href="{{route('users.videos.index')}}" class="btn style2">Start Your Workout</a>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -119,7 +121,7 @@
 <!--==============================
     About Area
     ==============================-->
-<div class="space-bottom">
+{{-- <div class="space-bottom">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -174,7 +176,8 @@
                         </div>
                     </div>
                     <div class="btn-wrap mt-40">
-                        <a href="{{route('user.subscriptions.create')}}" class="btn">Unlock Your Fitness Potential now</a>
+                        <a href="{{ route('user.subscriptions.create') }}" class="btn">Unlock Your Fitness
+                            Potential now</a>
                         <div class="about-info-wrap">
                             <div class="icon"><i class="fas fa-phone-volume"></i></div>
                             <div class="details">
@@ -187,252 +190,9 @@
             </div>
         </div>
     </div>
-</div>
-
-<!--==============================
-    Service Area
-    ==============================-->
-<div class="service-bg-area" data-bg-src="{{ asset('assets/img/bg/service-bg.png') }}">
-    <div class="sec-shape-top">
-        <img src="{{ asset('assets/img/bg/sec-shape-top.png') }}" alt="img">
-    </div>
-    <!--==============================
-        Service Area 01
-        ==============================-->
-    <div class="service-area-1 space overflow-hidden">
-        <div class="container">
-            <div class="title-area">
-                <span class="sub-title">Our Features</span>
-                <h2 class="sec-title text-white">Services We're Offering</h2>
-            </div>
-        </div>
-        <div class="container-fluid p-0">
-            <div class="row global-carousel service-slider-1" data-slide-show="4" data-ml-slide-show="3"
-                data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1"
-                data-dots="false">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
-                            </h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-2.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Rows of Cardio</a></h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
-                            </h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-1.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Tons of Equipment</a>
-                            </h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-2.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Rows of Cardio</a></h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-3.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Heart Pumping</a></h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-card_icon">
-                            <img src="{{ asset('assets/img/icon/service-icon_1-4.svg') }}" alt="img">
-                        </div>
-                        <div class="service-card_content">
-                            <h4 class="service-card_title h5"><a href="service-details.html">Strength Training</a>
-                            </h4>
-                            <p class="service-card_text">Lacinia montes est odio tpor volutpat rhoncus quisque sagittis
-                            </p>
-                            <a href="service-details.html" class="link-btn" tabindex="0">Read More <i
-                                    class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!--==============================
-        Why-choose-us Area
-        ==============================-->
-    <div class="wcu-area-1 space-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="wcu-thumb">
-                        <img class="img-1" src="{{ asset('assets/img/normal/wcu_1-2.png') }}" alt="img">
-                        <div class="img-2 jump">
-                            <img src="{{ asset('assets/img/normal/wcu_1-1.png') }}" alt="img">
-                        </div>
-                        <div class="wcu-grid jump2">
-                            <div class="icon">
-                                <img src="{{ asset('assets/img/icon/wcu-icon_1-1.svg') }}" alt="img">
-                            </div>
-                            <div class="details">
-                                <h3 class="wcu-grid_year"><span class="counter-number">25</span>+</h3>
-                                <span class="wcu-grid_text">Years Experience</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="wcu-wrap">
-                        <div class="title-area mb-50">
-                            <span class="sub-title">Why Choose Us?</span>
-                            <h2 class="sec-title text-white">Why Choose Us?</h2>
-                            <p class="sec-text text-white">Sed ut perspiciatis unde omnis iste natus voluptatem
-                                accusantium dolore mque laudantium aperiam eaquecy inventore veritatis</p>
-                        </div>
-                        <div class="accordion-area accordion" id="faqAccordion">
-
-                            <div class="accordion-card active">
-                                <div class="accordion-header" id="collapse-item-1">
-                                    <button class="accordion-button " type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                        What are your gym's operating hours?</button>
-                                </div>
-                                <div id="collapse-1" class="accordion-collapse collapse show"
-                                    aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p class="faq-text">Our standard membership provides access to our gym
-                                            facilities during regular operating hours. This option is ideal for
-                                            individuals who prefer independent workouts and want to make use of our
-                                            state</p>
-                                    </div>
-                                </div>
-                            </div>
+</div> --}}
 
 
-                            <div class="accordion-card ">
-                                <div class="accordion-header" id="collapse-item-2">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false"
-                                        aria-controls="collapse-2"> What amenities and facilities does your gym
-                                        offer?</button>
-                                </div>
-                                <div id="collapse-2" class="accordion-collapse collapse "
-                                    aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p class="faq-text">Professionally are many variations of passages the majority
-                                            have suffered alteration in some fo injected humour, or randomised words
-                                            believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="accordion-card ">
-                                <div class="accordion-header" id="collapse-item-3">
-                                    <button class="accordion-button collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false"
-                                        aria-controls="collapse-3"> Do you provide personal training services?</button>
-                                </div>
-                                <div id="collapse-3" class="accordion-collapse collapse "
-                                    aria-labelledby="collapse-item-3" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        <p class="faq-text">Contributors are many variations of passages the majority
-                                            have suffered alteration in some fo injected humour, or randomised words
-                                            believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sec-shape-bottom">
-        <img src="{{ asset('assets/img/bg/sec-shape-bottom.png') }}" alt="img">
-    </div>
-</div>
 
 <!--==============================
     Service Area 02
@@ -545,7 +305,7 @@
 <!--==============================
     Counter Area
     ==============================-->
-<div class="counter-area-1" data-bg-src="assets/img/bg/counter-bg1.png">
+{{-- <div class="counter-area-1" data-bg-src="assets/img/bg/counter-bg1.png">
     <div class="counter-sec-shape-top">
         <img src="{{ asset('assets/img/bg/sec-shape-top.png') }}" alt="img">
     </div>
@@ -603,12 +363,12 @@
     <div class="counter-sec-shape-bottom">
         <img src="{{ asset('assets/img/bg/sec-shape-bottom.png') }}" alt="img">
     </div>
-</div>
+</div> --}}
 
 <!--==============================
     Team Area
     ==============================-->
-<div class="team-area-1 space">
+{{-- <div class="team-area-1 space">
     <div class="container">
         <div class="title-area text-center">
             <span class="sub-title">Our Trainer</span>
@@ -755,12 +515,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!--==============================
     Testimonial Area
     ==============================-->
-<div class="testimonial-area-1 overflow-hidden">
+{{-- <div class="testimonial-area-1 overflow-hidden">
     <div class="testimonial-bg-thumb1">
         <div class="thumb">
             <img src="{{ asset('assets/img/testimonial/testi_bg1.png') }}" alt="img">
@@ -872,12 +632,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!--==============================
     Pricing plan Area
     ==============================-->
-<div class="pricing-area">
+{{-- <div class="pricing-area">
     <div class="container">
         <div class="title-area text-center">
             <h3 class="sub-title">Pricing Plan</h3>
@@ -961,7 +721,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!--==============================
     Goal Area
@@ -973,8 +733,8 @@
                 <div class="goal-thumb-1 mb-40 mb-lg-0">
                     <img src="{{ asset('assets/img/normal/goal_1-1.png') }}" alt="img">
                     <div class="goal-badge-wrap">
-                        <div class="goal-badge">We Have Train More Than <span class="counter-number">1580</span>+
-                            Students</div>
+                        <div class="goal-badge">We Have Trained More Than <span class="counter-number">2000</span>+
+                            Members</div>
                     </div>
                 </div>
             </div>
@@ -992,8 +752,7 @@
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Free Fitness Training</h4>
-                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling Gym.
-                            Equipped with stationary bikes...</p>
+                        <p class="about-grid_text">Ignite your fitness journey with our exclusive cycling sessions, where energy meets endurance. Our state-of-the-art stationary bikes offer a dynamic workout experience that pushes your limits while keeping you motivated and engaged.</p>
                     </div>
                 </div>
                 <div class="about-grid">
@@ -1002,11 +761,10 @@
                     </div>
                     <div class="about-grid_content">
                         <h4 class="about-grid_title">Cardio and Strength</h4>
-                        <p class="about-grid_text">Pedal your way to fitness in our specialized indoor cycling Gym.
-                            Equipped with stationary bikes...</p>
+                        <p class="about-grid_text">Experience the perfect blend of cardio and strength training in our gym. Whether you're pushing through intense cycling sessions or building muscle with strength exercises, we provide the ultimate environment to elevate your fitness game.</p>
                     </div>
                 </div>
-                <a class="btn btn-border2" href="service-details.html">Read Details</a>
+                
             </div>
         </div>
     </div>
@@ -1043,23 +801,6 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_2.png" alt="blog image') }}">
-                    </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
-                        </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Uncover Your True Potential at
-                                Fitmas</a></h3>
-                        <p class="blog-text">If you're visiting the area or want to bring a friend along for a workout,
-                            we offer day passes and guest passes...</p>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-md-6 col-lg-4">
                 <div class="blog-card">

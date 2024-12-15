@@ -14,7 +14,7 @@
 
 <!-- Hero Section -->
 <div class="breadcumb-wrapper" 
-     style="height: 700px; background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); 
+     style="height: 700px; background-image: url('{{ asset('assets/img/normal/service-details1-1.png') }}'); 
             background-size: cover; background-position: center; position: relative;">
     <div class="container">
         <div class="row">
@@ -32,6 +32,7 @@
         </div>
     </div>
 </div>
+
 
 
 
