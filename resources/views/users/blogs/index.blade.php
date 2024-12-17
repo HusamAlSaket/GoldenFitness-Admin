@@ -90,7 +90,7 @@
                     <a href="#"><i class="far fa-user"></i>by Admin</a>
                 </div>
                 <h3 class="blog-title box-title">
-                    <a href="/blogs/${blog.id}">${blog.title}</a>
+                    <a href="{{ url('users/blogs') }}/${blog.id}">${blog.title}</a>
                 </h3>
                 <p class="blog-text">${blog.description.slice(0, 120)}...</p>
             </div>
@@ -110,6 +110,7 @@
         });
     });
 </script>
+
 
 @include('components.layout4')
 
