@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 
 class CheckoutController extends Controller
 {
@@ -48,11 +49,23 @@ class CheckoutController extends Controller
             'status' => 'pending',
         ]);
     
-        // Create Order Items
+        // Create Order Items and Update Stock
         foreach ($cartItems as $item) {
+            $product = Product::findOrFail($item['product_id']); // Ensure the product exists
+    
+            // Check if there's enough stock
+            if ($product->stock < $item['quantity']) {
+                return back()->withErrors(['stock' => "Insufficient stock for {$product->name}."]);
+            }
+    
+            // Deduct stock
+            $product->stock -= $item['quantity'];
+            $product->save();
+    
+            // Create Order Item
             OrderItem::create([
                 'order_id' => $order->id,
-                'product_id' => $item['product_id'], // Corrected key here
+                'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
             ]);
@@ -64,7 +77,7 @@ class CheckoutController extends Controller
         // Redirect to the Thank You page with the Order ID
         return redirect()->route('thankyou', ['orderId' => $order->id]);
     }
-
+    
     public function thankyou($orderId)
     {
         // Retrieve the order using the orderId
