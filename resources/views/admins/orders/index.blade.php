@@ -137,24 +137,25 @@
                                                                     <div class="card shadow-sm">
                                                                         <div class="card-body">
                                                                             <div class="d-flex align-items-center mb-3">
-                                                                                @if ($item->product->images->isNotEmpty())
+                                                                                @if ($item->product && $item->product->images->isNotEmpty())
                                                                                     <img src="{{ asset('storage/' . $item->product->images->first()->image_url) }}"
-                                                                                        alt="{{ $item->product->name }} "
-                                                                                        class="me-3 rounded"
-                                                                                        style="width: 50px; height: 50px; object-fit: cover;">
+                                                                                         alt="{{ $item->product->name }} "
+                                                                                         class="me-3 rounded"
+                                                                                         style="width: 50px; height: 50px; object-fit: cover;">
+                                                                                @else
+                                                                                    <!-- Fallback Image or Text when no product or images are available -->
+                                                                                    <img src="{{ asset('images/placeholder.jpg') }}" alt="No Image Available"
+                                                                                         class="me-3 rounded"
+                                                                                         style="width: 50px; height: 50px; object-fit: cover;">
                                                                                 @endif
-                                                                                <span>{{ $item->product->name }}</span>
+                                                                                <span>{{ $item->product->name ?? 'N/A' }}</span>
                                                                             </div>
                                                                             <div class="d-flex justify-content-between">
-                                                                                <span>Quantity:
-                                                                                    {{ $item->quantity }}</span>
-                                                                                <span>Price:
-                                                                                    ${{ number_format($item->price, 2) }}</span>
+                                                                                <span>Quantity: {{ $item->quantity }}</span>
+                                                                                <span>Price: ${{ number_format($item->price, 2) }}</span>
                                                                             </div>
-                                                                            <div
-                                                                                class="d-flex justify-content-between mt-2">
-                                                                                <span>Total:
-                                                                                    ${{ number_format($item->quantity * $item->price, 2) }}</span>
+                                                                            <div class="d-flex justify-content-between mt-2">
+                                                                                <span>Total: ${{ number_format($item->quantity * $item->price, 2) }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -163,6 +164,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

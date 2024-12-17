@@ -2,24 +2,55 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
     .product-modal-img {
-    width: 100%; /* Ensures it scales to fit the modal width */
-    max-width: 300px; /* Limits the image to a maximum width */
-    height: auto; /* Maintains the aspect ratio */
-    display: block; /* Ensures the image is treated as a block element */
-    margin: 0 auto; /* Centers the image */
-    border-radius: 10px; /* Keeps the rounded corners */
-    max-height: 300px;
-}
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px;
+        max-height: 300px;
+    }
 
+    #category {
+        background-color: #f8f9fa;
+        border: 2px solid #ccc;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #333;
+        transition: all 0.3s ease;
+        font-family: 'Arial', sans-serif;
+        width: 200px;
+    }
+
+    #category option {
+        background-color: #fff;
+        color: #333;
+        padding: 10px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    #category option:first-child {
+        background: linear-gradient(135deg, #ff4d4d, #ff8000);
+        color: #fff;
+        font-weight: bold;
+        border-bottom: 3px solid #333;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        padding: 12px;
+    }
+
+    #category:focus {
+        border-color: #ff4d4d;
+        box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+    }
 </style>
 
 <!-- Breadcrumb -->
-<div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/bg/breadcrumb-bg.png') }}" 
-     style="height:500px; display: flex; align-items: center; justify-content: center; 
-            background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); 
-            background-size: cover; background-position: center;">
+<div class="breadcumb-wrapper"
+    style="height:500px; display: flex; align-items: center; justify-content: center; background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -30,52 +61,7 @@
         </div>
     </div>
 </div>
-<style>
-    /* Styling for the select box and option */
-/* Styling for the select box */
-#category {
-    background-color: #f8f9fa;
-    border: 2px solid #ccc;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    transition: all 0.3s ease;
-    font-family: 'Arial', sans-serif;
-    width: 200px;
-}
 
-/* Styling for options inside the select box */
-#category option {
-    background-color: #fff;
-    color: #333;
-    padding: 10px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Special styling for "All Categories" option */
-#category option:first-child {
-    background: linear-gradient(135deg, #ff4d4d, #ff8000); /* Cool gradient */
-    color: #fff;                /* White text */
-    font-weight: bold;
-    border-bottom: 3px solid #333; /* Bold border */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
-    padding: 12px;
-}
-
-/* Hover effect for options */
-#category option:hover {
-    background-color: #e6e6e6;
-}
-
-/* Select box focus styling */
-#category:focus {
-    border-color: #ff4d4d;  /* Red border on focus */
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.6); /* Subtle glow effect */
-}
-
-
-</style>
 <!-- Category Filter -->
 <div class="container my-4">
     <form method="GET" action="{{ route('products.index') }}" class="d-flex align-items-center gap-3">
@@ -118,14 +104,13 @@
                             <button type="submit" class="btn style2">Add to Cart</button>
                         </form>
                         <div class="actions">
-                            <button type="button" class="btn style2 m-1" data-bs-toggle="modal"
-                                data-bs-target="#productModal{{ $product->id }}">
-                                View Details
-                            </button>
+                            <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 mt-2">View
+                                Details</a>
+
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product Details Modal -->
                 <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
                     aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
@@ -140,13 +125,58 @@
                             <div class="modal-body">
                                 @if ($product->images->isNotEmpty())
                                     <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                        alt="{{ $product->name }}" class="img-fluid mb-3 product-modal-img" style="border-radius: 10px;">
+                                        alt="{{ $product->name }}" class="img-fluid mb-3 product-modal-img">
                                 @else
                                     <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                        class="img-fluid mb-3 product-modal-img" style="border-radius: 10px;">
+                                        class="img-fluid mb-3 product-modal-img">
                                 @endif
                                 <p><strong>Description:</strong> {{ $product->description }}</p>
                                 <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
+
+                                <!-- Approved Reviews -->
+                                <h5>Reviews:</h5>
+                                @if ($product->reviews->where('status', 'approved')->isNotEmpty())
+                                    <ul class="list-group">
+                                        @foreach ($product->reviews->where('status', 'approved') as $review)
+                                            <li class="list-group-item">
+                                                <strong>{{ $review->user->name }}</strong>:
+                                                <span>{{ $review->rating }} stars</span>
+                                                <p>{{ $review->comment }}</p>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No reviews yet.</p>
+                                @endif
+
+                                <!-- Add Review Form -->
+                                @if (auth()->check() && in_array($product->id, $userPurchasedProductIds))
+                                    <form action="{{ route('reviews.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Rating</label>
+                                            <div class="rating" data-product-id="{{ $product->id }}">
+                                                @for ($i = 5; $i >= 1; $i--)
+                                                    <input type="radio" name="rating"
+                                                        id="star{{ $i }}_{{ $product->id }}"
+                                                        value="{{ $i }}">
+                                                    <label for="star{{ $i }}_{{ $product->id }}"
+                                                        class="star"></i></label>
+                                                @endfor
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="comment_{{ $product->id }}" class="form-label">Comment</label>
+                                            <textarea name="comment" id="comment_{{ $product->id }}" class="form-control" rows="3" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger">Submit Review</button>
+                                    </form>
+                                @else
+                                    <p class="text-danger">You must purchase this product to leave a review.</p>
+                                @endif
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -155,36 +185,27 @@
                     </div>
                 </div>
             @empty
-                <p class="text-center">No products found for the selected category.</p>
+                <p>No products found.</p>
             @endforelse
         </div>
 
         <!-- Pagination -->
         <div class="pagination-container">
-            Pagination Info
             @if ($products->hasPages())
                 <div class="pagination-info">
                     Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }}
-                    results
-                    (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
+                    results (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
                 </div>
-
-                Pagination Links
                 <ul class="pagination">
-                    <!-- Previous Button -->
                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
                         <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev"
                             aria-label="Previous">&lt;</a>
                     </li>
-
-                    <!-- Page Numbers -->
                     @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
                         <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
                             <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                         </li>
                     @endforeach
-
-                    <!-- Next Button -->
                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
                         <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next"
                             aria-label="Next">&gt;</a>
@@ -192,8 +213,58 @@
                 </ul>
             @endif
         </div>
-
     </div>
 </div>
+<style>
+    .rating {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 5px;
+        font-size: 24px;
+    }
 
+    .rating input {
+        display: none;
+    }
+
+    .rating .star {
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .rating input:checked~.star,
+    .rating .star.active {
+        color: gold;
+    }
+
+    /* Hover effect to fill stars from right to left */
+    .rating .star:hover,
+    .rating .star:hover~.star {
+        color: gold;
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.rating').forEach(rating => {
+        const stars = rating.querySelectorAll('.star');
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                // Get the value of the clicked star
+                const ratingValue = stars.length - index;
+
+                // Uncheck all radio buttons
+                rating.querySelectorAll('input').forEach(input => {
+                    input.checked = false;
+                });
+
+                // Check the corresponding radio button
+                rating.querySelector(`input[value="${ratingValue}"]`).checked = true;
+            });
+        });
+    });
+</script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 @include('components.layout4')

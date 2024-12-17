@@ -24,6 +24,7 @@ use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserReviewController;
 
 Route::get('/', function () {
     return view('users.home.index');
@@ -180,8 +181,11 @@ Route::prefix('admins')->middleware(['auth', 'superadmin'])->group(function () {
 
 Route::prefix('users')->group(function () {
     Route::get('/products', [UserProductController::class, 'index'])->name('products.index');
-    Route::get('/products/{product}', [UserProductController::class, 'show'])->name('products.show');
+    Route::get('/product/{id}', [UserProductController::class, 'show'])->name('users.products.show');
     Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.update_picture');
+
+    // User Review Controller
+    Route::post('/reviews', [UserReviewController::class, 'store'])->name('reviews.store');
 
     // home controller 
     Route::get('/home', [UserHomeController::class, 'index'])->name('home.index');
