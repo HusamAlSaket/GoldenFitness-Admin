@@ -108,7 +108,9 @@
                         <a href="{{route('users.videos.index')}}" class="d-block mb-2 text-white">Guides </a>
                         <a href="{{route('user.subscriptions.create')}}" class="d-block mb-2 text-white">Membership</a>
                         <a href="{{route('users.blogs.index')}}" class="d-block mb-2 text-white">Blogs</a>
+                        <a href="{{route('about.index')}}" class="d-block mb-2 text-white">About Us</a>
                         <a href="{{route('contact.index')}}" class="d-block mb-2 text-white">Contact Us</a>
+
                     </div>
                 </div>
                 <style>

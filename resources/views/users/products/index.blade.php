@@ -2,7 +2,16 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome CDN for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+<style>
+    .btn i {
+    font-size: 20px; /* Adjust the size of the icon */
+    margin-right: 5px; /* Add space between icon and any text */
+}
+
+</style>
 <style>
     .product-modal-img {
         width: 100%;
@@ -85,31 +94,48 @@
     <div class="container">
         <div class="row gy-40" id="productsList">
             @forelse ($products as $product)
-                <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-                    <div class="product" style="text-align: center; margin-bottom: 30px;">
-                        <div class="product-img mb-3">
-                            @if ($product->images->isNotEmpty())
-                                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                    alt="{{ $product->name }}" class="product-image">
-                            @else
-                                <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                    class="product-image">
-                            @endif
-                        </div>
-                        <h3 class="product-title">{{ $product->name }}</h3>
-                        <p class="price">${{ number_format($product->price, 2) }}</p>
-                        <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn style2">Add to Cart</button>
-                        </form>
-                        <div class="actions">
-                            <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 mt-2">View
-                                Details</a>
-
-                        </div>
+            <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+                <div class="product" style="text-align: center; margin-bottom: 30px;">
+                    <div class="product-img mb-3">
+                        @if ($product->images->isNotEmpty())
+                            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
+                                alt="{{ $product->name }}" class="product-image">
+                        @else
+                            <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
+                                class="product-image">
+                        @endif
+                    </div>
+                    <h3 class="product-title">{{ $product->name }}</h3>
+                    <p class="price">${{ number_format($product->price, 2) }}</p>
+                    
+                    <!-- Add to Cart with Icon -->
+                    @if ($product->stock > 0)
+                    <form action="{{ route('cart.add') }}" method="POST" class="mt-3">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn style2">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <!-- Plus icon -->
+                        </button>
+                    </form>
+               
+                @else
+                <p class="text-danger">Out of Stock</p>
+            @endif
+                    {{-- <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn style2">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <!-- Plus icon -->
+                        </button>
+                    </form> --}}
+            
+                    <!-- View Details Button -->
+                    <div class="actions">
+                        <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 mt-2" style="font-size: 16px; padding: 8px 16px; width: auto;">View Details</a>
                     </div>
                 </div>
+            </div>
+
 
                 <!-- Product Details Modal -->
                 <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
@@ -266,5 +292,6 @@
     });
 </script>
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
+
 @include('components.layout4')

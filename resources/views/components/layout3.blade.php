@@ -94,10 +94,14 @@
                         @php
                             $navItems = [
                                 ['route' => 'home.index', 'label' => 'Home'],
-                                ['route' => 'about.index', 'label' => 'About'],
                                 ['route' => 'products.index', 'label' => 'Gym Equipments'],
+                                ['route' => 'users.supplements.index', 'label' => 'Supplements'],
+                                ['route' => 'user.recipes.index', 'label' => 'Recipes'],
                                 ['route' => 'users.blogs.index', 'label' => 'Blog'],
-                                ['route' => 'users.supplements.index', 'label' => 'Supplements']
+
+                                // ['route' => 'about.index', 'label' => 'About'],
+
+
                             ];
                         @endphp
     
@@ -148,13 +152,13 @@
                                 </li>
                             </ul>
                         </li>
-    
+{{--     
                         <li class="nav-item">
                             <a href="{{ route('contact.index') }}" class="nav-link" 
                                style="color: #ff2020; font-size: 1rem;">
                                 Contact
                             </a>
-                        </li>
+                        </li> --}}
     
                         <!-- User Authentication -->
                         @auth

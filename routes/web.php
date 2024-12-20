@@ -24,6 +24,7 @@ use App\Http\Controllers\UserBlogController;
 use App\Http\Controllers\UserVideoController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserRecipeController;
 use App\Http\Controllers\UserReviewController;
 
 Route::get('/', function () {
@@ -251,6 +252,11 @@ Route::prefix('users')->group(function () {
     Route::post('/profile', [UserProfileController::class, 'updateProfile'])->name('update');
     Route::put('/password', [UserProfileController::class, 'update'])->name('password.update');
     
+    // recipes router 
+
+Route::get('/recipes', [UserRecipeController::class, 'index'])->name('user.recipes.index');
+Route::get('/recipes/{id}', [UserRecipeController::class, 'show'])->name('users.recipes.show');
+
 
 }); 
 

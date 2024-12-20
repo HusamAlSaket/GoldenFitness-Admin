@@ -56,7 +56,7 @@
 
 
                         <td>{{ $recipe->category->category_name ?? 'Uncategorized' }}</td>
-                        <td>{{ $recipe->ingredients }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($recipe->ingredients, 50, '...') }}</td>
                         <td>{{ $recipe->calories }}</td>
                         <td>{{ $recipe->preparation_time }} mins</td>
                         <td>

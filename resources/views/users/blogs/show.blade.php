@@ -1,115 +1,178 @@
 @include('components.layout3')
 
-<style>
-    body {
-        background-color: #f2f2f2;
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-    }
+<!-- Blog Detail Page -->
+<div class="blog-detail-wrapper mt-4">
+    <div class="blog-card">
+        <div class="featured-image">
+            @if($blog->image_url)
+                <img src="{{ asset('storage/' . $blog->image_url) }}" alt="Blog Image">
+            @else
+                <img src="https://via.placeholder.com/800x400" alt="Placeholder Image">
+            @endif
+        </div>
+        
+        <div class="content-container">
+            <h1 class="main-title">{{ $blog->title }}</h1>
+            <div class="meta-info">
+                <span><i class="far fa-calendar"></i> {{ $blog->created_at->format('M d, Y') }}</span>
+                <span><i class="far fa-clock"></i> {{ $blog->reading_time ?? '5 min read' }}</span>
+                <span><i class="far fa-user"></i> by {{ $blog->author_name ?? 'Admin' }}</span>
+            </div>
 
-    .custom-blog-container {
-        max-width: 900px;
-        margin: 50px auto;
-        background: linear-gradient(135deg, #ffffff, #f7f7f7);
-        border-radius: 16px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        padding: 40px;
-        margin-bottom: 100px;
-        transition: all 0.3s ease;
-    }
+            <article class="main-content">
+                <p>{{ $blog->description }}</p>
+                <div class="article-body">
+                    {!! $blog->content !!}
+                </div>
+            </article>
+        </div>
 
-    .custom-blog-container:hover {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        transform: translateY(-10px);
-    }
-
-    .blog-title {
-        color: #d50000;
-        font-size: 3rem;
-        margin-bottom: 25px;
-        font-weight: 700;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .blog-content {
-        color: #555;
-        font-size: 1.15rem;
-        line-height: 1.8;
-        margin-bottom: 40px;
-        text-align: justify;
-        transition: color 0.3s ease;
-    }
-
-    .blog-content:hover {
-        color: #333;
-    }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 30px;
-        color: #fff;
-        background-color: #d50000;
-        text-decoration: none;
-        font-weight: bold;
-        border: 1px solid #d50000;
-        padding: 12px 20px;
-        border-radius: 8px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        text-align: center;
-        font-size: 1.1rem;
-    }
-
-    .back-link:hover {
-        background-color: #fff;
-        color: #d50000;
-        transform: scale(1.05);
-    }
-
-    .blog-image {
-        width: 100%;
-        height: 450px;
-        object-fit: cover;
-        border-radius: 16px;
-        margin-bottom: 30px;
-        transition: transform 0.5s ease, opacity 0.3s ease;
-        opacity: 0.9;
-    }
-
-    .blog-container {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .blog-container:hover .blog-image {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-
-    /* Adding a subtle shadow effect on images */
-    .blog-image {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
-</style>
-
-<!-- Custom Content Container -->
-<div class="custom-blog-container">
-    <div class="blog-container">
-        @if($blog->image_url)
-            <img src="{{ asset('storage/' . $blog->image_url) }}" alt="Blog Image" class="blog-image">
-        @else
-            <img src="https://via.placeholder.com/900x450" alt="Placeholder Image" class="blog-image">
-        @endif
+        <div class="blog-footer">
+            <a href="{{ route('users.blogs.index') }}" class="back-button">
+                <span class="back-icon"><i class="fas fa-arrow-left"></i></span>
+                <span>Back to Articles</span>
+            </a>
+        </div>
     </div>
-    
-    <h1 class="blog-title">{{ $blog->title }}</h1>
-    <p class="blog-content">{{ $blog->description }}</p>
-    
-    <a href="{{ route('users.blogs.index') }}" class="back-link">Back to Blogs</a>
 </div>
 
 @include('components.layout4')
+
+<style>
+.blog-detail-wrapper {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+}
+
+.blog-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-image {
+    width: 100%;
+    height: 300px; /* Set a fixed height for the image */
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* Adjusted to contain */
+}
+
+.content-container {
+    padding: 2rem;
+}
+
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.meta-info {
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.meta-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-info i {
+    color: #ff0000;
+}
+
+.main-content p {
+    font-size: 1.25rem; /* Increase font size for description */
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem; /* Add some space below the description */
+}
+
+.article-body {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.blog-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #ff0000;
+}
+
+.back-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover .back-icon {
+    background-color: #ff0000;
+    color: white;
+}
+
+@media (max-width: 991px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .blog-footer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .featured-image {
+        height: 250px;
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .meta-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .blog-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+</style>

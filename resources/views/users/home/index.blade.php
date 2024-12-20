@@ -770,112 +770,165 @@
     </div>
 </section>
 
-<!--==============================
-    Blog Area
-    ==============================-->
-<section class="blog-area space bg-smoke3">
-    <div class="container">
-        <div class="title-area text-center">
-            <span class="sub-title">Blog Posts
-            </span>
-            <h2 class="sec-title">Read Our Latest Articles</h2>
+<!-- Blogs Structure -->
+
+<section class="blogSection-area">
+    <div class="blogSection-container">
+        <div class="blogSection-title-area">
+            <span class="blogSection-sub-title">Blog Posts</span>
+            <h2 class="blogSection-sec-title">Read Our Latest Articles</h2>
         </div>
-        <div class="row global-carousel blog-slider" data-slide-show="3" data-lg-slide-show="2"
-            data-md-slide-show="2" data-sm-slide-show="1" data-xs-slide-show="1" data-dots="false"
-            data-md-dots="true">
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_1.png') }}" alt="blog image">
+        <div class="blogSection-slider-container">
+            <div class="blogSection-slider" id="blogSectionSlider">
+                @foreach($blogs as $blog)
+                <div class="blogSection-card">
+                    <div class="blogSection-img">
+                        @if ($blog->image_url)
+                            <img src="{{ asset('storage/' . $blog->image_url) }}" alt="{{ $blog->title }}">
+                        @else
+                            <img src="https://via.placeholder.com/450x300" alt="Placeholder Image">
+                        @endif
                     </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
+                    <div class="blogSection-content">
+                        <div class="blogSection-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>{{ $blog->created_at->format('d M Y') }}</a>
+                            <a href="blog.html"><i class="far fa-user"></i>by Admin</a>
                         </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Nutrition Tips and Advice for Gym
-                                Goers</a></h3>
-                        <p class="blog-text">These specialized memberships are designed to make fitness accessible and
-                            affordable for these specific...</p>
+                        <h3 class="blogSection-title">
+                            <a href="{{ route('users.blogs.show', $blog->id) }}">{{ $blog->title }}</a>
+                        </h3>
+                        <p class="blogSection-text">{{ \Illuminate\Support\Str::limit($blog->description, 100) }}</p>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_3.png') }}" alt="blog image">
-                    </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
-                        </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Offer discounted options for
-                                students seniors</a></h3>
-                        <p class="blog-text">We understand the importance of fitness for the whole family. Our family
-                            option allows multiple family...</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_1.png') }}" alt="blog image">
-                    </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
-                        </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Nutrition Tips and Advice for Gym
-                                Goers</a></h3>
-                        <p class="blog-text">These specialized memberships are designed to make fitness accessible and
-                            affordable for these specific...</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_2.png') }}" alt="blog image">
-                    </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
-                        </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Uncover Your True Potential at
-                                Fitmas</a></h3>
-                        <p class="blog-text">If you're visiting the area or want to bring a friend along for a workout,
-                            we offer day passes and guest passes...</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="{{ asset('assets/img/blog/blog_1_3.png') }}" alt="blog image">
-                    </div>
-                    <div class="blog-content" data-bg-src="{{ asset('assets/img/blog/blog_card1_bg.png') }}">
-                        <div class="blog-meta">
-                            <a href="blog.html"><i class="fal fa-calendar"></i>15 Dec 2023</a>
-                            <a href="blog.html"><i class="far fa-user"></i>by Andrew</a>
-                        </div>
-                        <h3 class="blog-title box-title"><a href="blog-details.html">Offer discounted options for
-                                students seniors</a></h3>
-                        <p class="blog-text">We understand the importance of fitness for the whole family. Our family
-                            option allows multiple family...</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
-<!-- Bootstrap JS (for modal functionality) -->
+
+<style>
+.blogSection-area {
+    padding: 80px 0;
+}
+
+.blogSection-title-area {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blogSection-sub-title {
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.blogSection-sec-title {
+    font-size: 36px;
+    margin: 0;
+}
+
+.blogSection-slider-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.blogSection-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 30px;
+}
+
+.blogSection-card {
+    flex: 0 0 calc(33.333% - 20px);
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.blogSection-img {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.blogSection-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blogSection-content {
+    padding: 25px;
+}
+
+.blogSection-meta a {
+    color: #ff0000;
+    margin-right: 20px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.blogSection-meta i {
+    margin-right: 5px;
+}
+.blogSection-title a {
+    color: black;
+    font-size: 22px;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.blogSection-title a:hover {
+    color: #ff0000;
+    background-color: transparent;
+}
+
+.blogSection-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .blogSection-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media (max-width: 767px) {
+    .blogSection-card {
+        flex: 0 0 100%;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('blogSectionSlider');
+    let currentSlide = 0;
+    const slidesPerView = 2;
+    const totalSlides = slider.children.length;
+
+    function slideNext() {
+        currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+        updateSliderPosition();
+    }
+
+    function updateSliderPosition() {
+        const slideWidth = slider.children[0].offsetWidth + 30; // Including gap
+        slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    // Auto slide every 3 seconds
+    setInterval(slideNext, 3000);
+
+    // Update slider position on window resize
+    window.addEventListener('resize', updateSliderPosition);
+});
+</script>
 
 @include('components.layout4')

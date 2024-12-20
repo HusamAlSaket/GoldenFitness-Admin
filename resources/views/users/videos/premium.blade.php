@@ -1,13 +1,8 @@
 @include('components.layout3')
 
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<style>
-    .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
-        gap: 2rem;
-    }
 
+<style>
     .video-item {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border-radius: 0.75rem;
@@ -21,8 +16,7 @@
 
     .video-container {
         position: relative;
-        padding-top: 56.25%;
-        /* 16:9 Aspect Ratio */
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
         background: #f4f4f4;
     }
 
@@ -35,6 +29,7 @@
         border-radius: 0.5rem;
     }
 </style>
+
 @if (session('sweet_alert'))
     <script>
         Swal.fire({
@@ -51,11 +46,10 @@
     </script>
 @endif
 
-
-
 <body class="bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-5xl font-extrabold text-center text-gray-800 mb-12">Premium Fitness Videos</h1>
+        
         @if ($premiumVideos->isEmpty())
             <p class="text-center text-lg text-gray-600">No premium videos available at the moment.</p>
             <script>
@@ -72,7 +66,8 @@
                 });
             </script>
         @else
-            <div class="video-grid">
+            <!-- Tailwind's grid system for responsiveness -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($premiumVideos as $video)
                     <div class="video-item bg-white shadow-lg rounded-lg p-6">
                         <div class="px-4 mb-4">
@@ -90,8 +85,8 @@
             </div>
         @endif
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     @include('components.layout4')
 </body>
