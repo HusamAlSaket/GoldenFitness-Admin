@@ -772,7 +772,7 @@
 
 <!-- Blogs Structure -->
 
-<section class="blogSection-area">
+{{-- <section class="blogSection-area">
     <div class="blogSection-container">
         <div class="blogSection-title-area">
             <span class="blogSection-sub-title">Blog Posts</span>
@@ -804,7 +804,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <style>
 .blogSection-area {
