@@ -29,11 +29,11 @@
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    {{-- <th>Description</th> --}}
                     <th>Category</th>
                     <th>Ingredients</th>
                     <th>Calories</th>
                     <th>Preparation Time</th>
+                    <th>Video</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,13 +52,13 @@
                         </td>
 
                         <td>{{ $recipe->recipe_name }}</td>
-                        {{-- <td>{{ $recipe->recipe_description}}</td> --}}
 
 
                         <td>{{ $recipe->category->category_name ?? 'Uncategorized' }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($recipe->ingredients, 50, '...') }}</td>
                         <td>{{ $recipe->calories }}</td>
                         <td>{{ $recipe->preparation_time }} mins</td>
+                        <td>{{$recipe->video_url}}</td>
                         <td>
                             <div class="action-buttons text-center">
                                 {{-- <a href="{{ route('recipes.show', $recipe->id) }}" class="btn btn-sm btn-outline-info"
@@ -109,10 +109,10 @@
                                         </div>
 
                                         <!-- Description -->
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label class="form-label">Description</label>
-                                            <textarea name="description" class="form-control" rows="3">{{ old('description', $recipe->description) }}</textarea>
-                                        </div>
+                                            <textarea name="description" class="form-control" rows="3" value="{{ old('description', $recipe->description) }}" required> </textarea>
+                                        </div> --}}
 
                                         <!-- Category -->
                                         <div class="mb-3">
@@ -147,7 +147,12 @@
                                             <input type="number" name="preparation_time" class="form-control"
                                                 value="{{ old('preparation_time', $recipe->preparation_time) }}">
                                         </div>
-
+                                        {{-- video --}}
+                                        <div class="mb-3">
+                                            <label class="form-label">Video URL</label>
+                                            <input type="url" name="video_url" class="form-control" value="{{ old('video_url') }}">
+                                        </div>
+                                        
                                         <!-- Stock -->
                                         <div class="mb-3">
                                             <label class="form-label">Stock Quantity</label>
@@ -191,10 +196,10 @@
                         <label class="form-label">Recipe Name</label>
                         <input type="text" name="recipe_name" class="form-control" required>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea name="description" class="form-control" rows="3"></textarea>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label class="form-label">Category</label>
                         <select name="category_id" class="form-select" required>
@@ -215,6 +220,12 @@
                         <label class="form-label">Preparation Time (mins)</label>
                         <input type="number" name="preparation_time" class="form-control">
                     </div>
+                    {{-- video --}}
+                    <div class="mb-3">
+                        <label class="form-label">Video URL</label>
+                        <input type="url" name="video_url" class="form-control" value="{{ old('video_url') }}">
+                    </div>
+                    
                     <div class="mb-3">
                         <label class="form-label">Stock Quantity</label>
                         <input type="number" name="stock" class="form-control" required>

@@ -3,6 +3,7 @@
 <!-- Blog Detail Page -->
 <div class="blog-detail-wrapper mt-4">
     <div class="blog-card">
+        <!-- Featured Image -->
         <div class="featured-image">
             @if($blog->image_url)
                 <img src="{{ asset('storage/' . $blog->image_url) }}" alt="Blog Image">
@@ -10,7 +11,8 @@
                 <img src="https://via.placeholder.com/800x400" alt="Placeholder Image">
             @endif
         </div>
-        
+
+        <!-- Content Section -->
         <div class="content-container">
             <h1 class="main-title">{{ $blog->title }}</h1>
             <div class="meta-info">
@@ -27,8 +29,9 @@
             </article>
         </div>
 
+        <!-- Blog Footer -->
         <div class="blog-footer">
-            <a href="{{ route('users.blogs.index') }}" class="back-button">
+            <a href="{{ route('users.blogs.index') }}" class="back-button mt-3 mb-4">
                 <span class="back-icon"><i class="fas fa-arrow-left"></i></span>
                 <span>Back to Articles</span>
             </a>
@@ -38,49 +41,67 @@
 
 @include('components.layout4')
 
+<!-- Updated Styles -->
 <style>
+/* General Wrapper */
 .blog-detail-wrapper {
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     min-height: 100vh;
-    padding-bottom: 2rem;
+    padding: 2rem 1rem;
 }
 
+/* Blog Card */
 .blog-card {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: #ffffff;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Featured Image */
 .featured-image {
     width: 100%;
-    height: 300px; /* Set a fixed height for the image */
+    height: auto;
     overflow: hidden;
 }
 
 .featured-image img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;  /* Adjusted to contain */
+    height: auto;
+    object-fit: cover; /* Changed to cover for better scaling */
+    border-bottom: 3px solid #ff4b5c; /* Accent line below image */
 }
 
+/* Content Container */
 .content-container {
     padding: 2rem;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Title */
 .main-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
+    color: red;
+    text-align: center;
     margin-bottom: 1rem;
 }
 
+/* Meta Info */
 .meta-info {
     display: flex;
-    gap: 2rem;
+    justify-content: center;
+    gap: 1.5rem;
     font-size: 1rem;
-    color: #555;
+    color:red;
+    margin-bottom: 1.5rem;
 }
 
 .meta-info span {
@@ -90,50 +111,52 @@
 }
 
 .meta-info i {
-    color: #ff0000;
+    color: #ff4b5c;
 }
 
+/* Main Content */
 .main-content p {
-    font-size: 1.25rem; /* Increase font size for description */
+    font-size: 1.25rem;
     line-height: 1.8;
-    color: #333;
-    margin-bottom: 1.5rem; /* Add some space below the description */
+    color: white;
+    margin-bottom: 1.5rem;
 }
 
 .article-body {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: #333;
+    color: #555;
 }
 
+/* Blog Footer */
 .blog-footer {
     margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
 }
 
 .back-button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: #333;
+    color: #ff4b5c;
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .back-button:hover {
-    color: #ff0000;
+    color: #ff1b2d;
+    transform: translateX(-3px);
 }
 
 .back-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: #f5f5f5;
+    background-color: #ffe6e9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,38 +164,39 @@
 }
 
 .back-button:hover .back-icon {
-    background-color: #ff0000;
+    background-color: #ff4b5c;
     color: white;
 }
 
+/* Media Queries */
 @media (max-width: 991px) {
     .main-title {
-        font-size: 2.5rem;
-    }
-
-    .blog-footer {
-        flex-direction: column;
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .featured-image {
-        height: 250px;
-    }
-
-    .main-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 
     .meta-info {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-title {
+        font-size: 1.75rem;
     }
 
-    .blog-footer {
-        flex-direction: column;
-        gap: 1rem;
+    .content-container {
+        padding: 1.5rem;
+    }
+
+    .meta-info {
+        font-size: 0.9rem;
+    }
+
+    .back-button {
+        font-size: 0.9rem;
     }
 }
 </style>
+@include('components.layout3')

@@ -1,18 +1,124 @@
 @include('components.layout3')
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
 <!-- Font Awesome CDN for Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
-    .btn i {
-    font-size: 20px; /* Adjust the size of the icon */
-    margin-right: 5px; /* Add space between icon and any text */
-}
+    /* Product Card Styles */
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
 
-</style>
-<style>
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-img {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 2px solid #f1f1f1;
+        width: 100%;
+        height: 200px; /* Fixed height for consistency */
+    }
+
+    .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the area without distortion */
+        transition: transform 0.3s ease;
+    }
+
+    .product-img:hover img {
+        transform: scale(1.05); /* Slight zoom effect */
+    }
+
+    .product-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 16px;
+        color: #e74c3c;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .btn-add-cart {
+        font-size: 16px;
+        padding: 8px 18px;
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 30px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-add-cart:hover {
+        background-color: #218838;
+    }
+
+    .btn-details {
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-top: 10px;
+        color: #fff;
+        background-color: #3498db;
+        border-radius: 30px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-details:hover {
+        background-color: #2980b9;
+    }
+
+    /* Stock Status */
+    .out-of-stock {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .rating {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        font-size: 18px;
+        color: #f39c12;
+    }
+
+    .rating input {
+        display: none;
+    }
+
+    .rating .star {
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .rating input:checked ~ .star,
+    .rating .star.active {
+        color: gold;
+    }
+
+    .rating .star:hover,
+    .rating .star:hover ~ .star {
+        color: gold;
+    }
+
+    /* Product Modal Styles */
     .product-modal-img {
         width: 100%;
         max-width: 300px;
@@ -22,44 +128,10 @@
         border-radius: 10px;
         max-height: 300px;
     }
-
-    #category {
-        background-color: #f8f9fa;
-        border: 2px solid #ccc;
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-size: 16px;
-        color: #333;
-        transition: all 0.3s ease;
-        font-family: 'Arial', sans-serif;
-        width: 200px;
-    }
-
-    #category option {
-        background-color: #fff;
-        color: #333;
-        padding: 10px;
-        font-family: 'Arial', sans-serif;
-    }
-
-    #category option:first-child {
-        background: linear-gradient(135deg, #ff4d4d, #ff8000);
-        color: #fff;
-        font-weight: bold;
-        border-bottom: 3px solid #333;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-        padding: 12px;
-    }
-
-    #category:focus {
-        border-color: #ff4d4d;
-        box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
-    }
 </style>
 
 <!-- Breadcrumb -->
-<div class="breadcumb-wrapper"
-    style="height:500px; display: flex; align-items: center; justify-content: center; background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); background-size: cover; background-position: center;">
+<div class="breadcumb-wrapper" style="height: 500px; display: flex; align-items: center; justify-content: center; background-image: url('{{ asset('assets/img/bg/breadcrumb-bg.png') }}'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -92,128 +164,59 @@
 <!-- Shop Area -->
 <div class="shop-area space">
     <div class="container">
-        <div class="row gy-40" id="productsList">
+        <div class="row gy-4" id="productsList">
             @forelse ($products as $product)
             <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-                <div class="product" style="text-align: center; margin-bottom: 30px;">
-                    <div class="product-img mb-3">
+                <div class="product-card">
+                    <div class="product-img">
                         @if ($product->images->isNotEmpty())
-                            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                alt="{{ $product->name }}" class="product-image">
+                            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="{{ $product->name }}">
                         @else
-                            <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                class="product-image">
+                            <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}">
                         @endif
                     </div>
-                    <h3 class="product-title">{{ $product->name }}</h3>
-                    <p class="price">${{ number_format($product->price, 2) }}</p>
-                    
-                    <!-- Add to Cart with Icon -->
-                    @if ($product->stock > 0)
-                    <form action="{{ route('cart.add') }}" method="POST" class="mt-3">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button type="submit" class="btn style2">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <!-- Plus icon -->
-                        </button>
-                    </form>
-               
-                @else
-                <p class="text-danger">Out of Stock</p>
-            @endif
-                    {{-- <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button type="submit" class="btn style2">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <!-- Plus icon -->
-                        </button>
-                    </form> --}}
-            
-                    <!-- View Details Button -->
-                    <div class="actions">
-                        <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 mt-2" style="font-size: 16px; padding: 8px 16px; width: auto;">View Details</a>
+                    <div class="product-info p-3 text-center">
+                        <h3 class="product-title mb-3">{{ $product->name }}</h3> <!-- Added margin-bottom -->
+                        <p class="price mb-3">${{ number_format($product->price, 2) }}</p> <!-- Added margin-bottom -->
+        
+                        <!-- Stock Check -->
+                        @if ($product->stock > 0)
+                        
+                        @else
+                            <p class="out-of-stock mb-3">Out of Stock</p> <!-- Added margin-bottom -->
+                        @endif
+        
+                        <!-- View Details and Add to Cart Buttons on the Same Line -->
+                        <div class="btn-container d-flex justify-content-center mb-3">
+                            <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 me-2"> <!-- Added margin-right -->
+                                View Details
+                            </a>
+                            @if ($product->stock > 0)
+                                <form action="{{ route('cart.add') }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button type="submit" class="btn style2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
+        
+                        <!-- Rating Section -->
+                        {{-- <div class="rating">
+                            @for ($i = 5; $i >= 1; $i--)
+                                <input type="radio" name="rating" id="star{{ $i }}_{{ $product->id }}" value="{{ $i }}">
+                                <label for="star{{ $i }}_{{ $product->id }}" class="star"></label>
+                            @endfor
+                        </div> --}}
                     </div>
                 </div>
             </div>
-
-
-                <!-- Product Details Modal -->
-                <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
-                    aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                @if ($product->images->isNotEmpty())
-                                    <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                        alt="{{ $product->name }}" class="img-fluid mb-3 product-modal-img">
-                                @else
-                                    <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                        class="img-fluid mb-3 product-modal-img">
-                                @endif
-                                <p><strong>Description:</strong> {{ $product->description }}</p>
-                                <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
-
-                                <!-- Approved Reviews -->
-                                <h5>Reviews:</h5>
-                                @if ($product->reviews->where('status', 'approved')->isNotEmpty())
-                                    <ul class="list-group">
-                                        @foreach ($product->reviews->where('status', 'approved') as $review)
-                                            <li class="list-group-item">
-                                                <strong>{{ $review->user->name }}</strong>:
-                                                <span>{{ $review->rating }} stars</span>
-                                                <p>{{ $review->comment }}</p>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <p>No reviews yet.</p>
-                                @endif
-
-                                <!-- Add Review Form -->
-                                @if (auth()->check() && in_array($product->id, $userPurchasedProductIds))
-                                    <form action="{{ route('reviews.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Rating</label>
-                                            <div class="rating" data-product-id="{{ $product->id }}">
-                                                @for ($i = 5; $i >= 1; $i--)
-                                                    <input type="radio" name="rating"
-                                                        id="star{{ $i }}_{{ $product->id }}"
-                                                        value="{{ $i }}">
-                                                    <label for="star{{ $i }}_{{ $product->id }}"
-                                                        class="star"></i></label>
-                                                @endfor
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="comment_{{ $product->id }}" class="form-label">Comment</label>
-                                            <textarea name="comment" id="comment_{{ $product->id }}" class="form-control" rows="3" required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-danger">Submit Review</button>
-                                    </form>
-                                @else
-                                    <p class="text-danger">You must purchase this product to leave a review.</p>
-                                @endif
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             @empty
                 <p>No products found.</p>
             @endforelse
         </div>
+        
 
         <!-- Pagination -->
         <div class="pagination-container">
@@ -224,8 +227,7 @@
                 </div>
                 <ul class="pagination">
                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev"
-                            aria-label="Previous">&lt;</a>
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
                     </li>
                     @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
                         <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
@@ -233,65 +235,42 @@
                         </li>
                     @endforeach
                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                        <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next"
-                            aria-label="Next">&gt;</a>
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
                     </li>
                 </ul>
             @endif
         </div>
     </div>
 </div>
-<style>
-    .rating {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 5px;
-        font-size: 24px;
-    }
 
-    .rating input {
-        display: none;
-    }
+<!-- Product Details Modal -->
+<div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="{{ $product->name }}" class="product-modal-img">
+                <p>{{ $product->description }}</p>
+                <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
+                <p><strong>Stock:</strong> {{ $product->stock }}</p>
+                {{-- <form action="{{ route('cart.add') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form> --}}
+            </div>
+        </div>
+    </div>
+</div>
 
-    .rating .star {
-        color: #ddd;
-        cursor: pointer;
-        transition: color 0.2s ease;
-    }
+<!-- Bootstrap JS, Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.0/dist/umd/popper.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> --}}
 
-    .rating input:checked~.star,
-    .rating .star.active {
-        color: gold;
-    }
 
-    /* Hover effect to fill stars from right to left */
-    .rating .star:hover,
-    .rating .star:hover~.star {
-        color: gold;
-    }
-</style>
 
-<script>
-    document.querySelectorAll('.rating').forEach(rating => {
-        const stars = rating.querySelectorAll('.star');
-
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                // Get the value of the clicked star
-                const ratingValue = stars.length - index;
-
-                // Uncheck all radio buttons
-                rating.querySelectorAll('input').forEach(input => {
-                    input.checked = false;
-                });
-
-                // Check the corresponding radio button
-                rating.querySelector(`input[value="${ratingValue}"]`).checked = true;
-            });
-        });
-    });
-</script>
-<!-- Bootstrap JS -->
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 @include('components.layout4')

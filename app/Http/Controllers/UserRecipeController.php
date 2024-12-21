@@ -21,4 +21,5 @@ class UserRecipeController extends Controller
         return view('users.recipes.show', compact('recipe')); // Pass the recipe to the show view
     }
     
+    
 }

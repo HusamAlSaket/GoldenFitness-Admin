@@ -16,6 +16,7 @@ class Recipe extends Model
         'preparation_time',
         'category_id',
         'image_url',
+        'video_url'
     ];
     
     public function category()

@@ -1,7 +1,132 @@
 @include('components.layout3')
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
 
+<style>
+    /* Product Card Styles */
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-img {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 2px solid #f1f1f1;
+        width: 100%;
+        height: 200px; /* Fixed height for consistency */
+    }
+
+    .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures images cover the area without distortion */
+        transition: transform 0.3s ease;
+    }
+
+    .product-img:hover img {
+        transform: scale(1.05); /* Slight zoom effect */
+    }
+
+    .product-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 16px;
+        color: #e74c3c;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .btn-add-cart {
+        font-size: 16px;
+        padding: 8px 18px;
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 30px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-add-cart:hover {
+        background-color: #218838;
+    }
+
+    .btn-details {
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-top: 10px;
+        color: #fff;
+        background-color: #3498db;
+        border-radius: 30px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-details:hover {
+        background-color: #2980b9;
+    }
+
+    /* Stock Status */
+    .out-of-stock {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .rating {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        font-size: 18px;
+        color: #f39c12;
+    }
+
+    .rating input {
+        display: none;
+    }
+
+    .rating .star {
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .rating input:checked ~ .star,
+    .rating .star.active {
+        color: gold;
+    }
+
+    .rating .star:hover,
+    .rating .star:hover ~ .star {
+        color: gold;
+    }
+
+    /* Product Modal Styles */
+    .product-modal-img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px;
+        max-height: 300px;
+    }
+</style>
 <!-- Breadcrumb -->
 <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/hero/AdobeStock_225025152.jpeg') }}" 
      style="height:500px; display: flex; align-items: center; justify-content: center; 
