@@ -21,24 +21,31 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
+  
     .product-img {
-        position: relative;
-        overflow: hidden;
-        border-bottom: 2px solid #f1f1f1;
-        width: 100%;
-        height: 200px; /* Fixed height for consistency */
-    }
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #f1f1f1;
+    width: 100%;
+    height: auto; /* Allow natural height of the image */
+    aspect-ratio: 1 / 1; /* Ensure a consistent square ratio for all images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Add a neutral background color */
+}
 
-    .product-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensures images cover the area without distortion */
-        transition: transform 0.3s ease;
-    }
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Prevent image distortion or cropping */
+    transition: transform 0.3s ease;
+}
 
-    .product-img:hover img {
-        transform: scale(1.05); /* Slight zoom effect */
-    }
+.product-img:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
 
     .product-title {
         font-size: 18px;

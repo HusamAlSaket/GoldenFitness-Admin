@@ -1,7 +1,9 @@
 @include('components.layout3')
+
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
+<!-- Font Awesome CDN for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
     /* Product Card Styles */
@@ -20,23 +22,29 @@
     }
 
     .product-img {
-        position: relative;
-        overflow: hidden;
-        border-bottom: 2px solid #f1f1f1;
-        width: 100%;
-        height: 200px; /* Fixed height for consistency */
-    }
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #f1f1f1;
+    width: 100%;
+    height: auto; /* Allow natural height of the image */
+    aspect-ratio: 1 / 1; /* Ensure a consistent square ratio for all images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Add a neutral background color */
+}
 
-    .product-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensures images cover the area without distortion */
-        transition: transform 0.3s ease;
-    }
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Prevent image distortion or cropping */
+    transition: transform 0.3s ease;
+}
 
-    .product-img:hover img {
-        transform: scale(1.05); /* Slight zoom effect */
-    }
+.product-img:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
 
     .product-title {
         font-size: 18px;
@@ -126,7 +134,26 @@
         border-radius: 10px;
         max-height: 300px;
     }
+
+    /* Category Filter Styles */
+    #category {
+        background-color: #f8f9fa;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+        transition: all 0.3s ease;
+        width: 200px;
+    }
+
+    #category option {
+        background-color: #fff;
+        color: #333;
+        padding: 10px;
+    }
 </style>
+
 <!-- Breadcrumb -->
 <div class="breadcumb-wrapper" data-bg-src="{{ asset('assets/img/hero/AdobeStock_225025152.jpeg') }}" 
      style="height:500px; display: flex; align-items: center; justify-content: center; 
@@ -142,64 +169,6 @@
         </div>
     </div>
 </div>
-<style>
-    /* Styling for images inside the product modal */
-.modal-body img {
-    width: 100%; /* Ensure the image scales to container width */
-    max-width: 300px; /* Set a maximum width for the image */
-    height: 350px; /* Set a fixed height for the image */
-    object-fit: cover; /* Ensure the image maintains its aspect ratio */
-    border-radius: 10px; /* Rounded corners */
-    margin: 0 auto; /* Center the image */
-    display: block; /* Ensure the image is a block element for centering */
-}
-
-</style>
-<style>
-    
-    /* Styling for the select box and option */
-#category {
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    transition: all 0.3s ease;
-    width:200px;
-}
-
-#category option {
-    background-color: #fff;
-    color: #333;
-    padding: 10px;
-}
-
-/* Custom styling for "All Categories" option */
-#category option:first-child {
-    background-color: #ff4d4d;  /* Red background */
-    color: #fff;                /* White text */
-    font-weight: bold;
-    border-bottom: 2px solid #333; /* Cool border */
-    padding: 10px;
-}
-
-/* Styling for hovering over the options */
-#category option:hover {
-    background-color: #e6e6e6;
-}
-
-/* Adding a custom border to the select box */
-#category {
-    border: 2px solid #333;
-    outline: none;
-}
-
-#category:focus {
-    border-color: #ff4d4d;
-}
-
-</style>
 
 <!-- Category Filter -->
 <div class="container my-4">
@@ -215,107 +184,100 @@
                 @endforeach
             </select>
         </div>
-        <a href="{{ route('users.supplements.index') }}" class="btn style2" style="">Reset Filters</a>
+        <a href="{{ route('users.supplements.index') }}" class="btn style2">Reset Filters</a>
     </form>
 </div>
 
 <!-- Shop Area -->
 <div class="shop-area space">
     <div class="container">
-        <div class="row gy-40" id="productsList">
+        <div class="row gy-4" id="productsList">
             @forelse ($products as $product)
-                <div class="col-lg-4 col-md-6 d-flex justify-content-center">
-                    <div class="product" style="text-align: center; margin-bottom: 30px;">
-                        <div class="product-img mb-3">
-                            @if ($product->images->isNotEmpty())
-                                <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                    alt="{{ $product->name }}" class="product-image"
-                                    style="width: 100%; max-width: 300px; height: 250px; object-fit: cover; border-radius: 10px;">
-                            @else
-                                <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                    class="product-image"
-                                    style="width: 100%; max-width: 300px; height: 250px; object-fit: cover; border-radius: 10px;">
-                            @endif
-                        </div>
-                        <h3 class="product-title">{{ $product->name }}</h3>
-                        <p class="price">${{ number_format($product->price, 2) }}</p>
-                        <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn style2">Add to Cart</button>
-                        </form>
-                        <div class="actions">
-                            <button type="button" class="btn style2 m-1" data-bs-toggle="modal"
-                                data-bs-target="#productModal{{ $product->id }}">
-                                View Details
-                            </button>
-                        </div>
+            <div class="col-lg-4 col-md-6 d-flex justify-content-center">
+                <div class="product-card">
+                    <div class="product-img">
+                        @if ($product->images->isNotEmpty())
+                            <img src="{{ asset('storage/' . $product->images->first()->image_url) }}" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}">
+                        @endif
+                    </div>
+                    <div class="product-info p-3 text-center">
+                        <h3 class="product-title mb-3">{{ $product->name }}</h3>
+                        <p class="price mb-3">${{ number_format($product->price, 2) }}</p>
+
+                        <!-- Stock Check -->
+                        @if ($product->stock > 0)
+                            <!-- View Details and Add to Cart Buttons -->
+                            <div class="btn-container d-flex justify-content-center mb-3">
+                                <a href="{{ route('users.products.show', $product->id) }}" class="btn style2 me-2">
+                                    View Details
+                                </a>
+                                <form action="{{ route('cart.add') }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button type="submit" class="btn style2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </form>
+                            </div>
+                        @else
+                            <p class="out-of-stock mb-3">Out of Stock</p>
+                        @endif
                     </div>
                 </div>
-                <!-- Product Details Modal -->
-                <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1"
-                    aria-labelledby="productModalLabel{{ $product->id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel{{ $product->id }}">{{ $product->name }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                @if ($product->images->isNotEmpty())
-                                    <img src="{{ asset('storage/' . $product->images->first()->image_url) }}"
-                                        alt="{{ $product->name }}" class="img-fluid mb-3" style="border-radius: 10px;">
-                                @else
-                                    <img src="{{ asset('storage/placeholder.jpg') }}" alt="{{ $product->name }}"
-                                        class="img-fluid mb-3" style="border-radius: 10px;">
-                                @endif
-                                <p><strong>Description:</strong> {{ $product->description }}</p>
-                                <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
             @empty
-                <p class="text-center">No products found for the selected category.</p>
+                <p>No products found.</p>
             @endforelse
         </div>
 
         <!-- Pagination -->
         <div class="pagination-container">
-            <!-- Pagination Info -->
             @if ($products->hasPages())
                 <div class="pagination-info">
-                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} results (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
+                    Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }}
+                    results (Page {{ $products->currentPage() }} of {{ $products->lastPage() }})
                 </div>
-        
-                <!-- Pagination Links -->
                 <ul class="pagination">
-                    <!-- Previous Button -->
                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
                         <a class="page-link" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous">&lt;</a>
                     </li>
-        
-                    <!-- Page Numbers -->
                     @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
                         <li class="page-item {{ $products->currentPage() == $page ? 'active' : '' }}">
                             <a class="page-link" href="{{ $url }}">{{ $page }}</a>
                         </li>
                     @endforeach
-        
-                    <!-- Next Button -->
                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
                         <a class="page-link" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next">&gt;</a>
                     </li>
                 </ul>
             @endif
         </div>
-        
-        
-        
     </div>
 </div>
+
+<!-- Product Details Modal -->
+<div class="modal fade" id="productModal{{ $product->id ?? '' }}" tabindex="-1" aria-labelledby="productModalLabel{{ $product->id ?? '' }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel{{ $product->id ?? '' }}">{{ $product->name ?? '' }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ isset($product) && $product->images->isNotEmpty() ? asset('storage/' . $product->images->first()->image_url) : asset('storage/placeholder.jpg') }}" 
+                     alt="{{ $product->name ?? '' }}" class="product-modal-img">
+                <p>{{ $product->description ?? '' }}</p>
+                <p><strong>Price:</strong> ${{ isset($product) ? number_format($product->price, 2) : '0.00' }}</p>
+                <p><strong>Stock:</strong> {{ $product->stock ?? '0' }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 @include('components.layout4')
